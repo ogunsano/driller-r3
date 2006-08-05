@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database name="From a file &lt; &gt; &quot; &amp; ">
+  <table name="Table 1" file="table_1.dat" data_offset="10" row_length="70">
+    <unknown name="unknown_col" offset="0"/>
+    <bool name="bool_col" offset="1" indexed="true"/>
+    <int8 name="int8_col" offset="2" indexed="true"/>
+    <uint8 name="uint8_col" offset="3"/>
+    <int16 name="int16_col" offset="4"/>
+    <uint16 name="uint16_col" offset="6"/>
+    <int32 name="int32_col" offset="10"/>
+    <uint32 name="uint32_col" offset="14"/>
+    <blob name="blob_col" offset="18" length="4"/>
+    <string name="string_col" offset="22" length="20"/>
+    <phone name="phone_col" offset="42"/>
+    <phone name="long_phone_col" offset="50"/>
+    <date name="date_col" offset="61"/>
+    <currency name="currency_col" offset="65"/>
+    <enum name="enum_col" offset="69">
+      <case id="0" value="first case"/>
+      <case id="1" value="second case"/>
+      <case id="2" value="third case"/>
+    </enum>
+  </table>
+  <table name="Table 2" file="table_2.dat" data_offset="123" row_length="456"/>
+</database>

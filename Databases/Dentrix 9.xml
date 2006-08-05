@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database name="Dentrix 9">
+  <table name="Address" file="Address.dat" data_offset="2492" row_length="178">
+    <uint32 name="id" offset="2" indexed="true"/>
+    <string name="address" offset="6" length="30"/>
+    <string name="city" offset="37" length="25"/>
+    <string name="ext" offset="87" length="4"/>
+    <string name="state" offset="94" length="2"/>
+    <string name="zip" offset="115" length="9" indexed="true"/>
+    <phone name="phone" offset="130"/>
+    <string name="address2" offset="147" length="30"/>
+  </table>
+  <table name="Appointments" file="Appt.dat" data_offset="2862" row_length="286">
+    <uint32 name="id" offset="0"/>
+    <date name="date" offset="4"/>
+    <string name="room" offset="9" length="4"/>
+    <string name="provider" offset="14" length="4"/>
+    <string name="patient_name" offset="20" length="32"/>
+    <uint8 name="length" offset="56"/>
+    <currency name="payment" offset="58"/>
+    <phone name="patient_phone" offset="73"/>
+    <string name="description" offset="90" length="60"/>
+    <uint8 name="status" offset="153"/>
+    <string name="staff" offset="256" length="4"/>
+  </table>
+  <table name="Definitions" file="Def_dat.dat" data_offset="2268" row_length="54">
+    <uint8 name="category" offset="0"/>
+    <uint8 name="item" offset="1"/>
+    <string name="value" offset="2" length="52"/>
+  </table>
+  <table name="LCM_Case" file="LCM_Case.dat" data_offset="2320" row_length="80">
+    <uint32 name="id" offset="2"/>
+    <uint8 name="lab_id" offset="6"/>
+    <uint32 name="patient_id" offset="10"/>
+    <date name="UnknownDate" offset="14"/>
+    <date name="finished" offset="18"/>
+    <uint8 name="category" offset="22"/>
+    <string name="provider" offset="30" length="4"/>
+    <string name="caseNumber" offset="34" length="8"/>
+  </table>
+  <table name="LCM_Def" file="LCM_Def.dat" data_offset="2279" row_length="53">
+    <uint32 name="id" offset="2"/>
+    <uint8 name="b6" offset="6"/>
+    <uint8 name="b7" offset="7"/>
+    <string name="value" offset="11" length="42"/>
+  </table>
+  <table name="LCM_Lab" file="LCM_Lab.dat" data_offset="2840" row_length="355">
+    <uint32 name="id" offset="2"/>
+    <string name="name" offset="6" length="37"/>
+    <string name="address" offset="38" length="29"/>
+    <string name="city" offset="102" length="25"/>
+    <string name="state" offset="128" length="2"/>
+    <string name="zip" offset="149" length="14"/>
+    <phone name="phone" offset="164"/>
+  </table>
+  <table name="LCM_Link" file="LCM_Link.dat" data_offset="2250" row_length="25">
+    <uint8 name="b1" offset="0"/>
+    <uint8 name="b2" offset="1"/>
+    <uint8 name="b3" offset="2"/>
+    <uint8 name="b4" offset="3"/>
+    <uint8 name="b5" offset="4"/>
+    <uint8 name="b6" offset="5"/>
+    <uint8 name="b7" offset="6"/>
+    <uint32 name="i1" offset="7"/>
+    <uint32 name="i2" offset="20"/>
+  </table>
+  <table name="LCM_Ship" file="LCM_Ship.dat" data_offset="2240" row_length="64">
+    <uint32 name="id" offset="2"/>
+    <string name="name" offset="6" length="37"/>
+  </table>
+  <table name="Notes" file="Notes.dat" data_offset="2591" row_length="0">
+    <varstring name="value" offset="20"/>
+  </table>
+  <table name="Proc_co2" file="Proc_co2.dat" data_offset="2862" row_length="318">
+    <uint32 name="id" offset="50" indexed="true"/>
+    <string name="ada_code" offset="0" length="9" indexed="true"/>
+    <string name="abbrev" offset="10" length="9"/>
+    <string name="code3" offset="20" length="9"/>
+    <string name="code4" offset="30" length="9"/>
+    <string name="code5" offset="40" length="9"/>
+    <uint32 name="category" offset="54"/>
+    <string name="description" offset="90" length="31"/>
+  </table>
+  <table name="Procedure Log" file="Proc_log.dat" data_offset="2464" row_length="154">
+    <uint32 name="id" offset="6"/>
+    <uint32 name="patient_id" offset="2" indexed="true"/>
+    <uint32 name="guardian_id" offset="10"/>
+    <enum name="proc_type" offset="14" indexed="true">
+      <case id="90" value="L"/>
+      <case id="100" value="EO"/>
+      <case id="101" value="EC"/>
+      <case id="102" value="C"/>
+      <case id="105" value="TP"/>
+      <case id="109" value="Cd"/>
+      <case id="110" value="IsPrimary"/>
+    </enum>
+    <date name="date" offset="16" indexed="true"/>
+    <uint32 name="proc_code_id" offset="20" indexed="true"/>
+    <uint32 name="claim_id" offset="28" indexed="true"/>
+    <uint8 name="ledger_type" offset="32"/>
+    <uint8 name="ledger_type_def" offset="33"/>
+    <string name="provider" offset="34" length="4" indexed="true"/>
+    <currency name="amount" offset="40" indexed="true"/>
+    <date name="entry_date" offset="56"/>
+    <string name="check_number" offset="64" length="9"/>
+    <uint8 name="from_tooth" offset="74"/>
+    <uint8 name="to_tooth" offset="75"/>
+    <string name="bank_branch" offset="76" length="19"/>
+    <uint8 name="IsNotInsurance" offset="132" indexed="true"/>
+  </table>
+  <table name="Patient data" file="Pat_dat.dat" data_offset="3132" row_length="522">
+    <uint32 name="id" offset="2" indexed="true"/>
+    <uint32 name="guardian_id" offset="6"/>
+    <string name="last_name" offset="10" length="20"/>
+    <string name="first_name" offset="31" length="15"/>
+    <string name="initial" offset="47" length="1"/>
+    <string name="preferred" offset="49" length="15"/>
+    <string name="salutation" offset="65" length="31"/>
+    <string name="ext" offset="97" length="4"/>
+    <string name="time_to_call" offset="102" length="10"/>
+    <string name="chart_number" offset="113" length="6"/>
+    <string name="SSN" offset="133" length="9"/>
+    <string name="provider_1" offset="143" length="4"/>
+    <string name="provider_2" offset="147" length="4"/>
+    <enum name="gender" offset="154">
+      <case id="1" value="Male"/>
+      <case id="2" value="Female"/>
+    </enum>
+    <uint8 name="pat_stat" offset="155"/>
+    <uint8 name="maritial" offset="156"/>
+    <uint32 name="address_id" offset="160" indexed="true"/>
+    <date name="birthdate" offset="164"/>
+    <uint32 name="employer_id" offset="168"/>
+    <date name="first_visit" offset="176" indexed="true"/>
+    <date name="last_visit" offset="180" indexed="true"/>
+  </table>
+  <table name="Referral Acts" file="RefActs.dat" data_offset="2242" row_length="20">
+    <uint32 name="id" offset="0" indexed="true"/>
+    <uint32 name="referrer_id" offset="4"/>
+    <uint32 name="patient_id" offset="8" indexed="true"/>
+    <uint8 name="b12" offset="12"/>
+    <date name="date" offset="13"/>
+    <enum name="IsAdOrDoctor" offset="17" indexed="true">
+      <case id="0" value="Ad"/>
+      <case id="1" value="Doctor"/>
+    </enum>
+  </table>
+  <table name="Referral" file="Referral.dat" data_offset="2984" row_length="373">
+    <enum name="IsAdOrDoctor" offset="0">
+      <case id="0" value="Ad"/>
+      <case id="1" value="Doctor"/>
+    </enum>
+    <uint32 name="id" offset="2"/>
+    <string name="last_name" offset="6" length="32"/>
+    <uint8 name="Unknown1" offset="130"/>
+    <string name="first_name" offset="38" length="72"/>
+  </table>
+  <table name="Resource Data" file="Rsc_dat.dat" data_offset="4002" row_length="667">
+    <enum name="type" offset="0">
+      <case id="0" value="Unknown"/>
+      <case id="1" value="Provider"/>
+      <case id="2" value="Staff"/>
+      <case id="3" value="Operatory"/>
+    </enum>
+    <string name="code" offset="1" length="4"/>
+    <string name="last_name" offset="8" length="20"/>
+    <string name="first_name" offset="29" length="20"/>
+    <string name="title" offset="47" length="20"/>
+    <string name="address" offset="68" length="30"/>
+    <string name="city" offset="99" length="11"/>
+    <string name="SSN" offset="154" length="10"/>
+    <string name="state" offset="260" length="2"/>
+    <string name="zip" offset="281" length="5"/>
+    <phone name="phone" offset="296"/>
+    <enum name="specialty" offset="416">
+      <case id="1" value="Dentist"/>
+      <case id="2" value="Dental Assistant"/>
+      <case id="3" value="Dental Hygienist"/>
+      <case id="4" value="Dental Public Health"/>
+      <case id="5" value="Endodontics"/>
+      <case id="6" value="Orthodontics"/>
+      <case id="7" value="Pathology, Oral &amp; Maxillofacial"/>
+      <case id="8" value="Pediatrics Dentistry (Pedodontics)"/>
+      <case id="9" value="Periodontics"/>
+      <case id="10" value="Prosthodontics"/>
+      <case id="11" value="Surgery, Oral &amp; Maxillofacial"/>
+      <case id="12" value="Dental Laboratory Technician"/>
+      <case id="13" value="General Practice"/>
+      <case id="14" value="Oral and Maxillofacial Radiology"/>
+    </enum>
+  </table>
+  <table name="Resource Use" file="RscUse.dat" data_offset="3974" row_length="662">
+    <blob name="Blob1" offset="0" length="4"/>
+    <string name="room" offset="5" length="4"/>
+    <blob name="Blob2" offset="9" length="651"/>
+  </table>
+</database>

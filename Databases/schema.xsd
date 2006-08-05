@@ -1,0 +1,148 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+elementFormDefault="qualified">
+
+<xs:element name="database" type="database_type"/>
+
+<xs:complexType name="database_type">
+  <xs:sequence>
+    <xs:element name="table" type="table_type" minOccurs="0" maxOccurs="unbounded"/>
+  </xs:sequence>
+
+  <!-- Name of the database, something like "MySQL" or "Dentrix" -->
+  <xs:attribute name="name" type="xs:string" use="required"/>
+</xs:complexType>
+
+<xs:complexType name="table_type">
+  <!-- Column types available in each table -->
+  <xs:sequence>
+    <xs:group ref="column_group" minOccurs="0" maxOccurs="unbounded"/>
+  </xs:sequence>
+
+  <!-- "Friendly" name of the table -->
+  <xs:attribute name="name" type="xs:string" use="required"/>
+
+  <!-- File name of the table -->
+  <xs:attribute name="file" type="xs:string" use="required"/>
+
+  <!-- Offset from the beginning of the file to the data, must be >= 0 -->
+  <xs:attribute name="data_offset" type="xs:nonNegativeInteger" use="required"/>
+
+  <!-- Length of each row. If the row is of variable width, don't set this -->
+  <xs:attribute name="row_length" type="xs:nonNegativeInteger" use="optional" default="0" />
+</xs:complexType>
+
+<xs:group name="column_group">
+  <xs:choice>
+    <!-- Unknown type -->
+    <xs:element name="unknown" type="unknown_column"/>
+
+    <!-- Boolean value -->
+    <xs:element name="bool" type="column"/>
+
+    <!-- Signed 8-bit integer -->
+    <xs:element name="int8" type="column"/>
+
+    <!-- Unsigned 8-bit integer (AKA byte) -->
+    <xs:element name="uint8" type="column"/>
+
+    <!-- Signed 16-bit integer -->
+    <xs:element name="int16" type="column"/>
+
+    <!-- Unsigned 16-bit integer -->
+    <xs:element name="uint16" type="column"/>
+
+    <!-- Signed 32-bit integer -->
+    <xs:element name="int32" type="column"/>
+
+    <!-- Unsigned 32-bit integer -->
+    <xs:element name="uint32" type="column"/>
+
+    <!-- Binary blobs -->
+    <xs:element name="blob" type="length_column"/>
+
+    <!-- Fixed-width strings -->
+    <xs:element name="string" type="length_column"/>
+
+    <!-- Variable-width strings
+      In Dentrix, this table consists of the following fields:
+        The two bytes 'FA FA', which mark the start of the row
+        A uint32, which contains the length of the note
+        Bunch of other stuff I don't know yet
+        A string of variable length
+    -->
+    <xs:element name="varstring" type="column"/>
+
+    <!-- Phone numbers -->
+    <xs:element name="phone" type="column"/>
+
+    <!-- Dates -->
+    <xs:element name="date" type="column"/>
+
+    <!-- Currencies -->
+    <xs:element name="currency" type="column"/>
+
+    <!-- Enumerations -->
+    <xs:element name="enum" type="enum_column"/>
+
+  </xs:choice>
+</xs:group>
+
+<!-- Enumeration columns -->
+<xs:complexType name="enum_column">
+  <xs:complexContent>
+    <xs:extension base="column">
+      <xs:sequence>
+        <xs:element name="case" type="enum_case" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<!-- Enumeration cases -->
+<xs:complexType name="enum_case">
+
+  <!-- Case ID -->
+  <xs:attribute name="id" use="required">
+    <xs:simpleType>
+      <xs:restriction base="xs:nonNegativeInteger">
+        <xs:minInclusive value="0"/>
+        <xs:maxInclusive value="255"/>
+        </xs:restriction>
+    </xs:simpleType>
+  </xs:attribute>
+
+  <!-- String for this case -->
+  <xs:attribute name="value" type="xs:string" use="required"/>
+</xs:complexType>
+
+<!-- Columns with a length -->
+<xs:complexType name="length_column">
+  <xs:complexContent>
+    <xs:extension base="column">
+      <xs:attribute name="length" type="xs:nonNegativeInteger" use="required"/>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<!-- Base type for all column types -->
+<xs:complexType name="column">
+  <!-- Name of the column -->
+  <xs:attribute name="name" type="xs:string" use="required"/>
+
+  <!-- Offset from the start of the row to the column -->
+  <xs:attribute name="offset" type="xs:nonNegativeInteger" use="required"/>
+
+  <!-- Whether this column should be indexed when extracted to a DBMS -->
+  <xs:attribute name="indexed" type="xs:boolean" use="optional" default="false"/>
+</xs:complexType>
+
+<!-- Used for "unknown" columns -->
+<xs:complexType name="unknown_column">
+  <xs:attribute name="name" type="xs:string" use="required"/>
+  <xs:attribute name="offset" type="xs:nonNegativeInteger" use="required"/>
+  <xs:attribute name="length" type="xs:nonNegativeInteger" use="optional" default="1"/>
+  <xs:attribute name="indexed" type="xs:boolean" use="optional" default="false"/>
+</xs:complexType>
+
+</xs:schema>
