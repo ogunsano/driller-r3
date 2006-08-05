@@ -1,0 +1,159 @@
+<?xml version="1.0"?><database name="Dentrix 9">
+  <table name="Address" file="Address.dat" data_offset="2492" row_length="178">
+    <uint32 name="AddressID" offset="2" indexed="true"/>
+    <string name="Address" offset="6" length="30"/>
+    <string name="City" offset="37" length="25"/>
+    <string name="Ext" offset="87" length="4"/>
+    <string name="State" offset="94" length="2"/>
+    <string name="ZIP" offset="115" length="9" indexed="true"/>
+    <phone name="Phone" offset="130"/>
+    <string name="Address2" offset="147" length="30"/>
+  </table>
+  <table name="Appt" file="Appt.dat" data_offset="2862" row_length="286">
+    <uint32 name="Index" offset="0"/>
+    <date name="Date" offset="4"/>
+    <string name="Room" offset="9" length="4"/>
+    <string name="Provider" offset="14" length="4"/>
+    <string name="PatName" offset="20" length="32"/>
+    <uint8 name="ApptLength" offset="56"/>
+    <currency name="Payment" offset="58"/>
+    <phone name="PatPhone" offset="73"/>
+    <string name="ApptDesc" offset="90" length="60"/>
+    <uint8 name="Status" offset="153"/>
+    <string name="Staff" offset="256" length="4"/>
+  </table>
+  <table name="Def_dat" file="Def_dat.dat" data_offset="2268" row_length="54">
+    <uint8 name="Category" offset="0"/>
+    <uint8 name="Item" offset="1"/>
+    <string name="Text" offset="2" length="52"/>
+  </table>
+  <table name="LCM_Case" file="LCM_Case.dat" data_offset="2320" row_length="80">
+    <uint32 name="ID" offset="2"/>
+    <uint8 name="LabID" offset="6"/>
+    <uint32 name="PatientID" offset="10"/>
+    <date name="UnknownDate" offset="14"/>
+    <date name="Finished" offset="18"/>
+    <uint8 name="Category" offset="22"/>
+    <string name="Provider" offset="30" length="4"/>
+    <string name="CaseNumber" offset="34" length="8"/>
+  </table>
+  <table name="LCM_Def" file="LCM_Def.dat" data_offset="2279" row_length="53">
+    <uint32 name="id" offset="2"/>
+    <uint8 name="b6" offset="6"/>
+    <uint8 name="b7" offset="7"/>
+    <string name="Text" offset="11" length="42"/>
+  </table>
+  <table name="LCM_Lab" file="LCM_Lab.dat" data_offset="2840" row_length="355">
+    <uint32 name="id" offset="2"/>
+    <string name="Name" offset="6" length="37"/>
+    <string name="Address" offset="38" length="29"/>
+    <string name="City" offset="102" length="25"/>
+    <string name="State" offset="128" length="2"/>
+    <string name="PostalCode" offset="149" length="14"/>
+    <phone name="Phone" offset="164"/>
+  </table>
+  <table name="LCM_Link" file="LCM_Link.dat" data_offset="2250" row_length="25">
+    <uint8 name="b1" offset="0"/>
+    <uint8 name="b2" offset="1"/>
+    <uint8 name="b3" offset="2"/>
+    <uint8 name="b4" offset="3"/>
+    <uint8 name="b5" offset="4"/>
+    <uint8 name="b6" offset="5"/>
+    <uint8 name="b7" offset="6"/>
+    <uint32 name="i1" offset="7"/>
+    <uint32 name="i2" offset="20"/>
+  </table>
+  <table name="LCM_Ship" file="LCM_Ship.dat" data_offset="2240" row_length="64">
+    <uint32 name="id" offset="2"/>
+    <string name="Name" offset="6" length="37"/>
+  </table>
+  <table name="Notes" file="Notes.dat" data_offset="2591" row_length="0">
+    <varstring name="value" offset="20"/>
+  </table>
+  <table name="Proc_co2" file="Proc_co2.dat" data_offset="2862" row_length="318">
+    <uint32 name="ProcCodeID" offset="50" indexed="true"/>
+    <string name="ADACode" offset="0" length="9" indexed="true"/>
+    <string name="Abbrev" offset="10" length="9"/>
+    <string name="Code3" offset="20" length="9"/>
+    <string name="Code4" offset="30" length="9"/>
+    <string name="Code5" offset="40" length="9"/>
+    <uint32 name="Category" offset="54"/>
+    <string name="Description" offset="90" length="31"/>
+  </table>
+  <table name="Proc_log" file="Proc_log.dat" data_offset="2464" row_length="154">
+    <uint32 name="ProcLogID" offset="6"/>
+    <uint32 name="PatientID" offset="2" indexed="true"/>
+    <uint32 name="GuarID" offset="10"/>
+    <uint8 name="ProcType" offset="14" indexed="true"/>
+    <date name="ProcDate" offset="16" indexed="true"/>
+    <uint32 name="ProcCodeID" offset="20" indexed="true"/>
+    <uint32 name="ClaimID" offset="28" indexed="true"/>
+    <uint8 name="LedgerType" offset="32"/>
+    <uint8 name="LTypeDef" offset="33"/>
+    <string name="Provider" offset="34" length="4" indexed="true"/>
+    <currency name="Amount" offset="40" indexed="true"/>
+    <date name="EntryDate" offset="56"/>
+    <string name="CheckNumber" offset="64" length="9"/>
+    <uint8 name="FromTooth" offset="74"/>
+    <uint8 name="ToTooth" offset="75"/>
+    <string name="Bank Branch" offset="76" length="19"/>
+    <uint8 name="IsNotInsurance" offset="132" indexed="true"/>
+  </table>
+  <table name="Pat_dat" file="Pat_dat.dat" data_offset="3132" row_length="522">
+    <uint32 name="PatientID" offset="2" indexed="true"/>
+    <uint32 name="GuarIID" offset="6"/>
+    <string name="LName" offset="10" length="20"/>
+    <string name="FName" offset="31" length="15"/>
+    <string name="MiddleI" offset="47" length="1"/>
+    <string name="Preferred" offset="49" length="15"/>
+    <string name="Sal" offset="65" length="31"/>
+    <string name="Ext" offset="97" length="4"/>
+    <string name="TimeToCall" offset="102" length="10"/>
+    <string name="ChartNum" offset="113" length="6"/>
+    <string name="SSN" offset="133" length="9"/>
+    <string name="Prov1" offset="143" length="4"/>
+    <string name="Prov2" offset="147" length="4"/>
+    <uint8 name="Gender" offset="154"/>
+    <uint8 name="PatStat" offset="155"/>
+    <uint8 name="Maritial" offset="156"/>
+    <uint32 name="AddressID" offset="160" indexed="true"/>
+    <date name="Birthdate" offset="164"/>
+    <uint32 name="EmployerID" offset="168"/>
+    <date name="FirstVisit" offset="176" indexed="true"/>
+    <date name="LastVisit" offset="180" indexed="true"/>
+  </table>
+  <table name="RefActs" file="RefActs.dat" data_offset="2242" row_length="20">
+    <uint32 name="RefActID" offset="0" indexed="true"/>
+    <uint32 name="ReferrerID" offset="4"/>
+    <uint32 name="PatientID" offset="8" indexed="true"/>
+    <uint8 name="b12" offset="12"/>
+    <date name="RefDate" offset="13"/>
+    <uint8 name="IsAdOrDoctor" offset="17" indexed="true"/>
+  </table>
+  <table name="Referral" file="Referral.dat" data_offset="2984" row_length="373">
+    <uint8 name="IsAdOrDoctor" offset="0"/>
+    <uint32 name="ReferralID" offset="2"/>
+    <string name="LName" offset="6" length="32"/>
+    <uint8 name="Unknown1" offset="130"/>
+    <string name="FName" offset="38" length="72"/>
+  </table>
+  <table name="Rsc_dat" file="Rsc_dat.dat" data_offset="4002" row_length="667">
+    <uint8 name="type" offset="0"/>
+    <string name="Code" offset="1" length="4"/>
+    <string name="LName" offset="8" length="20"/>
+    <string name="FName" offset="29" length="20"/>
+    <string name="Title" offset="47" length="20"/>
+    <string name="Address" offset="68" length="30"/>
+    <string name="City" offset="99" length="11"/>
+    <string name="SSN" offset="154" length="10"/>
+    <string name="State" offset="260" length="2"/>
+    <string name="Postal code" offset="281" length="5"/>
+    <phone name="Phone" offset="296"/>
+    <uint8 name="Specialty" offset="416"/>
+  </table>
+  <table name="RscUse" file="RscUse.dat" data_offset="3974" row_length="662">
+    <blob name="Blob1" offset="0" length="4"/>
+    <string name="room" offset="5" length="4"/>
+    <blob name="Blob2" offset="9" length="651"/>
+  </table>
+</database>
