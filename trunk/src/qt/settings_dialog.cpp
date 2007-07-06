@@ -19,7 +19,7 @@
 */
 
 #include "settings_dialog.h"
-#include "../database.h"
+#include "../database/database.h"
 #include <QFileDialog>
 
 namespace Driller {
@@ -48,7 +48,9 @@ void SettingsDialog::on_browseButton_clicked(bool){
     this, "Choose a directory", ui.pathEdit->text(), QFileDialog::ShowDirsOnly
   );
 
-  ui.pathEdit->setText(dir);
+  if (dir.length() > 0) {
+    ui.pathEdit->setText(dir);
+  }
 }
 
 } // namespace

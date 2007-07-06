@@ -22,7 +22,10 @@
 
 namespace Driller {
 
-ResultSet::ResultSet(unsigned int _rows, unsigned int _columns) throw ():
+ResultSet::ResultSet(const Table& _table, unsigned int _rows,
+  unsigned int _columns) throw ():
+
+  table(_table),
   rows(_rows),
   columns(_columns),
   allocator(rows * columns * 5) { // most strings are 5 bytes or less

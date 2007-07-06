@@ -21,10 +21,15 @@
 #ifndef DRILLER_DATABASE_ENUMERATION_H
 #define DRILLER_DATABASE_ENUMERATION_H
 
+// Disable warnings about throw specifications in VS 2003
+#ifdef _MSC_VER
+#pragma warning(disable: 4290)
+#endif
+
 #include <list>
 #include <map>
 #include <string>
-#include "errors.h"
+#include "../errors.h"
 #include "misc.h"
 
 namespace Errors {

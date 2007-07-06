@@ -22,7 +22,7 @@
 #define DRILLER_QT_TABLE_MODEL_H
 
 #include <QAbstractItemModel>
-#include "../database.h"
+#include "../database/database.h"
 
 namespace Driller {
 

@@ -34,6 +34,10 @@
   #include <sys/types.h>
   #include <sys/mman.h>
   #include <fcntl.h>
+
+// For Windows versions of mmap
+#elif WIN32
+  #include <windows.h>
 #endif
 
 namespace Driller {
@@ -50,35 +54,15 @@ Table::Table(
   row_length(_row_length)
   {}
 
-Table::Table(xmlNode* node) throw (Errors::FileParseError,
+Table::Table(xmlNode* node) throw (
+  Errors::FileParseError,
+  Errors::MissingAttributeError,
   Errors::DuplicateEnumID) {
 
-  xmlChar* raw_name = xmlGetProp(node,
-    reinterpret_cast<const xmlChar*>("name"));
-  xmlChar* raw_file = xmlGetProp(node,
-    reinterpret_cast<const xmlChar*>("file"));
-  xmlChar* raw_data_offset = xmlGetProp(node,
-    reinterpret_cast<const xmlChar*>("data_offset"));
-  xmlChar* raw_row_length = xmlGetProp(node,
-    reinterpret_cast<const xmlChar*>("row_length"));
-
-  if (!raw_name){
-    throw Errors::MissingAttributeError(node->doc->name, "table", "name");
-  }
-  friendly_name = reinterpret_cast<char*>(raw_name);
-
-  if (!raw_file){
-    throw Errors::MissingAttributeError(node->doc->name, "table", "file");
-  }
-  file_name = reinterpret_cast<char*>(raw_file);
-
-  if (!raw_data_offset){
-    throw Errors::MissingAttributeError(node->doc->name, "table", "data_offset");
-  }
-
-  if (!raw_row_length){
-    throw Errors::MissingAttributeError(node->doc->name, "table", "row_length");
-  }
+  friendly_name = get_xml_node_attribute(node, "name");
+  file_name = get_xml_node_attribute(node, "file");
+  std::string raw_data_offset = get_xml_node_attribute(node, "data_offset");
+  std::string raw_row_length = get_xml_node_attribute(node, "row_length");
 
   // Convert raw data into something usable
 
@@ -87,14 +71,17 @@ Table::Table(xmlNode* node) throw (Errors::FileParseError,
   strstream << raw_data_offset;
   strstream >> data_offset;
 
+  if (strstream.fail()) {
+    throw Errors::InvalidAttributeError("", "data_offset", raw_data_offset);
+  }
+
   strstream.clear();
   strstream << raw_row_length;
   strstream >> row_length;
 
-  xmlFree(raw_name);
-  xmlFree(raw_file);
-  xmlFree(raw_data_offset);
-  xmlFree(raw_row_length);
+  if (strstream.fail()) {
+    throw Errors::InvalidAttributeError("", "row_length", raw_row_length);
+  }
 
   // Convert any columns in the node
   xmlNode* column_node = node->children;
@@ -117,7 +104,7 @@ Table::~Table() throw () {
 }
 
 unsigned int Table::column_count() const throw(){
-  return columns.size();
+  return static_cast<unsigned int>(columns.size());
 }
 
 void Table::clear() throw () {
@@ -180,8 +167,8 @@ std::vector<Column> Table::get_columns() const throw(){
   return columns;
 }
 
-const ResultSet* Table::extract_data(
-  const unsigned int row_limit) const throw (Errors::FileReadError){
+const ResultSet* Table::extract_data(const unsigned int row_limit) const
+  throw (Errors::FileReadError){
 
   ExtractionState* state = load_data();
 
@@ -243,7 +230,9 @@ const ResultSet* Table::extract_data(
     }
   }
 
-  ResultSet* result = new ResultSet(row_count, column_count);
+  ResultSet* result = new ResultSet(*this, row_count, column_count);
+  unsigned int format_buffer_size = 30;
+  char* format_buffer = new char[format_buffer_size];
 
   // Run through the data, extracting rows into a ResultSet
   std::vector<Column>::const_iterator column_iter = columns.begin();
@@ -252,13 +241,14 @@ const ResultSet* Table::extract_data(
 
     for (unsigned int row_idx = 0; row_idx < row_count; row_idx++){
       result->set_cell(row_idx, col_idx,
-        column.extract_data(row_locations[row_idx])
+        column.extract_data(row_locations[row_idx], format_buffer, format_buffer_size)
       );
     }
 
     ++column_iter;
   }
 
+  delete [] format_buffer;
   delete [] row_locations;
 
   unload_data(state);
@@ -284,11 +274,30 @@ Table::ExtractionState* Table::load_data() const throw (Errors::FileReadError){
     mmap(0, state->data_length, PROT_READ, MAP_FILE | MAP_SHARED, fd, 0));
 
   close(fd);
-#endif
 
-// On Windows, simply read into an allocated buffer
-#ifdef WIN32
-  FILE* file = fopen(full_file_name.c_str(), "r");
+// On Windows, use the equivalent Win32 API functions
+#elif WIN32
+  HANDLE file_handle = CreateFile(full_file_name.c_str(), GENERIC_READ,
+    FILE_SHARE_READ, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_READONLY, NULL);
+
+  if (file_handle == INVALID_HANDLE_VALUE){
+    throw Errors::FileReadError(full_file_name, errno);
+  }
+
+  state = new ExtractionState;
+  state->data_length = GetFileSize(file_handle, NULL);
+
+  HANDLE file_mapping = CreateFileMapping(file_handle, NULL, PAGE_READONLY,
+    0, 0, NULL);
+
+  state->data = reinterpret_cast<uint8*>(MapViewOfFile(file_mapping,
+    FILE_MAP_READ, 0, 0, 0));
+
+  CloseHandle(file_handle);
+
+// Anything else, just use plain fread
+#else
+  FILE* file = fopen(full_file_name.c_str(), "rb");
 
   if (!file){
     throw Errors::FileReadError(full_file_name, errno);
@@ -312,10 +321,13 @@ void Table::unload_data(ExtractionState* state) const throw () {
 // On UNIX-based systems, remove the memory mapping to the file
 #ifdef __unix
   munmap(state->data, state->data_length);
-#endif
 
-// On windows, delete the allocated buffer
-#ifdef WIN32
+// ditto windows
+#elif WIN32
+  UnmapViewOfFile(state->data);
+
+// some other OS, delete the allocated buffer
+#else
   delete[] state->data;
 #endif
 

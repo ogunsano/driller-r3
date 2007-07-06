@@ -21,7 +21,7 @@
 #ifndef DRILLER_APP_H
 #define DRILLER_APP_H
 
-#include "database.h"
+#include "database/database.h"
 
 #ifdef HAVE_CONFIG_H
   #include <config.h>

@@ -29,7 +29,7 @@
 #include <QStandardItemModel>
 #include "table_model.h"
 #include "ui_MainWindow.h"
-#include "../database.h"
+#include "../database/database.h"
 #include <QDir>
 
 class QItemEditorFactory;

@@ -99,7 +99,7 @@ std::string Enumeration::get_value(const uint8 id) const throw () {
 }
 
 unsigned int Enumeration::case_count() const throw () {
-  return cases.size();
+  return static_cast<unsigned int>(cases.size());
 }
 
 std::list<EnumCase> Enumeration::get_case_list() const throw () {

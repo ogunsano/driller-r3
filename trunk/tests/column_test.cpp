@@ -1,201 +1,231 @@
-#include "test.h"
-#include "fixture.h"
-#include "database/column.h"
+#include <copper.hpp>
+#include "../src/database/column.h"
 
 using namespace Driller;
 
-TEST_SUITE(column_tests)
+TEST_SUITE(column_tests) {
 
-FIXTURE(column_fixture)
+FIXTURE(column_fixture) {
+  Column col;
 
-  void set_up(){
+  SET_UP {
     col = Column("", COLUMN_UNKNOWN);
   }
-
-  Column col;
-};
-
-TEST(empty_constructor)
-  Column col;
-
-  assert(col.get_name()).equals("");
-  assert(col.get_type()).equals(COLUMN_UNKNOWN);
-  assert(col.get_offset()).equals(0);
-  assert(col.get_length()).equals(0);
-  assert(col.get_indexed()).is_false();
 }
 
-TEST(constructor)
+TEST(empty_constructor) {
+  Column col;
+
+  ASSERT(equal("", col.get_name()));
+  ASSERT(equal(COLUMN_UNKNOWN, col.get_type()));
+  ASSERT(equal(0u, col.get_offset()));
+  ASSERT(equal(0u, col.get_length()));
+  ASSERT(!col.get_indexed());
+}
+
+TEST(constructor) {
   Column col("name", COLUMN_NUM_TYPES, 5, 6, false);
 
-  assert(col.get_name()).equals("name");
-  assert(col.get_type()).equals(COLUMN_UNKNOWN); // invalid type -> COLUMN_UNKNOWN
-  assert(col.get_offset()).equals(5);
-  assert(col.get_length()).equals(0); // should be 0 if type doesn't use length
-  assert(col.get_indexed()).is_false();
+  ASSERT(equal("name", col.get_name()));
+  // invalid type -> COLUMN_UNKNOWN
+  ASSERT(equal(COLUMN_UNKNOWN, col.get_type()));
+  ASSERT(equal(5u, col.get_offset()));
+  // should be 0 if type doesn't use length
+  ASSERT(equal(0u, col.get_length()));
+  ASSERT(!col.get_indexed());
 }
 
-FIXTURE_TEST(type, column_fixture)
-  assert(col.get_type()).equals(COLUMN_UNKNOWN);
+FIXTURE_TEST(type, column_fixture) {
+  ASSERT(equal(COLUMN_UNKNOWN, col.get_type()));
   col.set_type(COLUMN_BOOL);
-  assert(col.get_type()).equals(COLUMN_BOOL);
+  ASSERT(equal(COLUMN_BOOL, col.get_type()));
+  col.set_type(COLUMN_NUM_TYPES);
+  ASSERT(equal(COLUMN_UNKNOWN, col.get_type()));
 }
 
-FIXTURE_TEST(name, column_fixture)
-  assert(col.get_name()).equals("");
+FIXTURE_TEST(name, column_fixture) {
+  ASSERT(equal("", col.get_name()));
   col.set_name("test");
-  assert(col.get_name()).equals("test");
+  ASSERT(equal("test", col.get_name()));
 }
 
-FIXTURE_TEST(offset, column_fixture)
-  assert(col.get_offset()).equals(0);
+FIXTURE_TEST(offset, column_fixture) {
+  ASSERT(equal(0u, col.get_offset()));
   col.set_offset(10);
-  assert(col.get_offset()).equals(10);
+  ASSERT(equal(10u, col.get_offset()));
 }
 
-FIXTURE_TEST(length, column_fixture)
-  assert(col.get_length()).equals(0);
+FIXTURE_TEST(length, column_fixture) {
+  ASSERT(equal(0u, col.get_length()));
   col.set_length(10);
-  assert(col.get_length()).equals(10);
+  ASSERT(equal(10u, col.get_length()));
 }
 
-FIXTURE_TEST(indexed, column_fixture)
-  assert(col.get_indexed()).is_false();
+FIXTURE_TEST(indexed, column_fixture) {
+  ASSERT(!col.get_indexed());
   col.set_indexed(true);
-  assert(col.get_indexed()).is_true();
+  ASSERT(col.get_indexed());
 }
 
-TEST(get_int8)
+TEST(needs_length) {
+  for (unsigned int ii = COLUMN_UNKNOWN; ii < COLUMN_NUM_TYPES; ii++) {
+    Column col("", static_cast<ColumnType>(ii));
+    if (ii == COLUMN_STRING || ii == COLUMN_BLOB) {
+      ASSERT(col.needs_length());
+    }
+
+    else {
+      ASSERT(!col.needs_length());
+    }
+  }
+}
+
+TEST(get_int8) {
   uint8 data[] = {150, 175, 200, 225};
-  assert(Column::get_int8(data)).equals(-106);
+  ASSERT(equal(-106, Column::get_int8(data)));
 }
 
-TEST(get_uint8)
+TEST(get_uint8) {
   uint8 data[] = {150, 175, 200, 225};
-  assert(Column::get_uint8(data)).equals(150);
+  ASSERT(equal(150u, Column::get_uint8(data)));
 }
 
-TEST(get_int16)
+TEST(get_int16) {
   uint8 data[] = {150, 175, 200, 225};
-  assert(Column::get_int16(data)).equals(-20586);
+  ASSERT(equal(-20586, Column::get_int16(data)));
 }
 
-TEST(get_uint16)
+TEST(get_uint16) {
   uint8 data[] = {150, 175, 200, 225};
-  assert(Column::get_uint16(data)).equals(44950);
+  ASSERT(equal(44950u, Column::get_uint16(data)));
 }
 
-TEST(get_int32)
+TEST(get_int32) {
   uint8 data[] = {150, 175, 200, 225};
-  assert(Column::get_int32(data)).equals(-506941546);
+  ASSERT(equal(-506941546, Column::get_int32(data)));
 }
 
-TEST(get_uint32)
+TEST(get_uint32) {
   uint8 data[] = {150, 175, 200, 225};
   // use hex, decimal is too long
-  assert(Column::get_uint32(data)).equals(0xE1C8AF96);
+  ASSERT(equal(0xE1C8AF96, Column::get_uint32(data)));
 }
 
-TEST(extract_unknown)
+FIXTURE(extraction_fixture) {
+  char* buffer;
+  unsigned int buffer_size = 30;
+
+  SET_UP {
+    buffer = new char[buffer_size];
+  }
+
+  TEAR_DOWN {
+    delete [] buffer;
+  }
+}
+
+FIXTURE_TEST(extract_unknown, extraction_fixture) {
   Column col;
-  assert(col.extract_data(NULL)).equals("unknown");
+  ASSERT(equal("unknown", col.extract_data(NULL, buffer, buffer_size)));
 }
 
-TEST(extract_bool)
+FIXTURE_TEST(extract_bool, extraction_fixture) {
   Column col("", COLUMN_BOOL);
   uint8 true_data = 1;
   uint8 false_data = 0;
 
-  assert(col.extract_data(&true_data)).equals("True");
-  assert(col.extract_data(&false_data)).equals("False");
+  ASSERT(equal("True", col.extract_data(&true_data, buffer, buffer_size)));
+  ASSERT(equal("False", col.extract_data(&false_data, buffer, buffer_size)));
 }
 
-TEST(extract_int8)
+FIXTURE_TEST(extract_int8, extraction_fixture) {
   Column col("", COLUMN_INT8);
-  uint8 data[] = {150, 175, 200, 225};
-  assert(col.extract_data(data)).equals("-106");
+  uint8 positive_data[] = {100, 175, 200, 225};
+  uint8 negative_data[] = {150, 175, 200, 225};
+  ASSERT(equal("100", col.extract_data(positive_data, buffer, buffer_size)));
+  ASSERT(equal("-106", col.extract_data(negative_data, buffer, buffer_size)));
 }
 
-TEST(extract_uint8)
+FIXTURE_TEST(extract_uint8, extraction_fixture) {
   Column col("", COLUMN_UINT8);
   uint8 data[] = {150, 175, 200, 225};
-  assert(col.extract_data(data)).equals("150");
+  ASSERT(equal("150", col.extract_data(data, buffer, buffer_size)));
 }
 
-TEST(extract_int16)
+FIXTURE_TEST(extract_int16, extraction_fixture) {
   Column col("", COLUMN_INT16);
   uint8 data[] = {150, 175, 200, 225};
-  assert(col.extract_data(data)).equals("-20586");
+  ASSERT(equal("-20586", col.extract_data(data, buffer, buffer_size)));
 }
 
-TEST(extract_uint16)
+FIXTURE_TEST(extract_uint16, extraction_fixture) {
   Column col("", COLUMN_UINT16);
   uint8 data[] = {150, 175, 200, 225};
-  assert(col.extract_data(data)).equals("44950");
+  ASSERT(equal("44950", col.extract_data(data, buffer, buffer_size)));
 }
 
-TEST(extract_int32)
+FIXTURE_TEST(extract_int32, extraction_fixture) {
   Column col("", COLUMN_INT32);
   uint8 data[] = {150, 175, 200, 225};
-  assert(col.extract_data(data)).equals("-506941546");
+  ASSERT(equal("-506941546", col.extract_data(data, buffer, buffer_size)));
 }
 
-TEST(extract_uint32)
+FIXTURE_TEST(extract_uint32, extraction_fixture) {
   Column col("", COLUMN_UINT32);
   uint8 data[] = {150, 175, 200, 225};
-  assert(col.extract_data(data)).equals("3788025750");
+  ASSERT(equal("3788025750", col.extract_data(data, buffer, buffer_size)));
 }
 
-TEST(extract_blob)
+FIXTURE_TEST(extract_blob, extraction_fixture) {
   Column col("", COLUMN_BLOB, 0, 4);
   uint8 data[] = {0x96, 0xAF, 0xC8, 0xE1};
-  assert(col.extract_data(data)).equals("96 AF C8 E1");
+  ASSERT(equal("96 AF C8 E1", col.extract_data(data, buffer, buffer_size)));
 }
 
-TEST(extract_string)
+FIXTURE_TEST(extract_string, extraction_fixture) {
   Column col("", COLUMN_STRING, 0, 20);
   uint8 data[] = {'T', 'e', 's', 't', 'i', 'n', 'g', '!', '!', 0};
-  assert(col.extract_data(data)).equals("Testing!!");
+  ASSERT(equal("Testing!!", col.extract_data(data, buffer, buffer_size)));
 
   col.set_length(7);
-  assert(col.extract_data(data)).equals("Testing");
+  ASSERT(equal("Testing", col.extract_data(data, buffer, buffer_size)));
 }
 
-TEST(extract_varstring)
+FIXTURE_TEST(extract_varstring, extraction_fixture) {
   Column col("", COLUMN_VARSTRING, 6);
   uint8 data[] = {0, 0, 15, 0, 0, 0, 'T', 'e', 's', 't', 'i', 'n', 'g', '!', '!', 0};
 
-  assert(col.extract_data(data)).equals("Testing!!");
+  ASSERT(equal("Testing!!", col.extract_data(data, buffer, buffer_size)));
 }
 
-TEST(extract_phone)
+FIXTURE_TEST(extract_phone, extraction_fixture) {
   Column col("", COLUMN_PHONE, 0);
   uint8 data[] = {'1', '2', '3', '4', '5', '6', '7', 0};
 
-  assert(col.extract_data(data)).equals("123-4567");
+  ASSERT(equal("123-4567", col.extract_data(data, buffer, buffer_size)));
 }
 
-TEST(extract_long_phone)
+FIXTURE_TEST(extract_long_phone, extraction_fixture) {
   Column col("", COLUMN_PHONE, 0);
   uint8 data[] = {'1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 0};
-  assert(col.extract_data(data)).equals("123-456-7890");
+  ASSERT(equal("123-456-7890", col.extract_data(data, buffer, buffer_size)));
 }
 
-TEST(extract_date)
+FIXTURE_TEST(extract_date, extraction_fixture) {
   Column col("", COLUMN_DATE, 0);
   uint8 data[] = {0xCB, 0xAB, 0x01, 0x00}; // 109515, AKA January 2 2000
 
-  assert(col.extract_data(data)).equals("2000-1-2");
+  ASSERT(equal("2000-1-2", col.extract_data(data, buffer, buffer_size)));
 }
 
-TEST(extract_currency)
+FIXTURE_TEST(extract_currency, extraction_fixture) {
   Column col("", COLUMN_CURRENCY, 0);
   uint8 data[] = {0xD4, 0x30, 0x00, 0x00}; // 12500, AKA 125.00
 
-  assert(col.extract_data(data)).equals("125.00");
+  ASSERT(equal("125.00", col.extract_data(data, buffer, buffer_size)));
 }
 
-TEST(extract_enum)
+FIXTURE_TEST(extract_enum, extraction_fixture) {
   Column col("", COLUMN_ENUM, 0);
   col.enumeration.add_case("First");
   col.enumeration.add_case("Second");
@@ -203,9 +233,9 @@ TEST(extract_enum)
 
   uint8 first = 0, second = 1, third = 2;
 
-  assert(col.extract_data(&first)).equals("First");
-  assert(col.extract_data(&second)).equals("Second");
-  assert(col.extract_data(&third)).equals("Third");
+  ASSERT(equal("First", col.extract_data(&first, buffer, buffer_size)));
+  ASSERT(equal("Second", col.extract_data(&second, buffer, buffer_size)));
+  ASSERT(equal("Third", col.extract_data(&third, buffer, buffer_size)));
 }
 
 }

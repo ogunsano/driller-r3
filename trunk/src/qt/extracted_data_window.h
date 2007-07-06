@@ -34,16 +34,28 @@ namespace Driller {
 
 class ResultModel;
 
-class ExtractedDataWindow : public QMainWindow, DataSink {
+class ExtractedDataWindow : public QMainWindow, public DataSink {
   Q_OBJECT
 public:
-  ExtractedDataWindow(QWidget* parent = NULL, const unsigned int row_limit = 0);
+  /**
+    Create a new window to hold extracted data
+
+    @param parent The parent widget of this window
+  */
+  ExtractedDataWindow(QWidget* parent = NULL);
+
+  /** Default destructor */
   ~ExtractedDataWindow();
-  ExtractedDataWindow& operator<<(const Database& db);
+
+  /**
+    Extract the data from a table into this window, and then display it
+
+    @param table The table to extract
+  */
+  void output_table(const Table& table, const unsigned int row_limit = 0)
+    throw (Errors::FileReadError);
 
 protected:
-  unsigned int row_limit;
-  ExtractedDataWindow& operator<<(const Table& table);
   Ui::ExtractedDataWindow ui;
 
   QList<ResultModel*> results;

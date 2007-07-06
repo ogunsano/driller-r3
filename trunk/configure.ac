@@ -1,4 +1,4 @@
-AC_INIT(Driller, 0.7, jmillikin@gmail.com)
+AC_INIT(Driller, 0.8, jmillikin@gmail.com)
 AC_CONFIG_SRCDIR(src/driller.cpp)
 
 dnl Find what Driller is being compiled for
@@ -13,6 +13,7 @@ AM_MAINTAINER_MODE
 
 AC_PROG_CC
 AC_PROG_CXX
+AC_PROG_RANLIB
 
 dnl Required for everything
 LIBXML_REQUIRED=2.0.0
@@ -88,15 +89,21 @@ if test "$enable_qt" = "yes"; then
   PKG_CHECK_MODULES(Qt, QtGui >= $QT_REQUIRED QtCore >= $QT_REQUIRED)
 
   dnl Check that moc is in path
-  AC_PATH_PROG(MOC, moc)
+  AC_PATH_PROG(MOC, moc-qt4)
   if test -z "$MOC"; then
-    AC_MSG_ERROR([*** moc must be in path])
+    AC_PATH_PROG(MOC, moc)
+    if test -z "$MOC"; then
+      AC_MSG_ERROR([*** moc must be in path])
+    fi
   fi
 
   # uic is the Qt user interface compiler
-  AC_PATH_PROG(UIC, uic)
+  AC_PATH_PROG(UIC, uic-qt4)
   if test -z "$UIC"; then
-    AC_MSG_ERROR([*** uic must be in path])
+    AC_PATH_PROG(UIC, uic)
+    if test -z "$UIC"; then
+      AC_MSG_ERROR([*** uic must be in path])
+    fi
   fi
 else
   AC_MSG_RESULT([no])
@@ -121,14 +128,12 @@ else
   dnl Enable building on Windows without a console window
   case "$target_os" in
 	  "cygwin" | "mingw32" )
-		  LIBS="$LIBS -mwindows"
+		  DEBUG_LIBS="$LIBS -mwindows"
 	  ;;
 
 	  *)
 	  ;;
   esac
-
-  DEBUG_CFLAGS="-s"
 fi
 
 AC_MSG_CHECKING([if optimizations are enabled])
@@ -142,10 +147,13 @@ else
   OPTIMIZATION_CFLAGS="-O0"
 fi
 
-CPPFLAGS="$CFLAGS $FEATURES_CFLAGS $OPTIMIZATION_CFLAGS $DEBUG_CFLAGS"
+CXXFLAGS="$CFLAGS $FEATURES_CFLAGS $OPTIMIZATION_CFLAGS $DEBUG_CFLAGS"
 LIBS="$LIBS $FEATURES_LIBS $OPTIMIZATION_LIBS $DEBUG_LIBS"
 
 AC_OUTPUT([
   Makefile
   src/Makefile
+  src/database/Makefile
+  src/qt/Makefile
+  Databases/Makefile
 ])

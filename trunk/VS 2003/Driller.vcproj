@@ -20,7 +20,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories=""
+				AdditionalIncludeDirectories="../src"
 				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;ENABLE_QT_GUI=1;ENABLE_GUI=1"
 				MinimalRebuild="TRUE"
 				BasicRuntimeChecks="3"
@@ -73,7 +73,7 @@
 				EnableIntrinsicFunctions="FALSE"
 				FavorSizeOrSpeed="1"
 				OptimizeForWindowsApplication="TRUE"
-				AdditionalIncludeDirectories=""
+				AdditionalIncludeDirectories="../src"
 				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;ENABLE_QT_GUI=1;ENABLE_GUI=1"
 				RuntimeLibrary="4"
 				UsePrecompiledHeader="0"
@@ -85,6 +85,108 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="qtmain.lib QtGui4.lib QtCore4.lib xml2.lib"
+				OutputFile="$(OutDir)/Driller.exe"
+				LinkIncremental="1"
+				GenerateDebugInformation="TRUE"
+				SubSystem="2"
+				OptimizeReferences="2"
+				EnableCOMDATFolding="2"
+				TargetMachine="1"/>
+			<Tool
+				Name="VCMIDLTool"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"/>
+			<Tool
+				Name="VCWebDeploymentTool"/>
+			<Tool
+				Name="VCManagedWrapperGeneratorTool"/>
+			<Tool
+				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+		</Configuration>
+		<Configuration
+			Name="MySQLDebug|Win32"
+			OutputDirectory="$(ConfigurationName)"
+			IntermediateDirectory="$(ConfigurationName)"
+			ConfigurationType="1"
+			CharacterSet="2">
+			<Tool
+				Name="VCCLCompilerTool"
+				Optimization="0"
+				AdditionalIncludeDirectories="../src"
+				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;ENABLE_QT_GUI=1;ENABLE_GUI=1;ENABLE_MYSQL=1"
+				MinimalRebuild="TRUE"
+				BasicRuntimeChecks="3"
+				RuntimeLibrary="5"
+				UsePrecompiledHeader="0"
+				WarningLevel="3"
+				Detect64BitPortabilityProblems="TRUE"
+				DebugInformationFormat="4"/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalDependencies="qtmaind.lib QtGuid4.lib QtCored4.lib xml2.lib libmysql.lib mysqlclient.lib mysys.lib regex.lib strings.lib zlib.lib"
+				OutputFile="$(OutDir)/Driller.exe"
+				LinkIncremental="2"
+				GenerateDebugInformation="TRUE"
+				ProgramDatabaseFile="$(OutDir)/Driller.pdb"
+				SubSystem="1"
+				TargetMachine="1"/>
+			<Tool
+				Name="VCMIDLTool"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"/>
+			<Tool
+				Name="VCWebDeploymentTool"/>
+			<Tool
+				Name="VCManagedWrapperGeneratorTool"/>
+			<Tool
+				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+		</Configuration>
+		<Configuration
+			Name="MySQLRelease|Win32"
+			OutputDirectory="$(ConfigurationName)"
+			IntermediateDirectory="$(ConfigurationName)"
+			ConfigurationType="1"
+			CharacterSet="2">
+			<Tool
+				Name="VCCLCompilerTool"
+				GlobalOptimizations="TRUE"
+				EnableIntrinsicFunctions="FALSE"
+				FavorSizeOrSpeed="1"
+				OptimizeForWindowsApplication="TRUE"
+				AdditionalIncludeDirectories="../src"
+				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;ENABLE_QT_GUI=1;ENABLE_GUI=1;ENABLE_MYSQL=1"
+				RuntimeLibrary="4"
+				UsePrecompiledHeader="0"
+				WarningLevel="3"
+				Detect64BitPortabilityProblems="TRUE"
+				DebugInformationFormat="0"/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalDependencies="qtmain.lib QtGui4.lib QtCore4.lib xml2.lib libmysql.lib mysqlclient.lib mysys.lib regex.lib strings.lib zlib.lib"
 				OutputFile="$(OutDir)/Driller.exe"
 				LinkIncremental="1"
 				GenerateDebugInformation="TRUE"
@@ -128,7 +230,7 @@
 				RelativePath="..\src\data_sink.cpp">
 			</File>
 			<File
-				RelativePath="..\src\database.cpp">
+				RelativePath="..\src\database\database.cpp">
 			</File>
 			<File
 				RelativePath="..\src\driller.cpp">
@@ -137,11 +239,35 @@
 				RelativePath="..\src\errors.cpp">
 			</File>
 			<File
+				RelativePath="..\src\file_errors.cpp">
+			</File>
+			<File
 				RelativePath="..\src\file_sink.cpp">
+			</File>
+			<File
+				RelativePath="..\src\mysql_sink.cpp">
+				<FileConfiguration
+					Name="Debug|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCLCompilerTool"/>
+				</FileConfiguration>
 			</File>
 			<Filter
 				Name="qt"
 				Filter="">
+				<File
+					RelativePath="..\src\qt\column_type_editor.cpp">
+				</File>
+				<File
+					RelativePath="..\src\qt\column_type_editor_creator.cpp">
+				</File>
 				<File
 					RelativePath="..\src\qt\custom_delegate.cpp">
 				</File>
@@ -158,11 +284,23 @@
 					RelativePath="..\src\qt\main_window.cpp">
 				</File>
 				<File
+					RelativePath="..\src\qt\qt_column_type.cpp">
+				</File>
+				<File
+					RelativePath="..\src\qt\result_model.cpp">
+				</File>
+				<File
+					RelativePath="..\src\qt\settings_dialog.cpp">
+				</File>
+				<File
 					RelativePath="..\src\qt\table_model.cpp">
 				</File>
 				<Filter
 					Name="generated"
 					Filter="">
+					<File
+						RelativePath="..\src\qt\moc_column_type_editor.cpp">
+					</File>
 					<File
 						RelativePath="..\src\qt\moc_custom_delegate.cpp">
 					</File>
@@ -176,9 +314,40 @@
 						RelativePath="..\src\qt\moc_main_window.cpp">
 					</File>
 					<File
+						RelativePath="..\src\qt\moc_qt_column_type.cpp">
+					</File>
+					<File
+						RelativePath="..\src\qt\moc_result_model.cpp">
+					</File>
+					<File
+						RelativePath="..\src\qt\moc_settings_dialog.cpp">
+					</File>
+					<File
 						RelativePath="..\src\qt\moc_table_model.cpp">
 					</File>
 				</Filter>
+			</Filter>
+			<Filter
+				Name="database"
+				Filter="">
+				<File
+					RelativePath="..\src\database\block_allocator.cpp">
+				</File>
+				<File
+					RelativePath="..\src\database\column.cpp">
+				</File>
+				<File
+					RelativePath="..\src\database\enumeration.cpp">
+				</File>
+				<File
+					RelativePath="..\src\database\misc.cpp">
+				</File>
+				<File
+					RelativePath="..\src\database\result_set.cpp">
+				</File>
+				<File
+					RelativePath="..\src\database\table.cpp">
+				</File>
 			</Filter>
 		</Filter>
 		<Filter
@@ -187,110 +356,456 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}">
 			<File
 				RelativePath="..\src\binreloc.h">
-				<FileConfiguration
-					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\src\data_sink.h">
-				<FileConfiguration
-					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\src\database.h">
-				<FileConfiguration
-					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
+				RelativePath="..\src\database\database.h">
 			</File>
 			<File
 				RelativePath="..\src\driller.h">
-				<FileConfiguration
-					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\src\errors.h">
-				<FileConfiguration
-					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="..\src\file_errors.h">
 			</File>
 			<File
 				RelativePath="..\src\file_sink.h">
-				<FileConfiguration
-					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"/>
-				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\src\gui.h">
+			</File>
+			<File
+				RelativePath="..\src\mysql_sink.h">
 				<FileConfiguration
-					Name="Release|Win32">
+					Name="Debug|Win32"
+					ExcludedFromBuild="TRUE">
 					<Tool
-						Name="VCCLCompilerTool"/>
+						Name="VCCustomBuildTool"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					ExcludedFromBuild="TRUE">
+					<Tool
+						Name="VCCustomBuildTool"/>
 				</FileConfiguration>
 			</File>
 			<Filter
 				Name="qt"
 				Filter="">
 				<File
-					RelativePath="..\src\qt\custom_delegate.h">
+					RelativePath="..\src\qt\column_type_editor.h">
+					<FileConfiguration
+						Name="Debug|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="MOCing $(InputFileName)"
+							CommandLine="moc &quot;$(InputPath)&quot; -o &quot;$(InputDir)\moc_$(InputName).cpp&quot;
+"
+							Outputs="$(InputDir)\moc_$(InputName).cpp"/>
+					</FileConfiguration>
 					<FileConfiguration
 						Name="Release|Win32">
 						<Tool
-							Name="VCCLCompilerTool"/>
+							Name="VCCustomBuildTool"
+							Description="MOCing $(InputFileName)"
+							CommandLine="moc &quot;$(InputPath)&quot; -o &quot;$(InputDir)\moc_$(InputName).cpp&quot;
+"
+							Outputs="$(InputDir)\moc_$(InputName).cpp"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="MySQLDebug|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="MOCing $(InputFileName)"
+							CommandLine="moc &quot;$(InputPath)&quot; -o &quot;$(InputDir)\moc_$(InputName).cpp&quot;
+"
+							Outputs="$(InputDir)\moc_$(InputName).cpp"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="MySQLRelease|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="MOCing $(InputFileName)"
+							CommandLine="moc &quot;$(InputPath)&quot; -o &quot;$(InputDir)\moc_$(InputName).cpp&quot;
+"
+							Outputs="$(InputDir)\moc_$(InputName).cpp"/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath="..\src\qt\column_type_editor_creator.h">
+					<FileConfiguration
+						Name="Debug|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="Performing Custom Build Step"
+							CommandLine=""
+							Outputs=""/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="Performing Custom Build Step"
+							CommandLine=""
+							Outputs=""/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="MySQLDebug|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="Performing Custom Build Step"
+							CommandLine=""
+							Outputs=""/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="MySQLRelease|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="Performing Custom Build Step"
+							CommandLine=""
+							Outputs=""/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath="..\src\qt\custom_delegate.h">
+					<FileConfiguration
+						Name="Debug|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="MOCing $(InputFileName)"
+							CommandLine="moc &quot;$(InputPath)&quot; -o &quot;$(InputDir)\moc_$(InputName).cpp&quot;
+"
+							Outputs="$(InputDir)\moc_$(InputName).cpp"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="MOCing $(InputFileName)"
+							CommandLine="moc &quot;$(InputPath)&quot; -o &quot;$(InputDir)\moc_$(InputName).cpp&quot;
+"
+							Outputs="$(InputDir)\moc_$(InputName).cpp"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="MySQLDebug|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="MOCing $(InputFileName)"
+							CommandLine="moc &quot;$(InputPath)&quot; -o &quot;$(InputDir)\moc_$(InputName).cpp&quot;
+"
+							Outputs="$(InputDir)\moc_$(InputName).cpp"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="MySQLRelease|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="MOCing $(InputFileName)"
+							CommandLine="moc &quot;$(InputPath)&quot; -o &quot;$(InputDir)\moc_$(InputName).cpp&quot;
+"
+							Outputs="$(InputDir)\moc_$(InputName).cpp"/>
 					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\src\qt\data_extraction_dialog.h">
 					<FileConfiguration
+						Name="Debug|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="MOCing $(InputFileName)"
+							CommandLine="moc &quot;$(InputPath)&quot; -o &quot;$(InputDir)\moc_$(InputName).cpp&quot;
+"
+							Outputs="$(InputDir)\moc_$(InputName).cpp"/>
+					</FileConfiguration>
+					<FileConfiguration
 						Name="Release|Win32">
 						<Tool
-							Name="VCCLCompilerTool"/>
+							Name="VCCustomBuildTool"
+							Description="MOCing $(InputFileName)"
+							CommandLine="moc &quot;$(InputPath)&quot; -o &quot;$(InputDir)\moc_$(InputName).cpp&quot;
+"
+							Outputs="$(InputDir)\moc_$(InputName).cpp"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="MySQLDebug|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="MOCing $(InputFileName)"
+							CommandLine="moc &quot;$(InputPath)&quot; -o &quot;$(InputDir)\moc_$(InputName).cpp&quot;
+"
+							Outputs="$(InputDir)\moc_$(InputName).cpp"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="MySQLRelease|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="MOCing $(InputFileName)"
+							CommandLine="moc &quot;$(InputPath)&quot; -o &quot;$(InputDir)\moc_$(InputName).cpp&quot;
+"
+							Outputs="$(InputDir)\moc_$(InputName).cpp"/>
 					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\src\qt\extracted_data_window.h">
 					<FileConfiguration
+						Name="Debug|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="MOCing $(InputFileName)"
+							CommandLine="moc &quot;$(InputPath)&quot; -o &quot;$(InputDir)\moc_$(InputName).cpp&quot;
+"
+							Outputs="$(InputDir)\moc_$(InputName).cpp"/>
+					</FileConfiguration>
+					<FileConfiguration
 						Name="Release|Win32">
 						<Tool
-							Name="VCCLCompilerTool"/>
+							Name="VCCustomBuildTool"
+							Description="MOCing $(InputFileName)"
+							CommandLine="moc &quot;$(InputPath)&quot; -o &quot;$(InputDir)\moc_$(InputName).cpp&quot;
+"
+							Outputs="$(InputDir)\moc_$(InputName).cpp"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="MySQLDebug|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="MOCing $(InputFileName)"
+							CommandLine="moc &quot;$(InputPath)&quot; -o &quot;$(InputDir)\moc_$(InputName).cpp&quot;
+"
+							Outputs="$(InputDir)\moc_$(InputName).cpp"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="MySQLRelease|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="MOCing $(InputFileName)"
+							CommandLine="moc &quot;$(InputPath)&quot; -o &quot;$(InputDir)\moc_$(InputName).cpp&quot;
+"
+							Outputs="$(InputDir)\moc_$(InputName).cpp"/>
 					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\src\qt\gui.h">
-					<FileConfiguration
-						Name="Release|Win32">
-						<Tool
-							Name="VCCLCompilerTool"/>
-					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\src\qt\main_window.h">
 					<FileConfiguration
+						Name="Debug|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="MOCing $(InputFileName)"
+							CommandLine="moc &quot;$(InputPath)&quot; -o &quot;$(InputDir)\moc_$(InputName).cpp&quot;
+"
+							Outputs="$(InputDir)\moc_$(InputName).cpp"/>
+					</FileConfiguration>
+					<FileConfiguration
 						Name="Release|Win32">
 						<Tool
-							Name="VCCLCompilerTool"/>
+							Name="VCCustomBuildTool"
+							Description="MOCing $(InputFileName)"
+							CommandLine="moc &quot;$(InputPath)&quot; -o &quot;$(InputDir)\moc_$(InputName).cpp&quot;
+"
+							Outputs="$(InputDir)\moc_$(InputName).cpp"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="MySQLDebug|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="MOCing $(InputFileName)"
+							CommandLine="moc &quot;$(InputPath)&quot; -o &quot;$(InputDir)\moc_$(InputName).cpp&quot;
+"
+							Outputs="$(InputDir)\moc_$(InputName).cpp"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="MySQLRelease|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="MOCing $(InputFileName)"
+							CommandLine="moc &quot;$(InputPath)&quot; -o &quot;$(InputDir)\moc_$(InputName).cpp&quot;
+"
+							Outputs="$(InputDir)\moc_$(InputName).cpp"/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath="..\src\qt\qt_column_type.h">
+					<FileConfiguration
+						Name="Debug|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="MOCing $(InputFileName)"
+							CommandLine="moc &quot;$(InputPath)&quot; -o &quot;$(InputDir)\moc_$(InputName).cpp&quot;
+"
+							Outputs="$(InputDir)\moc_$(InputName).cpp"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="MOCing $(InputFileName)"
+							CommandLine="moc &quot;$(InputPath)&quot; -o &quot;$(InputDir)\moc_$(InputName).cpp&quot;
+"
+							Outputs="$(InputDir)\moc_$(InputName).cpp"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="MySQLDebug|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="MOCing $(InputFileName)"
+							CommandLine="moc &quot;$(InputPath)&quot; -o &quot;$(InputDir)\moc_$(InputName).cpp&quot;
+"
+							Outputs="$(InputDir)\moc_$(InputName).cpp"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="MySQLRelease|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="MOCing $(InputFileName)"
+							CommandLine="moc &quot;$(InputPath)&quot; -o &quot;$(InputDir)\moc_$(InputName).cpp&quot;
+"
+							Outputs="$(InputDir)\moc_$(InputName).cpp"/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath="..\src\qt\result_model.h">
+					<FileConfiguration
+						Name="Debug|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="MOCing $(InputFileName)"
+							CommandLine="moc &quot;$(InputPath)&quot; -o &quot;$(InputDir)\moc_$(InputName).cpp&quot;
+"
+							Outputs="$(InputDir)\moc_$(InputName).cpp"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="MOCing $(InputFileName)"
+							CommandLine="moc &quot;$(InputPath)&quot; -o &quot;$(InputDir)\moc_$(InputName).cpp&quot;
+"
+							Outputs="$(InputDir)\moc_$(InputName).cpp"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="MySQLDebug|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="MOCing $(InputFileName)"
+							CommandLine="moc &quot;$(InputPath)&quot; -o &quot;$(InputDir)\moc_$(InputName).cpp&quot;
+"
+							Outputs="$(InputDir)\moc_$(InputName).cpp"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="MySQLRelease|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="MOCing $(InputFileName)"
+							CommandLine="moc &quot;$(InputPath)&quot; -o &quot;$(InputDir)\moc_$(InputName).cpp&quot;
+"
+							Outputs="$(InputDir)\moc_$(InputName).cpp"/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath="..\src\qt\settings_dialog.h">
+					<FileConfiguration
+						Name="Debug|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="MOCing $(InputFileName)"
+							CommandLine="moc &quot;$(InputPath)&quot; -o &quot;$(InputDir)\moc_$(InputName).cpp&quot;
+"
+							Outputs="$(InputDir)\moc_$(InputName).cpp"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="MOCing $(InputFileName)"
+							CommandLine="moc &quot;$(InputPath)&quot; -o &quot;$(InputDir)\moc_$(InputName).cpp&quot;
+"
+							Outputs="$(InputDir)\moc_$(InputName).cpp"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="MySQLDebug|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="MOCing $(InputFileName)"
+							CommandLine="moc &quot;$(InputPath)&quot; -o &quot;$(InputDir)\moc_$(InputName).cpp&quot;
+"
+							Outputs="$(InputDir)\moc_$(InputName).cpp"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="MySQLRelease|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="MOCing $(InputFileName)"
+							CommandLine="moc &quot;$(InputPath)&quot; -o &quot;$(InputDir)\moc_$(InputName).cpp&quot;
+"
+							Outputs="$(InputDir)\moc_$(InputName).cpp"/>
 					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\src\qt\table_model.h">
 					<FileConfiguration
+						Name="Debug|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="MOCing $(InputFileName)"
+							CommandLine="moc &quot;$(InputPath)&quot; -o &quot;$(InputDir)\moc_$(InputName).cpp&quot;
+"
+							Outputs="$(InputDir)\moc_$(InputName).cpp"/>
+					</FileConfiguration>
+					<FileConfiguration
 						Name="Release|Win32">
 						<Tool
-							Name="VCCLCompilerTool"/>
+							Name="VCCustomBuildTool"
+							Description="MOCing $(InputFileName)"
+							CommandLine="moc &quot;$(InputPath)&quot; -o &quot;$(InputDir)\moc_$(InputName).cpp&quot;
+"
+							Outputs="$(InputDir)\moc_$(InputName).cpp"/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="MySQLDebug|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="MOCing $(InputFileName)"
+							CommandLine="moc &quot;$(InputPath)&quot; -o &quot;$(InputDir)\moc_$(InputName).cpp&quot;
+"
+							Outputs="$(InputDir)\moc_$(InputName).cpp"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="MySQLRelease|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="MOCing $(InputFileName)"
+							CommandLine="moc &quot;$(InputPath)&quot; -o &quot;$(InputDir)\moc_$(InputName).cpp&quot;
+"
+							Outputs="$(InputDir)\moc_$(InputName).cpp"/>
+					</FileConfiguration>
+				</File>
+			</Filter>
+			<Filter
+				Name="database"
+				Filter="">
+				<File
+					RelativePath="..\src\database\block_allocator.h">
+				</File>
+				<File
+					RelativePath="..\src\database\column.h">
+				</File>
+				<File
+					RelativePath="..\src\database\enumeration.h">
+				</File>
+				<File
+					RelativePath="..\src\database\misc.h">
+				</File>
+				<File
+					RelativePath="..\src\database\result_set.h">
+				</File>
+				<File
+					RelativePath="..\src\database\table.h">
 				</File>
 			</Filter>
 		</Filter>
@@ -302,32 +817,14 @@
 				Name="qt"
 				Filter="">
 				<File
-					RelativePath="..\src\qt\DataExtractionDialog.ui">
-					<FileConfiguration
-						Name="Debug|Win32">
-						<Tool
-							Name="VCCustomBuildTool"
-							Description="Processing $(InputFileName)"
-							CommandLine="uic &quot;$(InputPath)&quot; -o &quot;$(InputDir)\ui_$(InputName).h&quot;"
-							Outputs="$(InputDir)\ui_$(InputName).h"/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|Win32">
-						<Tool
-							Name="VCCustomBuildTool"
-							Description="Processing $(InputFileName)"
-							CommandLine="uic &quot;$(InputPath)&quot; -o &quot;$(InputDir)\ui_$(InputName).h&quot;"
-							Outputs="$(InputDir)\ui_$(InputName).h"/>
-					</FileConfiguration>
-				</File>
-				<File
 					RelativePath="..\src\qt\ExtractedDataWindow.ui">
 					<FileConfiguration
 						Name="Debug|Win32">
 						<Tool
 							Name="VCCustomBuildTool"
 							Description="Processing $(InputFileName)"
-							CommandLine="uic &quot;$(InputPath)&quot; -o &quot;$(InputDir)\ui_$(InputName).h&quot;"
+							CommandLine="uic &quot;$(InputPath)&quot; -o &quot;$(InputDir)\ui_$(InputName).h&quot;
+"
 							Outputs="$(InputDir)\ui_$(InputName).h"/>
 					</FileConfiguration>
 					<FileConfiguration
@@ -335,7 +832,26 @@
 						<Tool
 							Name="VCCustomBuildTool"
 							Description="Processing $(InputFileName)"
-							CommandLine="uic &quot;$(InputPath)&quot; -o &quot;$(InputDir)\ui_$(InputName).h&quot;"
+							CommandLine="uic &quot;$(InputPath)&quot; -o &quot;$(InputDir)\ui_$(InputName).h&quot;
+"
+							Outputs="$(InputDir)\ui_$(InputName).h"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="MySQLDebug|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="Processing $(InputFileName)"
+							CommandLine="uic &quot;$(InputPath)&quot; -o &quot;$(InputDir)\ui_$(InputName).h&quot;
+"
+							Outputs="$(InputDir)\ui_$(InputName).h"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="MySQLRelease|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="Processing $(InputFileName)"
+							CommandLine="uic &quot;$(InputPath)&quot; -o &quot;$(InputDir)\ui_$(InputName).h&quot;
+"
 							Outputs="$(InputDir)\ui_$(InputName).h"/>
 					</FileConfiguration>
 				</File>
@@ -346,7 +862,8 @@
 						<Tool
 							Name="VCCustomBuildTool"
 							Description="Processing $(InputFileName)"
-							CommandLine="uic &quot;$(InputPath)&quot; -o &quot;$(InputDir)\ui_$(InputName).h&quot;"
+							CommandLine="uic &quot;$(InputPath)&quot; -o &quot;$(InputDir)\ui_$(InputName).h&quot;
+"
 							Outputs="$(InputDir)\ui_$(InputName).h"/>
 					</FileConfiguration>
 					<FileConfiguration
@@ -354,7 +871,65 @@
 						<Tool
 							Name="VCCustomBuildTool"
 							Description="Processing $(InputFileName)"
-							CommandLine="uic &quot;$(InputPath)&quot; -o &quot;$(InputDir)\ui_$(InputName).h&quot;"
+							CommandLine="uic &quot;$(InputPath)&quot; -o &quot;$(InputDir)\ui_$(InputName).h&quot;
+"
+							Outputs="$(InputDir)\ui_$(InputName).h"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="MySQLDebug|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="Processing $(InputFileName)"
+							CommandLine="uic &quot;$(InputPath)&quot; -o &quot;$(InputDir)\ui_$(InputName).h&quot;
+"
+							Outputs="$(InputDir)\ui_$(InputName).h"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="MySQLRelease|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="Processing $(InputFileName)"
+							CommandLine="uic &quot;$(InputPath)&quot; -o &quot;$(InputDir)\ui_$(InputName).h&quot;
+"
+							Outputs="$(InputDir)\ui_$(InputName).h"/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath="..\src\qt\SettingsDialog.ui">
+					<FileConfiguration
+						Name="Debug|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="Processing $(InputFileName)"
+							CommandLine="uic &quot;$(InputPath)&quot; -o &quot;$(InputDir)\ui_$(InputName).h&quot;
+"
+							Outputs="$(InputDir)\ui_$(InputName).h"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="Processing $(InputFileName)"
+							CommandLine="uic &quot;$(InputPath)&quot; -o &quot;$(InputDir)\ui_$(InputName).h&quot;
+"
+							Outputs="$(InputDir)\ui_$(InputName).h"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="MySQLDebug|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="Processing $(InputFileName)"
+							CommandLine="uic &quot;$(InputPath)&quot; -o &quot;$(InputDir)\ui_$(InputName).h&quot;
+"
+							Outputs="$(InputDir)\ui_$(InputName).h"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="MySQLRelease|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="Processing $(InputFileName)"
+							CommandLine="uic &quot;$(InputPath)&quot; -o &quot;$(InputDir)\ui_$(InputName).h&quot;
+"
 							Outputs="$(InputDir)\ui_$(InputName).h"/>
 					</FileConfiguration>
 				</File>

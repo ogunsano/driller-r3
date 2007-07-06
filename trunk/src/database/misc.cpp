@@ -46,4 +46,35 @@ MissingAttributeError::MissingAttributeError(
   error = "missing attribute '" + _attribute + "' for '" + _element + "'";
 }
 
+InvalidAttributeError::InvalidAttributeError(
+  const std::string& file,
+  const std::string& attribute,
+  const std::string& bad_value) throw ():
+
+  FileParseError(file) {
+
+  error = "Bad value '" + bad_value + "' for attribute '" + attribute + "'";
+}
+
+InvalidAttributeError::~InvalidAttributeError() throw () {}
+
+} // namespace
+
+namespace Driller {
+
+std::string get_xml_node_attribute(xmlNode* node,
+  const std::string& attribute)
+   throw (Errors::MissingAttributeError) {
+
+  xmlChar* raw_value = xmlGetProp(node, BAD_CAST(attribute.c_str()));
+  if (!raw_value){
+    throw Errors::MissingAttributeError(
+      (node->doc->name ? node->doc->name : ""),
+      reinterpret_cast<const char*>(node->name), attribute);
+  }
+  std::string value = reinterpret_cast<const char*>(raw_value);
+  xmlFree(raw_value);
+  return value;
+}
+
 } // namespace

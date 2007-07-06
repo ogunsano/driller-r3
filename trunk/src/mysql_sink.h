@@ -18,8 +18,8 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-#ifndef DRILLER_st_mysql_SINK_H
-#define DRILLER_st_mysql_SINK_H
+#ifndef DRILLER_MYSQL_SINK_H
+#define DRILLER_MYSQL_SINK_H
 
 #include "data_sink.h"
 #include "errors.h"
@@ -68,21 +68,27 @@ public:
     @param username The user to connect as
     @param password The password of the user to connect as
     @param database The database to extract to
+    @param port The port the remote server accepts connections on
   */
   MySQLSink(
     const std::string& host,
     const std::string& username,
     const std::string& password,
-    const std::string& database) throw (Errors::MySQLError);
+    const std::string& database,
+    const unsigned int port) throw (Errors::MySQLError);
 
   /** Default destructor */
   virtual ~MySQLSink() throw();
 
-  MySQLSink& operator<<(const Database& db) throw (Errors::MySQLError);
+  /**
+    Extract data from a table to wherever this data sink is directed to
+
+    @param table The table to extract
+  */
+  void output_table(const Table& table, const unsigned int row_limit = 0)
+    throw (Errors::FileReadError, Errors::MySQLError);
 
 protected:
-  MySQLSink& operator<<(const Table& table) throw (Errors::MySQLError);
-
   /**
     Make a string safe to send to MySQL
 
@@ -124,4 +130,4 @@ protected:
 
 } // namespace
 
-#endif // DRILLER_st_mysql_SINK_H
+#endif // DRILLER_MYSQL_SINK_H

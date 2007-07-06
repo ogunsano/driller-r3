@@ -21,9 +21,14 @@
 #ifndef DRILLER_TABLE_H
 #define DRILLER_TABLE_H
 
+// Disable warnings about throw specifications in VS 2003
+#ifdef _MSC_VER
+#pragma warning(disable: 4290)
+#endif
+
 #include <vector>
 #include <string>
-#include "errors.h"
+#include "../errors.h"
 #include "column.h"
 #include "result_set.h"
 
@@ -53,7 +58,10 @@ public:
 
     @param node The node representing this table
   */
-  Table(xmlNode* node) throw (Errors::FileParseError, Errors::DuplicateEnumID);
+  Table(xmlNode* node) throw (
+    Errors::FileParseError,
+    Errors::MissingAttributeError,
+    Errors::DuplicateEnumID);
 
   /**
     Default destructor
@@ -203,7 +211,6 @@ protected:
   */
   unsigned int row_length;
 
-private:
   /**
     Used for storing temporary data for data extraction
   */

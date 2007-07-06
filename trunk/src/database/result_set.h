@@ -25,6 +25,8 @@
 
 namespace Driller {
 
+class Table;
+
 /**
   A result set, basically just a thin wrapper around a char*** to automatically
   de-allocate the used memory
@@ -37,7 +39,8 @@ public:
     @param rows How many rows will be in the result
     @param columns How many columns will be in the result
   */
-  ResultSet(unsigned int rows, unsigned int columns) throw ();
+  ResultSet(const Table& table, unsigned int rows, unsigned int columns)
+    throw ();
 
   /**
     De-allocate all memory used by the result set
@@ -77,6 +80,9 @@ public:
   */
   unsigned int column_count() const throw ();
 
+  /** The table this result set was extracted from */
+  const Table& table;
+
 protected:
   /** How many rows are in the result set */
   const unsigned int rows;
@@ -87,7 +93,6 @@ protected:
   /** Stores pointers to the cell data*/
   char** data;
 
-private:
   /** Used to allocate memory in large blocks */
   BlockAllocator allocator;
 };

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<database name="Dentrix 9">
+<database name="Dentrix 10">
   <table name="Address" file="Address.dat" data_offset="2492" row_length="178">
     <uint32 name="id" offset="2" indexed="true"/>
     <string name="address" offset="6" length="30"/>
@@ -21,6 +21,7 @@
     <phone name="patient_phone" offset="73"/>
     <string name="description" offset="90" length="60"/>
     <uint8 name="status" offset="153"/>
+    <bool name="has_lab_case" offset="163"/>
     <string name="staff" offset="256" length="4"/>
   </table>
   <table name="Definitions" file="Def_dat.dat" data_offset="2268" row_length="54">
@@ -32,7 +33,7 @@
     <uint32 name="id" offset="2"/>
     <uint8 name="lab_id" offset="6"/>
     <uint32 name="patient_id" offset="10"/>
-    <date name="UnknownDate" offset="14"/>
+    <date name="create_date" offset="14"/>
     <date name="finished" offset="18"/>
     <uint8 name="category" offset="22"/>
     <string name="provider" offset="30" length="4"/>
@@ -54,6 +55,8 @@
     <phone name="phone" offset="164"/>
   </table>
   <table name="LCM_Link" file="LCM_Link.dat" data_offset="2250" row_length="25">
+    <blob name="test" offset="0" length="25"/>
+    <uint32 name="patient_id" offset="7"/>
     <uint8 name="b1" offset="0"/>
     <uint8 name="b2" offset="1"/>
     <uint8 name="b3" offset="2"/>

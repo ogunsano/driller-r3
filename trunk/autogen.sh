@@ -2,5 +2,5 @@
 
 autoheader
 aclocal $ACLOCAL_FLAGS \
-&& automake --foreign \
+&& automake \
 && autoconf
