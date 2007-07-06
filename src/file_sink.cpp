@@ -29,7 +29,9 @@ FileSink::FileSink(const std::string& _directory) throw ():
 
 FileSink::~FileSink() throw () {}
 
-FileSink& FileSink::operator<<(const Table& table) {
+void FileSink::output_table(const Table& table, const unsigned int row_limit)
+  throw (Errors::FileReadError, Errors::FileWriteError) {
+
   std::string real_name = directory + "/" + table.get_name() + ".txt";
 
   std::ofstream file(real_name.c_str());
@@ -38,7 +40,7 @@ FileSink& FileSink::operator<<(const Table& table) {
     throw Errors::FileWriteError(real_name, errno);
   }
 
-  const ResultSet* result = table.extract_data();
+  const ResultSet* result = table.extract_data(row_limit);
   for (unsigned int row = 0; row < result->row_count(); row++){
     const char** data = (*result)[row];
     for (unsigned int col = 0; col < result->column_count(); col++){
@@ -49,17 +51,6 @@ FileSink& FileSink::operator<<(const Table& table) {
   file.close();
 
   delete result;
-  return (*this);
-}
-
-FileSink& FileSink::operator<<(const Database& db) {
-  std::vector<Table> tables = db.get_tables();
-  std::vector<Table>::const_iterator table;
-  for (table = tables.begin(); table != tables.end(); table++){
-    (*this) << (*table);
-  }
-
-  return (*this);
 }
 
 } // namespace

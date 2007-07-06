@@ -1,0 +1,34 @@
+#!/usr/bin/make -f
+
+config.status:
+	./configure --enable-mysql
+
+build: config.status
+	$(MAKE)
+
+clean: config.status
+	$(MAKE) distclean
+	rm -rf debian/files debian/substvars debian/tmp
+
+binary: binary-arch binary-indep
+
+binary-indep:
+
+binary-arch: build
+	rm -rf debian/tmp
+	install -d debian/tmp debian/tmp/DEBIAN
+	install -d debian/tmp/usr/bin
+	install -d debian/tmp/usr/share/doc/driller
+	install -d debian/tmp/usr/share/driller/Databases
+	strip --strip-unneeded -R .note -R .comment src/driller
+	$(MAKE)	bindir=../debian/tmp/usr/bin \
+		datadir=debian/tmp/usr/share \
+		install
+	cp debian/changelog debian/tmp/usr/share/doc/driller/changelog.Debian
+	gzip -9 debian/tmp/usr/share/doc/driller/*
+	cp debian/copyright debian/tmp/usr/share/doc/driller
+	dpkg-shlibdeps debian/tmp/usr/bin/*
+	dpkg-gencontrol -isp
+	chown -R root.root debian/tmp
+	chmod -R o-s,go=u,go-ws debian/tmp
+	dpkg --build debian/tmp ..

@@ -1,0 +1,20 @@
+Copyright (C) 2005-2006 John Millikin
+	Written by John Millikin <jmillikin@gmail.com>
+
+This file is part of Driller.
+
+Driller is free software; you can redistribute it and/or modify it under
+the terms of the GNU General Public License version 2 as published by the Free
+Software Foundation.
+
+Driller is distributed in the hope that it will be useful, but WITHOUT ANY
+WARRANTY; without even the implied warranty of MERCHANTABILITY or
+FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
+for more details.
+
+You should have received a copy of the GNU General Public License along
+with Driller; see the file License.txt  If not, write to the Free Software
+Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
+
+On Debian systems, a copy of the GNU General Public License version 2 is
+available in /usr/share/common-licenses/GPL-2 as part of the base-files package.

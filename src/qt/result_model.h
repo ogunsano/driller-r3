@@ -23,7 +23,7 @@
 
 #include <QAbstractListModel>
 #include <QStringList>
-#include "../database.h"
+#include "../database/database.h"
 
 namespace Driller {
 

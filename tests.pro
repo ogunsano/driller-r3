@@ -7,52 +7,70 @@ TARGET = run_tests
 DEPENDPATH += . 
 INCLUDEPATH += . tests src tests/lib
 
+MOC_DIR = generated
+
 # Keep object files in "build"
 OBJECTS_DIR = build
 
 # Input
 HEADERS += \
-           tests/lib/assertion.h \
-           tests/lib/failure_exception.h \
-           tests/lib/fixture.h \
-           tests/lib/output_handler.h \
-           tests/lib/test.h \
-           tests/lib/test_registry.h \
-           src/database/block_allocator.h \
-           src/database/column.h \
-           src/database/enumeration.h \
-           src/database/misc.h \
-           src/database/result_set.h \
-           src/database/table.h \
-           src/database.h \
-           src/errors.h \
-           src/file_errors.h
+  src/database/block_allocator.h \
+  src/database/column.h \
+  src/database/enumeration.h \
+  src/database/misc.h \
+  src/database/result_set.h \
+  src/database/table.h \
+  src/database.h \
+  src/errors.h \
+  src/file_errors.h \
+  tests/lib/assertion.hpp \
+  tests/lib/assertions.hpp \
+  tests/lib/assertion_result.hpp \
+  tests/lib/error_exception.hpp \
+  tests/lib/fixture.hpp \
+  tests/lib/output_handler.hpp \
+  tests/lib/output_handlers/default_output_handler.hpp \
+  tests/lib/output_handlers/qt4_output_handler.hpp \
+  tests/lib/suite.hpp \
+  tests/lib/test.hpp \
+  tests/lib/protector.hpp \
+  tests/lib/protectors/exception_protector.hpp \
+  tests/lib/protectors/unix_protector.hpp
 
 SOURCES += \
-           tests/column_test.cpp \
-           tests/database_test.cpp \
-           tests/enumeration_test.cpp \
-           tests/misc_test.cpp \
-           tests/table_test.cpp \
-           tests/lib/assertion.cpp \
-           tests/lib/failure_exception.cpp \
-           tests/lib/fixture.cpp \
-           tests/lib/output_handler.cpp \
-           tests/lib/sample_suite.cpp \
-           tests/lib/test.cpp \
-           tests/lib/test_registry.cpp \
-           src/database/block_allocator.cpp \
-           src/database/column.cpp \
-           src/database/enumeration.cpp \
-           src/database/misc.cpp \
-           src/database/result_set.cpp \
-           src/database/serialization.cpp \
-           src/database/table.cpp \
-           src/database.cpp \
-           src/errors.cpp \
-           src/file_errors.cpp
+  src/database/block_allocator.cpp \
+  src/database/column.cpp \
+  src/database/enumeration.cpp \
+  src/database/misc.cpp \
+  src/database/result_set.cpp \
+  src/database/serialization.cpp \
+  src/database/table.cpp \
+  src/database.cpp \
+  src/errors.cpp \
+  src/file_errors.cpp \
+  tests/column_test.cpp \
+  tests/database_test.cpp \
+  tests/enumeration_test.cpp \
+  tests/misc_test.cpp \
+  tests/serialization_test.cpp \
+  tests/table_test.cpp \
+  tests/lib/assertion.cpp \
+  tests/lib/assertions.cpp \
+  tests/lib/assertion_result.cpp \
+  tests/lib/error_exception.cpp \
+  tests/lib/fixture.cpp \
+  tests/lib/main.cpp \
+  tests/lib/output_handler.cpp \
+  tests/lib/output_handlers/default_output_handler.cpp \
+  tests/lib/output_handlers/qt4_output_handler.cpp \
+  tests/lib/suite.cpp \
+  tests/lib/test.cpp \
+  tests/lib/protector.cpp \
+  tests/lib/protectors/exception_protector.cpp \
+  tests/lib/protectors/unix_protector.cpp
 
 LIBXML_CFLAGS = $$system(pkg-config libxml-2.0 --cflags)
 LIBXML_LIBS = $$system(pkg-config libxml-2.0 --libs)
-QMAKE_CXXFLAGS += $$LIBXML_CFLAGS
-LIBS += $$LIBXML_LIBS
+GCOV_FLAGS = -fprofile-arcs -ftest-coverage
+QMAKE_CXXFLAGS += $$LIBXML_CFLAGS $$GCOV_FLAGS
+LIBS += $$LIBXML_LIBS $$GCOV_FLAGS

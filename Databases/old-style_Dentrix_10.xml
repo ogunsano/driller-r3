@@ -1,4 +1,4 @@
-<?xml version="1.0"?><database name="Dentrix 9">
+<?xml version="1.0"?><database name="Dentrix 10">
   <table name="Address" file="Address.dat" data_offset="2492" row_length="178">
     <uint32 name="AddressID" offset="2" indexed="true"/>
     <string name="Address" offset="6" length="30"/>
@@ -20,6 +20,7 @@
     <phone name="PatPhone" offset="73"/>
     <string name="ApptDesc" offset="90" length="60"/>
     <uint8 name="Status" offset="153"/>
+    <bool name="has_lab_case" offset="163"/>
     <string name="Staff" offset="256" length="4"/>
   </table>
   <table name="Def_dat" file="Def_dat.dat" data_offset="2268" row_length="54">
@@ -27,11 +28,35 @@
     <uint8 name="Item" offset="1"/>
     <string name="Text" offset="2" length="52"/>
   </table>
+  <table name="FeeSched" file="FEESCHED.DAT" data_offset="128" row_length="16">
+    <uint32 name="wtf" offset="2"/>
+    <uint16 name="id" offset="6"/>
+    <string name="Value" offset="8" length="8"/>
+  </table>
+  <table name="InsurancePlans" file="Ins.dat" data_offset="3213" row_length="459">
+    <uint32 name="id" offset="2"/>
+    <string name="carrier_name" offset="10" length="31"/>
+    <string name="group_plan" offset="42" length="11"/>
+    <string name="address" offset="74" length="30"/>
+    <string name="city" offset="105" length="86"/>
+    <string name="group_num" offset="192" length="41"/>
+    <string name="state" offset="244" length="2"/>
+    <string name="postal_code" offset="265" length="14"/>
+    <phone name="phone" offset="280"/>
+    <uint16 name="fee_schedule_id" offset="328"/>
+  </table>
+  <table name="Insured" file="Insured.dat" data_offset="2319" row_length="80">
+    <uint32 name="id" offset="3"/>
+    <uint32 name="InsuranceID" offset="7"/>
+    <uint32 name="GuarID" offset="11"/>
+    <blob name="blob1" offset="15" length="4"/>
+    <string name="SSN" offset="20" length="11"/>
+  </table>
   <table name="LCM_Case" file="LCM_Case.dat" data_offset="2320" row_length="80">
     <uint32 name="ID" offset="2"/>
     <uint8 name="LabID" offset="6"/>
     <uint32 name="PatientID" offset="10"/>
-    <date name="UnknownDate" offset="14"/>
+    <date name="CreateDate" offset="14"/>
     <date name="Finished" offset="18"/>
     <uint8 name="Category" offset="22"/>
     <string name="Provider" offset="30" length="4"/>
@@ -121,6 +146,7 @@
     <uint32 name="EmployerID" offset="168"/>
     <date name="FirstVisit" offset="176" indexed="true"/>
     <date name="LastVisit" offset="180" indexed="true"/>
+    <uint16 name="FeeScheduleID" offset="252" indexed="true"/>
   </table>
   <table name="RefActs" file="RefActs.dat" data_offset="2242" row_length="20">
     <uint32 name="RefActID" offset="0" indexed="true"/>
@@ -154,6 +180,5 @@
   <table name="RscUse" file="RscUse.dat" data_offset="3974" row_length="662">
     <blob name="Blob1" offset="0" length="4"/>
     <string name="room" offset="5" length="4"/>
-    <blob name="Blob2" offset="9" length="651"/>
   </table>
 </database>

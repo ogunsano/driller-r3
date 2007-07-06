@@ -21,11 +21,16 @@
 #ifndef DRILLER_DATABASE_COLUMN_H
 #define DRILLER_DATABASE_COLUMN_H
 
+// Disable warnings about throw specifications in VS 2003
+#ifdef _MSC_VER
+#pragma warning(disable: 4290)
+#endif
+
 #include <vector>
 #include <map>
 #include <string>
-#include "errors.h"
-#include "file_errors.h"
+#include "../errors.h"
+#include "../file_errors.h"
 #include "misc.h"
 #include "enumeration.h"
 
@@ -167,10 +172,14 @@ public:
     Extract data from this column
 
     @param data The start of the row containing this column
+    @param buffer A memory buffer used to store temporary formatting strings
+    @param buffer_size The size of buffer
 
     @return A character string representing this column's data
   */
-  const char* extract_data(const uint8* data) const throw ();
+  const char* extract_data(const uint8* data,
+                           char*& buffer,
+                           unsigned int& buffer_size) const throw ();
 
   /** If this column is an enumeration, this will store enumeration cases */
   Enumeration enumeration;

@@ -21,8 +21,12 @@
 #include "mysql_sink.h"
 #include <sstream>
 
+#ifdef WIN32
+  #include <windows.h>
+#endif
 #define NO_CLIENT_LONG_LONG
 #include <mysql.h>
+#include <algorithm>
 
 namespace Errors {
 
@@ -53,9 +57,9 @@ namespace Driller {
 */
 char* get_escaped_string_buffer(const std::string& string) throw(){
   static char* buffer = NULL;
-  static int buffer_len = 0;
+  static unsigned int buffer_len = 0;
 
-  int string_len = string.size();
+  unsigned int string_len = static_cast<unsigned int>(string.size());
   if ((2 * string_len) + 1 > buffer_len){
     buffer_len = (2 * string_len) + 1;
     delete [] buffer;
@@ -69,14 +73,15 @@ MySQLSink::MySQLSink(
   const std::string& host,
   const std::string& username,
   const std::string& password,
-  const std::string& database) throw (Errors::MySQLError){
+  const std::string& database,
+  const unsigned int port) throw (Errors::MySQLError){
 
   connection = mysql_init(NULL);
   mysql_options(connection, MYSQL_READ_DEFAULT_GROUP, "driller");
 
   // FIXME: port port in an argument
   if(!mysql_real_connect(connection, host.c_str(), username.c_str(),
-    password.c_str(), database.c_str(), 3306, NULL, 0)){
+    password.c_str(), database.c_str(), port, NULL, 0)){
 
     throw Errors::MySQLError(connection);
   }
@@ -85,20 +90,8 @@ MySQLSink::MySQLSink(
 MySQLSink::~MySQLSink() throw(){
 }
 
-MySQLSink& MySQLSink::operator<<(const Database& db)
-  throw (Errors::MySQLError){
-
-  std::vector<Table> tables = db.get_tables();
-  std::vector<Table>::const_iterator table;
-  for (table = tables.begin(); table != tables.end(); table++){
-    (*this) << (*table);
-  }
-
-  return (*this);
-}
-
-MySQLSink& MySQLSink::operator<<(const Table& table)
-  throw (Errors::MySQLError){
+void MySQLSink::output_table(const Table& table, const unsigned int row_limit)
+  throw (Errors::FileReadError, Errors::MySQLError) {
 
   // Delete the old table, if it exists
   std::string table_name = make_safe_name(table.get_name());
@@ -140,7 +133,7 @@ MySQLSink& MySQLSink::operator<<(const Table& table)
 
   buffer = "INSERT INTO " + table_name + " VALUES ";
 
-  const ResultSet* result = table.extract_data();
+  const ResultSet* result = table.extract_data(row_limit);
 
   try {
 
@@ -176,9 +169,9 @@ MySQLSink& MySQLSink::operator<<(const Table& table)
     // Send the query
     buffer.erase(buffer.size() - 1, 1);
     send_query(buffer);
-    }
+  }
 
-  catch (const Errors::MySQLError& e){
+  catch (const Errors::MySQLError&){
     delete result;
     throw;
   }
@@ -188,21 +181,20 @@ MySQLSink& MySQLSink::operator<<(const Table& table)
   // Un-lock the table, and re-enable keys
   send_query("UNLOCK TABLES");
   send_query("ALTER TABLE " + table_name + " ENABLE KEYS");
-
-  return (*this);
 }
 
 const char* MySQLSink::make_safe_string(const std::string& string) const
   throw(){
 
   char* buffer = get_escaped_string_buffer(string);
-  mysql_real_escape_string(connection, buffer, string.c_str(), string.size());
+  mysql_real_escape_string(connection, buffer, string.c_str(),
+    static_cast<unsigned long>(string.size()));
   return buffer;
 }
 
 const char* MySQLSink::make_safe_name(std::string name) const throw(){
   // Replace spaces with underscores
-  replace(name.begin(), name.end(), ' ', '_');
+  std::replace(name.begin(), name.end(), ' ', '_');
 
   return make_safe_string(name);
 }
@@ -210,7 +202,9 @@ const char* MySQLSink::make_safe_name(std::string name) const throw(){
 void MySQLSink::send_query(const std::string& query) const
   throw(Errors::MySQLError){
 
-  if (mysql_real_query(connection, query.c_str(), query.size())){
+  if (mysql_real_query(connection, query.c_str(),
+    static_cast<unsigned long>(query.size()))){
+
     throw Errors::MySQLError(connection);
   }
 }
@@ -278,7 +272,7 @@ std::string MySQLSink::sql_type_from_column(const Column& col) const throw(){
 
     // Special types
     case COLUMN_PHONE:
-      buffer = "VARCHAR(11)";
+      buffer = "VARCHAR(12)";
     break;
 
     case COLUMN_DATE:

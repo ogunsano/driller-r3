@@ -23,7 +23,8 @@
 #define DRILLER_DATABASE_MISC_H
 
 #include <string>
-#include "file_errors.h"
+#include <libxml/tree.h>
+#include "../file_errors.h"
 
 namespace Errors {
 
@@ -69,6 +70,25 @@ public:
 
   /** Empty destructor */
   virtual ~MissingAttributeError() throw () {}
+};
+
+/** When an attribute contains a value it shouldn't */
+class InvalidAttributeError : public FileParseError {
+public:
+  /**
+    Default constructor
+
+    @param file The file this was constructed from
+    @param attribute The invalid attribute
+    @param bad_value The bad value of attribute
+  */
+  InvalidAttributeError(
+    const std::string& file,
+    const std::string& attribute,
+    const std::string& bad_value) throw ();
+
+  /** Default destructor */
+  ~InvalidAttributeError() throw ();
 };
 
 } // namespace
@@ -172,6 +192,18 @@ const std::string short_column_strings[COLUMN_NUM_TYPES] = {
   "currency",
   "enum"
 };
+
+/**
+  Get an attribute from some XML Node
+
+  @param node The XML node
+  @param attribute The name of the attribute to retrieve
+
+  @return The value of the attribute
+*/
+std::string get_xml_node_attribute(xmlNode* node,
+  const std::string& attribute)
+  throw (Errors::MissingAttributeError);
 
 } // namespace
 

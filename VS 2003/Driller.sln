@@ -3,16 +3,35 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Driller", "Driller.vcproj",
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Tests", "Tests.vcproj", "{BA3D685A-7D2F-416F-A238-1F99E6AC47BE}"
+	ProjectSection(ProjectDependencies) = postProject
+		{092FD23C-FEB7-4071-BB37-900EB7863AB9} = {092FD23C-FEB7-4071-BB37-900EB7863AB9}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfiguration) = preSolution
 		Debug = Debug
+		MySQLDebug = MySQLDebug
+		MySQLRelease = MySQLRelease
 		Release = Release
 	EndGlobalSection
 	GlobalSection(ProjectConfiguration) = postSolution
 		{092FD23C-FEB7-4071-BB37-900EB7863AB9}.Debug.ActiveCfg = Debug|Win32
 		{092FD23C-FEB7-4071-BB37-900EB7863AB9}.Debug.Build.0 = Debug|Win32
+		{092FD23C-FEB7-4071-BB37-900EB7863AB9}.MySQLDebug.ActiveCfg = MySQLDebug|Win32
+		{092FD23C-FEB7-4071-BB37-900EB7863AB9}.MySQLDebug.Build.0 = MySQLDebug|Win32
+		{092FD23C-FEB7-4071-BB37-900EB7863AB9}.MySQLRelease.ActiveCfg = MySQLRelease|Win32
+		{092FD23C-FEB7-4071-BB37-900EB7863AB9}.MySQLRelease.Build.0 = MySQLRelease|Win32
 		{092FD23C-FEB7-4071-BB37-900EB7863AB9}.Release.ActiveCfg = Release|Win32
 		{092FD23C-FEB7-4071-BB37-900EB7863AB9}.Release.Build.0 = Release|Win32
+		{BA3D685A-7D2F-416F-A238-1F99E6AC47BE}.Debug.ActiveCfg = Debug|Win32
+		{BA3D685A-7D2F-416F-A238-1F99E6AC47BE}.Debug.Build.0 = Debug|Win32
+		{BA3D685A-7D2F-416F-A238-1F99E6AC47BE}.MySQLDebug.ActiveCfg = MySQLDebug|Win32
+		{BA3D685A-7D2F-416F-A238-1F99E6AC47BE}.MySQLDebug.Build.0 = MySQLDebug|Win32
+		{BA3D685A-7D2F-416F-A238-1F99E6AC47BE}.MySQLRelease.ActiveCfg = MySQLRelease|Win32
+		{BA3D685A-7D2F-416F-A238-1F99E6AC47BE}.MySQLRelease.Build.0 = MySQLRelease|Win32
+		{BA3D685A-7D2F-416F-A238-1F99E6AC47BE}.Release.ActiveCfg = Release|Win32
+		{BA3D685A-7D2F-416F-A238-1F99E6AC47BE}.Release.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 	EndGlobalSection

@@ -1,0 +1,2720 @@
+------------------------------------------------------------
+revno: 441
+committer: John Millikin <jmillikin@gmail.com>
+branch nick: trunk
+timestamp: Mon 2007-04-16 18:59:21 -0700
+message:
+  Converted to new Copper test formatting
+------------------------------------------------------------
+revno: 440
+committer: John Millikin <jmillikin@gmail.com>
+branch nick: trunk
+timestamp: Sun 2007-04-08 14:05:56 -0700
+message:
+  Ignore MOC-generated files
+------------------------------------------------------------
+revno: 439
+committer: John Millikin <jmillikin@gmail.com>
+branch nick: trunk
+timestamp: Sun 2007-04-08 14:05:13 -0700
+message:
+  Mark Tests as dependant on Driller for Visual Studio 2003
+------------------------------------------------------------
+revno: 438
+committer: John Millikin <jmillikin@gmail.com>
+branch nick: trunk
+timestamp: Sun 2007-04-08 14:04:47 -0700
+message:
+  Removed serialization.cpp from the Visual Studio 2003 project
+------------------------------------------------------------
+revno: 437
+committer: John Millikin <jmillikin@gmail.com>
+branch nick: trunk
+timestamp: Sun 2007-04-08 13:46:26 -0700
+message:
+  Renamed License.txt to COPYING
+------------------------------------------------------------
+revno: 436
+committer: John Millikin <jmillikin@gmail.com>
+branch nick: trunk
+timestamp: Sat 2007-04-07 21:46:42 -0700
+message:
+  Found LCM_Link.patient_id
+------------------------------------------------------------
+revno: 435
+committer: John Millikin <jmillikin@gmail.com>
+branch nick: trunk
+timestamp: Fri 2007-04-06 11:46:48 -0700
+message:
+  Use builtin tags instead of a plugin
+------------------------------------------------------------
+revno: 434
+committer: John Millikin <jmillikin@gmail.com>
+branch nick: trunk
+timestamp: Mon 2007-03-12 20:44:54 -0700
+message:
+  Removed leftover debugging assertion
+------------------------------------------------------------
+revno: 433
+committer: John Millikin <jmillikin@gmail.com>
+branch nick: trunk
+timestamp: Mon 2007-03-12 20:44:30 -0700
+message:
+  The tests had the arguments to Copper::equal() in the wrong order
+------------------------------------------------------------
+revno: 432
+committer: John Millikin <jmillikin@gmail.com>
+branch nick: trunk
+timestamp: Mon 2007-03-12 20:35:58 -0700
+message:
+  Removed the giant switch of doom from column.cpp
+    ------------------------------------------------------------
+    revno: 431.1.6
+    merged: jmillikin@gmail.com-20070313030638-wks23f8u2jl6kh9n
+    committer: John Millikin <jmillikin@gmail.com>
+    branch nick: switch-is-evil
+    timestamp: Mon 2007-03-12 20:06:38 -0700
+    message:
+      Compensate for info.data already being offset
+    ------------------------------------------------------------
+    revno: 431.1.5
+    merged: jmillikin@gmail.com-20070313030606-be2174wumw41azgc
+    committer: John Millikin <jmillikin@gmail.com>
+    branch nick: switch-is-evil
+    timestamp: Mon 2007-03-12 20:06:06 -0700
+    message:
+      Reorganized error correction for varstrings
+    ------------------------------------------------------------
+    revno: 431.1.4
+    merged: jmillikin@gmail.com-20070313030528-x3580ff9b4hlnvz6
+    committer: John Millikin <jmillikin@gmail.com>
+    branch nick: switch-is-evil
+    timestamp: Mon 2007-03-12 20:05:28 -0700
+    message:
+      Renamed CPPFLAGS back to CXXFLAGS
+    ------------------------------------------------------------
+    revno: 431.1.3
+    merged: jmillikin@gmail.com-20070313025148-h7shzebna4yfll0s
+    committer: John Millikin <jmillikin@gmail.com>
+    branch nick: switch-is-evil
+    timestamp: Mon 2007-03-12 19:51:48 -0700
+    message:
+      Removed the switch statement from column.cpp
+    ------------------------------------------------------------
+    revno: 431.1.2
+    merged: jmillikin@gmail.com-20070313012347-bs3o0gizn4q015la
+    committer: John Millikin <jmillikin@gmail.com>
+    branch nick: switch-is-evil
+    timestamp: Mon 2007-03-12 18:23:47 -0700
+    message:
+      Catch any exceptions being thrown from the database serialization function, and free any libXML-related resources before re-throwing them
+    ------------------------------------------------------------
+    revno: 431.1.1
+    merged: jmillikin@gmail.com-20070313002928-m29250cncgdn0ryk
+    committer: John Millikin <jmillikin@gmail.com>
+    branch nick: switch-is-evil
+    timestamp: Mon 2007-03-12 17:29:28 -0700
+    message:
+      Modify Column::extract_data to accept a buffer and buffer size as parameters, rather than a hidden static
+------------------------------------------------------------
+revno: 431
+committer: John Millikin <jmillikin@gmail.com>
+branch nick: trunk
+timestamp: Sat 2007-03-10 13:52:54 -0800
+message:
+  The libcu pkgconfig file changed its name
+------------------------------------------------------------
+revno: 430
+committer: John Millikin <jmillikin@gmail.com>
+branch nick: trunk
+timestamp: Fri 2007-03-09 23:36:05 -0800
+message:
+  Added calls to pkg-config to get CFLAGS and LDFLAGS for Copper
+------------------------------------------------------------
+revno: 429
+committer: John Millikin <jmillikin@gmail.com>
+branch nick: trunk
+timestamp: Fri 2007-03-09 22:45:29 -0800
+message:
+  Added a .bzrignore file
+------------------------------------------------------------
+revno: 428
+committer: John Millikin <jmillikin@gmail.com>
+branch nick: trunk
+timestamp: Fri 2007-03-09 22:43:05 -0800
+message:
+  Updated Makefile.am to use an external copy of Copper
+------------------------------------------------------------
+revno: 427
+committer: John Millikin <jmillikin@gmail.com>
+branch nick: trunk
+timestamp: Fri 2007-03-09 21:22:31 -0800
+message:
+  Shuffled code around a bit so src/qt could have its own Makefile.am
+------------------------------------------------------------
+revno: 426
+committer: John Millikin <jmillikin@gmail.com>
+branch nick: Driller
+timestamp: Fri 2007-03-09 12:39:41 -0800
+message:
+  Throw an InvalidAttributeError if an enumeration ID is negative
+------------------------------------------------------------
+revno: 425
+committer: John Millikin <jmillikin@gmail.com>
+branch nick: Driller
+timestamp: Fri 2007-03-09 12:39:11 -0800
+message:
+  Updated the Visual Studio 2003 project for new unit testing library
+------------------------------------------------------------
+revno: 424
+committer: John Millikin <jmillikin@gmail.com>
+branch nick: Driller
+timestamp: Thu 2007-03-08 22:17:19 -0800
+message:
+  Removed /tests/lib, opting to use an external copy of Copper instead. At the same time, updated unit tests to newest (hopefully stable) format.
+------------------------------------------------------------
+revno: 423
+committer: John Millikin <jmillikin@gmail.com>
+branch nick: trunk
+timestamp: Wed 2007-02-28 18:20:19 -0800
+message:
+  Removed branches/ and tags/, and moved everything in trunk/ to the root directory
+------------------------------------------------------------
+revno: 422
+committer: John Millikin <jmillikin@gmail.com>
+branch nick: trunk
+timestamp: Wed 2007-02-28 17:48:41 -0800
+message:
+  Added a Bazaar tag for revision 0.7
+------------------------------------------------------------
+revno: 421
+committer: John Millikin <jmillikin@gmail.com>
+branch nick: Driller
+timestamp: Sun 2007-02-11 16:14:59 -0800
+message:
+  Changed LCM_Case.UnknownDate to LCM_Case.create_date
+------------------------------------------------------------
+revno: 420
+committer: John Millikin <jmillikin@gmail.com>
+branch nick: Driller
+timestamp: Sun 2007-02-11 15:53:14 -0800
+message:
+  Attempt to work around corrupt varstring lengths
+------------------------------------------------------------
+revno: 419
+committer: John Millikin <jmillikin@gmail.com>
+branch nick: Driller
+timestamp: Sun 2007-02-11 15:52:18 -0800
+message:
+  Found a has_lab_case field in appt.dat
+------------------------------------------------------------
+revno: 418
+committer: John Millikin <jmillikin@gmail.com>
+branch nick: Driller
+timestamp: Sun 2007-02-11 14:34:15 -0800
+message:
+  Fixed database name
+------------------------------------------------------------
+revno: 417
+committer: John Millikin
+timestamp: Tue 2007-01-30 05:37:08 +0000
+message:
+  Moved trunk/, tags/, branches/, and misc/ into the root directory
+------------------------------------------------------------
+revno: 416
+committer: John Millikin
+timestamp: Fri 2007-01-19 21:22:25 +0000
+message:
+  Fixed path to database.h in qt files, and cast to void* when using CreateIndex in table_model.cpp
+------------------------------------------------------------
+revno: 415
+committer: John Millikin
+timestamp: Fri 2006-11-03 01:03:36 +0000
+message:
+  Version bump to 0.8
+------------------------------------------------------------
+revno: 414
+committer: John Millikin
+timestamp: Thu 2006-11-02 19:03:09 +0000
+message:
+  Added Gentoo ebuild
+------------------------------------------------------------
+revno: 413
+committer: John Millikin
+timestamp: Tue 2006-10-03 00:23:49 +0000
+message:
+  Created tag for the 0.7 release
+------------------------------------------------------------
+revno: 412
+committer: John Millikin
+timestamp: Sun 2006-10-01 02:51:27 +0000
+message:
+  Added 'make check' target
+------------------------------------------------------------
+revno: 411
+committer: John Millikin
+timestamp: Sun 2006-10-01 02:50:50 +0000
+message:
+  Fixed include paths in tests including database.h
+------------------------------------------------------------
+revno: 410
+committer: John Millikin
+timestamp: Sun 2006-10-01 01:56:33 +0000
+message:
+  Build the files in src/ into a static archive, and build driller in the toplevel directory
+------------------------------------------------------------
+revno: 409
+committer: John Millikin
+timestamp: Sun 2006-10-01 01:34:56 +0000
+message:
+  Moved database.cpp into the database/ subdirectory, and build everything in the database/
+  subdirectory into a static library before linking into the main executable
+------------------------------------------------------------
+revno: 408
+committer: John Millikin
+timestamp: Sun 2006-10-01 00:28:00 +0000
+message:
+  Added Databases/Makefile to the list of Makefiles to be generated
+------------------------------------------------------------
+revno: 407
+committer: John Millikin
+timestamp: Sun 2006-10-01 00:23:58 +0000
+message:
+  Remove --foreign flag from autogen.sh
+------------------------------------------------------------
+revno: 406
+committer: John Millikin
+timestamp: Sun 2006-10-01 00:23:28 +0000
+message:
+  Added files required for automake
+------------------------------------------------------------
+revno: 405
+committer: John Millikin
+timestamp: Sun 2006-10-01 00:22:52 +0000
+message:
+  Add link from the license to COPYING, as expected in Linux
+------------------------------------------------------------
+revno: 404
+committer: John Millikin
+timestamp: Sun 2006-10-01 00:22:09 +0000
+message:
+  Use AM_CXXFLAGS instead of CXXFLAGS
+------------------------------------------------------------
+revno: 403
+committer: John Millikin
+timestamp: Sun 2006-10-01 00:13:58 +0000
+message:
+  Created separate Makefile.am for the database files
+------------------------------------------------------------
+revno: 402
+committer: John Millikin
+timestamp: Sat 2006-09-30 23:49:01 +0000
+message:
+  Moved testing library directly into the source tree
+------------------------------------------------------------
+revno: 401
+committer: John Millikin
+timestamp: Fri 2006-09-29 18:47:22 +0000
+message:
+  Updated initial revision in changelog, since it took so long to get the package actually working
+------------------------------------------------------------
+revno: 400
+committer: John Millikin
+timestamp: Fri 2006-09-29 18:37:12 +0000
+message:
+  Allow a row length of 0, for use when the table contains variable-width fields
+------------------------------------------------------------
+revno: 399
+committer: John Millikin
+timestamp: Fri 2006-09-29 06:29:52 +0000
+message:
+  Added a script for create .debs
+------------------------------------------------------------
+revno: 398
+committer: John Millikin
+timestamp: Fri 2006-09-29 06:25:56 +0000
+message:
+  Use distclean before generating a diff
+------------------------------------------------------------
+revno: 397
+committer: John Millikin
+timestamp: Fri 2006-09-29 06:06:23 +0000
+message:
+  Moved Ubuntu packaging info back into trunk/, this time under the metadata subdirectory
+------------------------------------------------------------
+revno: 396
+committer: John Millikin
+timestamp: Fri 2006-09-29 06:05:52 +0000
+message:
+  Added a directory for storing package-specific info
+------------------------------------------------------------
+revno: 395
+committer: John Millikin
+timestamp: Fri 2006-09-29 06:00:49 +0000
+message:
+  Renamed debian/ directory to ubuntu, since it's made for creating a Ubuntu package
+------------------------------------------------------------
+revno: 394
+committer: John Millikin
+timestamp: Fri 2006-09-29 06:00:14 +0000
+message:
+  Moved debian subdirectory out of trunk
+------------------------------------------------------------
+revno: 393
+committer: John Millikin
+timestamp: Fri 2006-09-29 05:59:39 +0000
+message:
+  Line wrap fix
+------------------------------------------------------------
+revno: 392
+committer: John Millikin
+timestamp: Fri 2006-09-29 05:34:14 +0000
+message:
+  Added rules for config.status
+------------------------------------------------------------
+revno: 391
+committer: John Millikin
+timestamp: Fri 2006-09-29 05:33:51 +0000
+message:
+  Add autotools-dev to the build dependencies
+------------------------------------------------------------
+revno: 390
+committer: John Millikin
+timestamp: Fri 2006-09-29 04:39:29 +0000
+message:
+  Don't strip by default, even if debugging is disabled
+------------------------------------------------------------
+revno: 389
+committer: John Millikin
+timestamp: Fri 2006-09-29 04:34:47 +0000
+message:
+  Automatically find runtime dependencies
+------------------------------------------------------------
+revno: 388
+committer: John Millikin
+timestamp: Fri 2006-09-29 04:31:37 +0000
+message:
+  Added extended description
+------------------------------------------------------------
+revno: 387
+committer: John Millikin
+timestamp: Fri 2006-09-29 04:14:05 +0000
+message:
+  Use the new FSF address in the Debian copyright file
+------------------------------------------------------------
+revno: 386
+committer: John Millikin
+timestamp: Fri 2006-09-29 04:10:06 +0000
+message:
+  Don't gzip the copyright file
+------------------------------------------------------------
+revno: 385
+committer: John Millikin
+timestamp: Fri 2006-09-29 04:08:28 +0000
+message:
+  Added rule to gzip documentation
+------------------------------------------------------------
+revno: 384
+committer: John Millikin
+timestamp: Fri 2006-09-29 04:06:02 +0000
+message:
+  Added line to strip comments from the binary
+------------------------------------------------------------
+revno: 383
+committer: John Millikin
+timestamp: Fri 2006-09-29 01:53:47 +0000
+message:
+  Removed ${shlibs:Depends} from debian/control, since it seems to choke dpkg-buildpackage
+------------------------------------------------------------
+revno: 382
+committer: John Millikin
+timestamp: Fri 2006-09-29 01:41:09 +0000
+message:
+  Updated for new space-less names
+------------------------------------------------------------
+revno: 381
+committer: John Millikin
+timestamp: Fri 2006-09-29 01:40:37 +0000
+message:
+  Place databases in a subdirectory of 
+------------------------------------------------------------
+revno: 380
+committer: John Millikin
+timestamp: Fri 2006-09-29 01:37:05 +0000
+message:
+  Added files for building a Debian/Ubuntu package
+------------------------------------------------------------
+revno: 379
+committer: John Millikin
+timestamp: Fri 2006-09-29 01:24:07 +0000
+message:
+  Added slash in databasedir
+------------------------------------------------------------
+revno: 378
+committer: John Millikin
+timestamp: Fri 2006-09-29 01:20:44 +0000
+message:
+  Renamed files to contain no spaces
+------------------------------------------------------------
+revno: 377
+committer: John Millikin
+timestamp: Fri 2006-09-29 00:03:31 +0000
+message:
+  Updated archive creation script to use a temporary directory and build a .tar.gz instead of a .zip
+------------------------------------------------------------
+revno: 376
+committer: John Millikin
+timestamp: Thu 2006-09-28 23:49:46 +0000
+message:
+  Add -s to DEBUG_LIBS rather than DEBUG_CFLAGS
+------------------------------------------------------------
+revno: 375
+committer: John Millikin
+timestamp: Sun 2006-09-24 21:03:08 +0000
+message:
+  Updated tests
+------------------------------------------------------------
+revno: 374
+committer: John Millikin
+timestamp: Fri 2006-09-22 06:08:53 +0000
+message:
+  Updated to use new names of the database files
+------------------------------------------------------------
+revno: 373
+committer: John Millikin
+timestamp: Fri 2006-09-22 06:03:51 +0000
+message:
+  Updated archive creation script for the trunk/tags/branches setup
+------------------------------------------------------------
+revno: 372
+committer: John Millikin
+timestamp: Fri 2006-09-22 06:01:06 +0000
+message:
+  Moved Driller support scripts into the Driller/ subdirectory
+------------------------------------------------------------
+revno: 371
+committer: John Millikin
+timestamp: Fri 2006-09-22 01:34:39 +0000
+message:
+  Added test for const version of column_at
+------------------------------------------------------------
+revno: 370
+committer: John Millikin
+timestamp: Fri 2006-09-22 01:26:04 +0000
+message:
+  Added a bunch of tests for invalid input to a column
+------------------------------------------------------------
+revno: 369
+committer: John Millikin
+timestamp: Fri 2006-09-22 01:25:27 +0000
+message:
+  Added check that setting the type to COLUMN_NUM_TYPES actually changes it to COLUMN_UNKNOWN
+------------------------------------------------------------
+revno: 368
+committer: John Millikin
+timestamp: Fri 2006-09-22 01:24:57 +0000
+message:
+  Ensured that extract_data() cannot be called with COLUMN_NUM_TYPES as a type
+------------------------------------------------------------
+revno: 367
+committer: John Millikin
+timestamp: Fri 2006-09-22 01:24:07 +0000
+message:
+  Added validation when reading values for offset, length, or enumeration IDs
+------------------------------------------------------------
+revno: 366
+committer: John Millikin
+timestamp: Fri 2006-09-22 01:13:31 +0000
+message:
+  Added a test for needs_length
+------------------------------------------------------------
+revno: 365
+committer: John Millikin
+timestamp: Thu 2006-09-21 19:28:02 +0000
+message:
+  Added validation of data_offset and row_length values
+------------------------------------------------------------
+revno: 364
+committer: John Millikin
+timestamp: Thu 2006-09-21 19:27:43 +0000
+message:
+  Added a class InvalidAttributeError, which is to be thrown when the attribute of an element is invalid
+------------------------------------------------------------
+revno: 363
+committer: John Millikin
+timestamp: Thu 2006-09-21 19:14:16 +0000
+message:
+  Moved logic for retrieving an XML node from table.cpp and column.cpp into misc.cpp
+------------------------------------------------------------
+revno: 362
+committer: John Millikin
+timestamp: Thu 2006-09-21 18:48:17 +0000
+message:
+  Fixed throwing an error when the document name is NULL
+------------------------------------------------------------
+revno: 361
+committer: John Millikin
+timestamp: Thu 2006-09-21 17:49:54 +0000
+message:
+  Added tests to confirm that data validation is performed on input XML files
+------------------------------------------------------------
+revno: 360
+committer: John Millikin
+timestamp: Thu 2006-09-21 17:47:15 +0000
+message:
+  Added Errors::MissingAttributeError to the list of errors that may be thrown by Table(), and fixed throwing an error when the document name is NULL
+------------------------------------------------------------
+revno: 359
+committer: John Millikin
+timestamp: Thu 2006-09-21 17:29:01 +0000
+message:
+  Shortened some lines so they don't wrap in a terminal
+------------------------------------------------------------
+revno: 358
+committer: John Millikin
+timestamp: Thu 2006-09-21 17:26:54 +0000
+message:
+  Split database tests into those that actually test the Database class, and serialization tests
+------------------------------------------------------------
+revno: 357
+committer: John Millikin
+timestamp: Thu 2006-09-21 17:20:32 +0000
+message:
+  Added code to check that positive signed integers are extracted correctly
+------------------------------------------------------------
+revno: 356
+committer: John Millikin
+timestamp: Thu 2006-09-21 06:47:10 +0000
+message:
+  Added const versions of the table_at assertions
+------------------------------------------------------------
+revno: 355
+committer: John Millikin
+timestamp: Thu 2006-09-21 06:46:47 +0000
+message:
+  Added tests to check for errors when parsing invalid XML from a buffer or file
+------------------------------------------------------------
+revno: 354
+committer: John Millikin
+timestamp: Thu 2006-09-21 06:36:17 +0000
+message:
+  Reverted accidental commit
+------------------------------------------------------------
+revno: 353
+committer: John Millikin
+timestamp: Thu 2006-09-21 06:35:23 +0000
+message:
+  Added a test for duplicate enumeration ID checking
+------------------------------------------------------------
+revno: 352
+committer: John Millikin
+timestamp: Thu 2006-09-21 06:29:25 +0000
+message:
+  Added a test to check that an exception is thrown when no name is entered
+  for the database
+------------------------------------------------------------
+revno: 351
+committer: John Millikin
+timestamp: Thu 2006-09-21 06:28:56 +0000
+message:
+  Stylistic changes to the buffer creation
+------------------------------------------------------------
+revno: 350
+committer: John Millikin
+timestamp: Thu 2006-09-21 04:44:42 +0000
+message:
+  Added a test for the from_buffer function
+------------------------------------------------------------
+revno: 349
+committer: John Millikin
+timestamp: Thu 2006-09-21 03:15:08 +0000
+message:
+  Store the generated file for the Qt4 output handler in generated/
+------------------------------------------------------------
+revno: 348
+committer: John Millikin
+timestamp: Thu 2006-09-21 03:12:20 +0000
+message:
+  Updated for new testing framework version
+------------------------------------------------------------
+revno: 347
+committer: John Millikin
+timestamp: Wed 2006-09-20 16:38:11 +0000
+message:
+  I was actually reading from a Dentrix 10 database when creating these. Oops.
+------------------------------------------------------------
+revno: 346
+committer: John Millikin
+timestamp: Sat 2006-09-16 20:43:13 +0000
+message:
+  Added a progress dialog to the data extraction dialog, so that it will show for all output sinks
+------------------------------------------------------------
+revno: 345
+committer: John Millikin
+timestamp: Sat 2006-09-16 20:31:47 +0000
+message:
+  Re-arranged the extraction API
+------------------------------------------------------------
+revno: 344
+committer: John Millikin
+timestamp: Sat 2006-09-16 20:31:17 +0000
+message:
+  Ignore *.moc.qt files
+------------------------------------------------------------
+revno: 343
+committer: John Millikin
+timestamp: Sat 2006-09-16 20:22:37 +0000
+message:
+  Typo
+------------------------------------------------------------
+revno: 342
+committer: John Millikin
+timestamp: Sat 2006-09-16 19:59:19 +0000
+message:
+  Removed ^Ms that had gotten into the source somehow (maybe from MSVS?)
+------------------------------------------------------------
+revno: 341
+committer: John Millikin
+timestamp: Sat 2006-09-16 19:55:51 +0000
+message:
+  Added parameter for the MySQLSink constructor to allow specifiying a port
+------------------------------------------------------------
+revno: 340
+committer: John Millikin
+timestamp: Sat 2006-09-16 05:16:39 +0000
+message:
+  Stylistic
+------------------------------------------------------------
+revno: 339
+committer: John Millikin
+timestamp: Sat 2006-09-16 05:12:53 +0000
+message:
+  Updated extract_data for new ResultSet constructor
+------------------------------------------------------------
+revno: 338
+committer: John Millikin
+timestamp: Sat 2006-09-16 05:09:38 +0000
+message:
+  Added table attribute, to access the table the result set came from
+------------------------------------------------------------
+revno: 337
+committer: John Millikin
+timestamp: Sat 2006-09-16 03:41:38 +0000
+message:
+  Moved the DataSink destructor implementation out of the header
+------------------------------------------------------------
+revno: 336
+committer: John Millikin
+timestamp: Sat 2006-09-16 03:40:37 +0000
+message:
+  Stylistic
+------------------------------------------------------------
+revno: 335
+committer: John Millikin
+timestamp: Fri 2006-09-15 05:36:09 +0000
+message:
+  Fixed search-replace mangling
+------------------------------------------------------------
+revno: 334
+committer: John Millikin
+timestamp: Thu 2006-09-14 00:58:04 +0000
+message:
+  Check for {moc,uic}-qt4 first, before the plain version
+------------------------------------------------------------
+revno: 333
+committer: John Millikin
+timestamp: Thu 2006-09-14 00:57:30 +0000
+message:
+  Removed DataExtractionDialog UI file
+------------------------------------------------------------
+revno: 332
+committer: John Millikin
+timestamp: Tue 2006-09-12 20:57:41 +0000
+message:
+  Added MySQLDebug and MySQLRelease configurations
+------------------------------------------------------------
+revno: 331
+committer: John Millikin
+timestamp: Tue 2006-09-12 20:57:04 +0000
+message:
+  Implemented MySQL options in the data extraction dialog
+------------------------------------------------------------
+revno: 330
+committer: John Millikin
+timestamp: Tue 2006-09-12 20:55:44 +0000
+message:
+  Fix signedness warnings in MSVC
+------------------------------------------------------------
+revno: 329
+committer: John Millikin
+timestamp: Tue 2006-09-12 20:20:38 +0000
+message:
+  Add output handler files
+------------------------------------------------------------
+revno: 328
+committer: John Millikin
+timestamp: Tue 2006-09-12 20:13:02 +0000
+message:
+  Updated for new testing library
+------------------------------------------------------------
+revno: 327
+committer: John Millikin
+timestamp: Tue 2006-09-12 20:01:40 +0000
+message:
+  Include self tests, instead of sample tests
+------------------------------------------------------------
+revno: 326
+committer: John Millikin
+timestamp: Tue 2006-09-12 19:59:57 +0000
+message:
+  In Windows, include windows.h before mysql.h
+------------------------------------------------------------
+revno: 325
+committer: John Millikin
+timestamp: Tue 2006-09-12 19:59:25 +0000
+message:
+  Include <algorithm> and use the std::prefix for replace
+------------------------------------------------------------
+revno: 324
+committer: John Millikin
+timestamp: Tue 2006-09-12 19:58:32 +0000
+message:
+  Fixed typo
+------------------------------------------------------------
+revno: 323
+committer: John Millikin
+timestamp: Sun 2006-09-10 22:26:10 +0000
+message:
+  Pass argc and argv into main when run as a Windows GUI program
+------------------------------------------------------------
+revno: 322
+committer: John Millikin
+timestamp: Sun 2006-09-10 22:25:19 +0000
+message:
+  Only run the GUI if no options are specified on the command line
+------------------------------------------------------------
+revno: 321
+committer: John Millikin
+timestamp: Tue 2006-09-05 20:37:16 +0000
+message:
+  Moved to trunk-tags-branches setup
+------------------------------------------------------------
+revno: 320
+committer: John Millikin
+timestamp: Mon 2006-08-28 02:13:41 +0000
+message:
+  Added the InsurancePlans table
+------------------------------------------------------------
+revno: 319
+committer: John Millikin
+timestamp: Mon 2006-08-28 02:01:48 +0000
+message:
+  Use 12 characters for phone numbers
+------------------------------------------------------------
+revno: 318
+committer: John Millikin
+timestamp: Mon 2006-08-28 00:50:16 +0000
+message:
+  Added insurance map and fee schedule table
+------------------------------------------------------------
+revno: 317
+committer: John Millikin
+timestamp: Sun 2006-08-27 23:10:16 +0000
+message:
+  Removed unused blob from RscUse
+------------------------------------------------------------
+revno: 316
+committer: John Millikin
+timestamp: Sun 2006-08-20 18:25:11 +0000
+message:
+  Updated tests
+------------------------------------------------------------
+revno: 315
+committer: John Millikin
+timestamp: Sun 2006-08-20 04:04:46 +0000
+message:
+  Removed "private" keywords
+------------------------------------------------------------
+revno: 314
+committer: John Millikin
+timestamp: Fri 2006-08-18 23:29:38 +0000
+message:
+  (no message)
+------------------------------------------------------------
+revno: 313
+committer: John Millikin
+timestamp: Fri 2006-08-18 06:00:18 +0000
+message:
+  Added new files for the testing library
+------------------------------------------------------------
+revno: 312
+committer: John Millikin
+timestamp: Fri 2006-08-18 05:59:58 +0000
+message:
+  Removed DataExtractionDialog.ui
+------------------------------------------------------------
+revno: 311
+committer: John Millikin
+timestamp: Fri 2006-08-18 05:59:31 +0000
+message:
+  Added 'u' suffixes to various values , to quiet warnings about signed/unsigned comparisons
+------------------------------------------------------------
+revno: 310
+committer: John Millikin
+timestamp: Fri 2006-08-18 05:53:29 +0000
+message:
+  Updated tests for new version of the unit testing library
+------------------------------------------------------------
+revno: 309
+committer: John Millikin
+timestamp: Fri 2006-08-18 05:50:18 +0000
+message:
+  Added ifdef/endif blocks around the MSVC stuff, to avoid warnings in GCC
+------------------------------------------------------------
+revno: 308
+committer: John Millikin
+timestamp: Wed 2006-08-16 01:41:53 +0000
+message:
+  Added unit tests to VS 2003
+------------------------------------------------------------
+revno: 307
+committer: John Millikin
+timestamp: Wed 2006-08-16 01:40:42 +0000
+message:
+  Fixed include paths so the tests build in VS 2003
+------------------------------------------------------------
+revno: 306
+committer: John Millikin
+timestamp: Wed 2006-08-16 01:09:10 +0000
+message:
+  Implemented the data extraction dialog's options
+------------------------------------------------------------
+revno: 305
+committer: John Millikin
+timestamp: Wed 2006-08-16 01:08:42 +0000
+message:
+  Only set the data path if the user accepted the dialog
+------------------------------------------------------------
+revno: 304
+committer: John Millikin
+timestamp: Wed 2006-08-16 01:06:48 +0000
+message:
+  Copy the enumeration value into the temporary buffer before returning it, to avoid string mangling
+------------------------------------------------------------
+revno: 303
+committer: John Millikin
+timestamp: Tue 2006-08-15 23:09:09 +0000
+message:
+  Use static methods of QFileDialog for native look goodness
+------------------------------------------------------------
+revno: 302
+committer: John Millikin
+timestamp: Tue 2006-08-15 22:39:25 +0000
+message:
+  Fixed bug with loading CRLF-delimited files
+------------------------------------------------------------
+revno: 301
+committer: John Millikin
+timestamp: Wed 2006-08-09 23:34:52 +0000
+message:
+  Keep the table vector sorted by name
+------------------------------------------------------------
+revno: 300
+committer: John Millikin
+timestamp: Wed 2006-08-09 23:32:20 +0000
+message:
+  Use add_table instead of directly modifying the table vector
+------------------------------------------------------------
+revno: 299
+committer: John Millikin
+timestamp: Wed 2006-08-09 17:58:14 +0000
+message:
+  Use the Windows API equivalents of mmap when running on Windows
+------------------------------------------------------------
+revno: 298
+committer: John Millikin
+timestamp: Sat 2006-06-10 04:28:09 +0000
+message:
+  Added binary flag when reading files in Windows to avoid magical missing bytes
+------------------------------------------------------------
+revno: 297
+committer: John Millikin
+timestamp: Sat 2006-06-10 03:08:49 +0000
+message:
+  Updated to build with newest code
+------------------------------------------------------------
+revno: 296
+committer: John Millikin
+timestamp: Sat 2006-06-10 02:57:29 +0000
+message:
+  Use casts to shut up Visual Studio about converting between signed and unsigned integers
+------------------------------------------------------------
+revno: 295
+committer: John Millikin
+timestamp: Sat 2006-06-10 02:56:40 +0000
+message:
+  Use proper include paths, even if automake et al don't need them
+------------------------------------------------------------
+revno: 294
+committer: John Millikin
+timestamp: Sat 2006-06-10 02:55:35 +0000
+message:
+  Use proper include paths, even if automake et al don't need them
+------------------------------------------------------------
+revno: 293
+committer: John Millikin
+timestamp: Sat 2006-06-10 02:52:10 +0000
+message:
+  Disable warning C4290 under Visual Studio
+------------------------------------------------------------
+revno: 292
+committer: John Millikin
+timestamp: Sat 2006-06-10 02:50:28 +0000
+message:
+  Use qobject_cast instead of dynamic_cast
+------------------------------------------------------------
+revno: 291
+committer: John Millikin
+timestamp: Sun 2006-08-06 04:36:53 +0000
+message:
+  Reverted to standard binreloc code
+------------------------------------------------------------
+revno: 290
+committer: John Millikin
+timestamp: Sat 2006-08-05 00:29:08 +0000
+message:
+  Move default CFLAGS and LIBS to the front of the command line, to allow overrides
+------------------------------------------------------------
+revno: 289
+committer: John Millikin
+timestamp: Sat 2006-08-05 00:28:32 +0000
+message:
+  Allocate (2 * strlen) + 1 bytes for the static string buffer
+------------------------------------------------------------
+revno: 288
+committer: John Millikin
+timestamp: Fri 2006-08-04 23:02:35 +0000
+message:
+  Initial import
+------------------------------------------------------------
+revno: 287
+committer: John Millikin
+timestamp: Fri 2006-08-04 22:38:51 +0000
+message:
+  Use AC_CONFIG_HEADERS instead of deprecated AM_CONFIG_HEADER
+------------------------------------------------------------
+revno: 286
+committer: John Millikin
+timestamp: Fri 2006-08-04 22:23:47 +0000
+message:
+  Updated the build system to work with MySQL, Qt, etc
+------------------------------------------------------------
+revno: 285
+committer: John Millikin
+timestamp: Fri 2006-08-04 22:20:30 +0000
+message:
+  Added parameter to the constructor documentation
+------------------------------------------------------------
+revno: 284
+committer: John Millikin
+timestamp: Fri 2006-08-04 22:20:01 +0000
+message:
+  Added some widgets for detailed output parameters
+------------------------------------------------------------
+revno: 283
+committer: John Millikin
+timestamp: Fri 2006-08-04 00:06:57 +0000
+message:
+  Use new Database::from_file function to load the database files in commandline arguments
+------------------------------------------------------------
+revno: 282
+committer: John Millikin
+timestamp: Fri 2006-08-04 00:05:40 +0000
+message:
+  Actually having the output work is very useful
+------------------------------------------------------------
+revno: 281
+committer: John Millikin
+timestamp: Thu 2006-08-03 19:11:10 +0000
+message:
+  Don't show namespaces all over the place
+------------------------------------------------------------
+revno: 280
+committer: John Millikin
+timestamp: Thu 2006-08-03 19:08:44 +0000
+message:
+  Made row and column count for a result set private. They must now be retrieved with row_count() and column_count()
+------------------------------------------------------------
+revno: 279
+committer: John Millikin
+timestamp: Thu 2006-08-03 18:54:22 +0000
+message:
+  Improved documentation
+------------------------------------------------------------
+revno: 278
+committer: John Millikin
+timestamp: Thu 2006-08-03 18:47:04 +0000
+message:
+  Make functions for data extraction state generation private
+------------------------------------------------------------
+revno: 277
+committer: John Millikin
+timestamp: Thu 2006-08-03 18:45:10 +0000
+message:
+  Improved documentation
+------------------------------------------------------------
+revno: 276
+committer: John Millikin
+timestamp: Wed 2006-08-02 06:11:25 +0000
+message:
+  New version of the unit testing framework
+------------------------------------------------------------
+revno: 275
+committer: John Millikin
+timestamp: Wed 2006-08-02 06:10:49 +0000
+message:
+  Test that characters in attribute values are properly decoded
+------------------------------------------------------------
+revno: 274
+committer: John Millikin
+timestamp: Wed 2006-08-02 05:52:44 +0000
+message:
+  Only try to set the visible table name if the currently selected table is valid
+------------------------------------------------------------
+revno: 273
+committer: John Millikin
+timestamp: Wed 2006-08-02 05:52:07 +0000
+message:
+  Allow "unknown" columns in a saved database file
+------------------------------------------------------------
+revno: 272
+committer: John Millikin
+timestamp: Wed 2006-08-02 01:17:53 +0000
+message:
+  Moved XML serialization into a separate file
+------------------------------------------------------------
+revno: 271
+committer: John Millikin
+timestamp: Wed 2006-08-02 01:17:17 +0000
+message:
+  If no error code is specified at creation, use errno
+------------------------------------------------------------
+revno: 270
+committer: John Millikin
+timestamp: Wed 2006-08-02 01:15:42 +0000
+message:
+  Better formatting from the generator
+------------------------------------------------------------
+revno: 269
+committer: John Millikin
+timestamp: Wed 2006-08-02 00:34:45 +0000
+message:
+  Added needs_length() function, to simplify checking for whether a certain column must have a length field
+------------------------------------------------------------
+revno: 268
+committer: John Millikin
+timestamp: Wed 2006-08-02 00:32:10 +0000
+message:
+  Fixed typo
+------------------------------------------------------------
+revno: 267
+committer: John Millikin
+timestamp: Mon 2006-07-31 03:23:08 +0000
+message:
+  Added a newline at EOF
+------------------------------------------------------------
+revno: 266
+committer: John Millikin
+timestamp: Mon 2006-07-31 03:21:32 +0000
+message:
+  Use a variable block size for the block allocator, to conserve memory
+------------------------------------------------------------
+revno: 265
+committer: John Millikin
+timestamp: Mon 2006-07-31 03:20:39 +0000
+message:
+  Don't append a space to the data path every time
+------------------------------------------------------------
+revno: 264
+committer: John Millikin
+timestamp: Mon 2006-07-31 00:12:57 +0000
+message:
+  Changed the list of tables in the extracted data to use an actual list view instead of a bunch of tabs
+------------------------------------------------------------
+revno: 263
+committer: John Millikin
+timestamp: Mon 2006-07-31 00:02:53 +0000
+message:
+  Added buttons to add or remove tables
+------------------------------------------------------------
+revno: 262
+committer: John Millikin
+timestamp: Sun 2006-07-30 23:58:15 +0000
+message:
+  Changed database classes to be more encapsulated, using methods to get and set data instead of direct access
+------------------------------------------------------------
+revno: 261
+committer: John Millikin
+timestamp: Sun 2006-07-30 23:54:13 +0000
+message:
+  Updated contact information
+------------------------------------------------------------
+revno: 260
+committer: John Millikin
+timestamp: Sun 2006-07-30 23:53:13 +0000
+message:
+  Changed database classes to be more encapsulated, using methods to get and set data instead of direct access
+------------------------------------------------------------
+revno: 259
+committer: John Millikin
+timestamp: Thu 2006-07-27 23:15:02 +0000
+message:
+  Separated out text-version execution from main(), and put in a bit of code to build the GUI conditional on the ENABLE_GUI #define
+------------------------------------------------------------
+revno: 258
+committer: John Millikin
+timestamp: Thu 2006-07-27 23:14:07 +0000
+message:
+  Define ENABLE_GUI as well as ENABLE_QT_GUI, so driller.cpp can include the proper code
+------------------------------------------------------------
+revno: 257
+committer: John Millikin
+timestamp: Thu 2006-07-27 23:08:55 +0000
+message:
+  Added empty throw specifications to most error functions
+------------------------------------------------------------
+revno: 256
+committer: John Millikin
+timestamp: Thu 2006-07-27 23:02:10 +0000
+message:
+  Get the entire remaining line when retrieving the saved data path
+------------------------------------------------------------
+revno: 255
+committer: John Millikin
+timestamp: Wed 2006-07-26 23:24:19 +0000
+message:
+  An unsigned int can never be < 0
+------------------------------------------------------------
+revno: 254
+committer: John Millikin
+timestamp: Wed 2006-07-26 23:23:54 +0000
+message:
+  Use 0 rather than NULL, to avoid overloading ambiguity
+------------------------------------------------------------
+revno: 253
+committer: John Millikin
+timestamp: Wed 2006-07-26 23:20:29 +0000
+message:
+  Added database definition containing old-style names and types, for compatibility with existing queries
+------------------------------------------------------------
+revno: 252
+committer: John Millikin
+timestamp: Wed 2006-07-26 20:59:46 +0000
+message:
+  Updated tests to work with new version of test suite
+------------------------------------------------------------
+revno: 251
+committer: John Millikin
+timestamp: Wed 2006-07-26 20:59:18 +0000
+message:
+  Use std::string::size_type, so signededness issues will be resolved automatically
+------------------------------------------------------------
+revno: 250
+committer: John Millikin
+timestamp: Wed 2006-07-26 16:39:15 +0000
+message:
+  Use a signed int, since std::string::npos might be negative
+------------------------------------------------------------
+revno: 249
+committer: John Millikin
+timestamp: Wed 2006-07-26 06:27:34 +0000
+message:
+  Add tests.pro for easier test building
+------------------------------------------------------------
+revno: 248
+committer: John Millikin
+timestamp: Wed 2006-07-26 04:12:28 +0000
+message:
+  Added unit tests for Column
+------------------------------------------------------------
+revno: 247
+committer: John Millikin
+timestamp: Wed 2006-07-26 04:12:01 +0000
+message:
+  Added MySQL data sink
+------------------------------------------------------------
+revno: 246
+committer: John Millikin
+timestamp: Wed 2006-07-26 01:01:21 +0000
+message:
+  Don't show a spinbox when the user double-clicks on the "Indexed" column
+------------------------------------------------------------
+revno: 245
+committer: John Millikin
+timestamp: Tue 2006-07-25 23:47:24 +0000
+message:
+  Clean up some memory leaks
+------------------------------------------------------------
+revno: 244
+committer: John Millikin
+timestamp: Tue 2006-07-25 22:57:42 +0000
+message:
+  stylistic change
+------------------------------------------------------------
+revno: 243
+committer: John Millikin
+timestamp: Tue 2006-07-25 22:56:56 +0000
+message:
+  Implemented addition and removal of enumeration cases
+------------------------------------------------------------
+revno: 242
+committer: John Millikin
+timestamp: Tue 2006-07-25 22:56:24 +0000
+message:
+  Added is_enum_case to test if a certain index is an enumeration case, and implemented enumeration case removal
+------------------------------------------------------------
+revno: 241
+committer: John Millikin
+timestamp: Tue 2006-07-25 21:06:34 +0000
+message:
+  (no message)
+------------------------------------------------------------
+revno: 240
+committer: John Millikin
+timestamp: Tue 2006-07-25 21:04:12 +0000
+message:
+  Only allow one selection in the column list
+------------------------------------------------------------
+revno: 239
+committer: John Millikin
+timestamp: Tue 2006-07-25 20:03:15 +0000
+message:
+  Cast to an unsigned int when outputting an enum id
+------------------------------------------------------------
+revno: 238
+committer: John Millikin
+timestamp: Tue 2006-07-25 19:28:45 +0000
+message:
+  Stylistic changes
+------------------------------------------------------------
+revno: 237
+committer: John Millikin
+timestamp: Tue 2006-07-25 19:28:25 +0000
+message:
+  Cut off the last space from a blob
+------------------------------------------------------------
+revno: 236
+committer: John Millikin
+timestamp: Tue 2006-07-25 19:15:30 +0000
+message:
+  Use unsigned_to_string to convert unsigned numbers
+------------------------------------------------------------
+revno: 235
+committer: John Millikin
+timestamp: Tue 2006-07-25 17:44:18 +0000
+message:
+  Removed redundant add_enum_case function, and renamed remove_enum_case to remove_enum_id, and added an implementation of remove_enum_id
+------------------------------------------------------------
+revno: 234
+committer: John Millikin
+timestamp: Mon 2006-07-24 05:16:53 +0000
+message:
+  ii is easier to search for than i
+------------------------------------------------------------
+revno: 233
+committer: John Millikin
+timestamp: Mon 2006-07-24 05:16:31 +0000
+message:
+  ii is easier to search for than i
+------------------------------------------------------------
+revno: 232
+committer: John Millikin
+timestamp: Mon 2006-07-24 05:15:24 +0000
+message:
+  ii is easier to search for than i
+------------------------------------------------------------
+revno: 231
+committer: John Millikin
+timestamp: Mon 2006-07-24 04:34:11 +0000
+message:
+  Gender gender to an enum between Male and Female
+------------------------------------------------------------
+revno: 230
+committer: John Millikin
+timestamp: Mon 2006-07-24 04:21:51 +0000
+message:
+  Added implementation for editing the colum type with a QComboBox
+------------------------------------------------------------
+revno: 229
+committer: John Millikin
+timestamp: Mon 2006-07-24 04:21:38 +0000
+message:
+  Added implementation for editing the colum type with a QComboBox
+------------------------------------------------------------
+revno: 228
+committer: John Millikin
+timestamp: Mon 2006-07-24 04:18:40 +0000
+message:
+  Changed the ifndef/define guards to be more specific
+------------------------------------------------------------
+revno: 227
+committer: John Millikin
+timestamp: Mon 2006-07-24 04:18:11 +0000
+message:
+  Changed the header formatting to include this year in the copyright string
+------------------------------------------------------------
+revno: 226
+committer: John Millikin
+timestamp: Mon 2006-07-24 04:17:15 +0000
+message:
+  Changed the header formatting to include this year in the copyright string
+------------------------------------------------------------
+revno: 225
+committer: John Millikin
+timestamp: Sun 2006-07-23 21:36:59 +0000
+message:
+  Added Pat_dat table
+------------------------------------------------------------
+revno: 224
+committer: John Millikin
+timestamp: Sun 2006-07-23 20:51:06 +0000
+message:
+  Made purpose clearer
+------------------------------------------------------------
+revno: 223
+committer: John Millikin
+timestamp: Sun 2006-07-23 20:49:47 +0000
+message:
+  Improved the implementation of enumeration editing, such as popping up an error message rather than crashing
+------------------------------------------------------------
+revno: 222
+committer: John Millikin
+timestamp: Sun 2006-07-23 20:49:06 +0000
+message:
+  Made show_error() public, so it could be called from other classes if needed
+------------------------------------------------------------
+revno: 221
+committer: John Millikin
+timestamp: Sun 2006-07-23 20:48:25 +0000
+message:
+  Added implementations of add_enum_case(), and changed many cases of unsigned int to uint8 where they referred to enum case IDs
+------------------------------------------------------------
+revno: 220
+committer: John Millikin
+timestamp: Sun 2006-07-23 19:50:07 +0000
+message:
+  Split up database.{h,cpp} into a bunch of files
+------------------------------------------------------------
+revno: 219
+committer: John Millikin
+timestamp: Sun 2006-07-23 04:49:11 +0000
+message:
+  No need for extra code now that custom exceptions have what()
+------------------------------------------------------------
+revno: 218
+committer: John Millikin
+timestamp: Sun 2006-07-23 04:48:56 +0000
+message:
+  Create a simple what() function, for easier debugging of any exceptions that make it out of the program
+------------------------------------------------------------
+revno: 217
+committer: John Millikin
+timestamp: Sun 2006-07-23 04:39:08 +0000
+message:
+  Implemented editing of enumeration cases
+------------------------------------------------------------
+revno: 216
+committer: John Millikin
+timestamp: Sun 2006-07-23 04:37:58 +0000
+message:
+  Fixed typo in the DupicateEnumID error message
+------------------------------------------------------------
+revno: 215
+committer: John Millikin
+timestamp: Sun 2006-07-23 04:37:01 +0000
+message:
+  Added alter_enum_id() and alter_enum_value() functions for easier modification of enumeration cases
+------------------------------------------------------------
+revno: 214
+committer: John Millikin
+timestamp: Sun 2006-07-23 02:59:21 +0000
+message:
+  Show enumeration cases
+------------------------------------------------------------
+revno: 213
+committer: John Millikin
+timestamp: Sun 2006-07-23 02:57:30 +0000
+message:
+  Properly encode names before outputting a schema
+------------------------------------------------------------
+revno: 212
+committer: John Millikin
+timestamp: Sat 2006-07-22 22:02:37 +0000
+message:
+  Changed from hand-coded to generated by Driller
+------------------------------------------------------------
+revno: 211
+committer: John Millikin
+timestamp: Sat 2006-07-22 22:01:33 +0000
+message:
+  stylistic
+------------------------------------------------------------
+revno: 210
+committer: John Millikin
+timestamp: Sat 2006-07-22 22:01:22 +0000
+message:
+  Added more detailed comment about variable-length strings in Dentrix
+------------------------------------------------------------
+revno: 209
+committer: John Millikin
+timestamp: Sat 2006-07-22 21:09:01 +0000
+message:
+  Added saving the data path between executions, a dialog to set the data path, and some undo, redo, cut, copy, paste, delete, select all functionality
+------------------------------------------------------------
+revno: 208
+committer: John Millikin
+timestamp: Sat 2006-07-22 21:05:39 +0000
+message:
+  Added every missing specialty type
+------------------------------------------------------------
+revno: 207
+committer: John Millikin
+timestamp: Sat 2006-07-22 00:01:30 +0000
+message:
+  Updates to file loading and saving
+------------------------------------------------------------
+revno: 206
+committer: John Millikin
+timestamp: Sat 2006-07-22 00:01:06 +0000
+message:
+  Added GenericError class, for when a more exact error can't be used
+------------------------------------------------------------
+revno: 205
+committer: John Millikin
+timestamp: Fri 2006-07-21 05:06:36 +0000
+message:
+  Use a custom result model to display extracted data
+------------------------------------------------------------
+revno: 204
+committer: John Millikin
+timestamp: Fri 2006-07-21 05:06:07 +0000
+message:
+  No need to include config.h with qmake
+------------------------------------------------------------
+revno: 203
+committer: John Millikin
+timestamp: Fri 2006-07-21 05:05:32 +0000
+message:
+  Properly NULL-terminate long phone numbers
+------------------------------------------------------------
+revno: 202
+committer: John Millikin
+timestamp: Fri 2006-07-21 04:53:06 +0000
+message:
+  If the row count has been clamped, don't run off the edge of the location array
+------------------------------------------------------------
+revno: 201
+committer: John Millikin
+timestamp: Fri 2006-07-21 03:54:41 +0000
+message:
+  Removed unused file
+------------------------------------------------------------
+revno: 200
+committer: John Millikin
+timestamp: Fri 2006-07-21 03:35:45 +0000
+message:
+  Keep intermediate build files better organized
+------------------------------------------------------------
+revno: 199
+committer: John Millikin
+timestamp: Fri 2006-07-21 02:39:35 +0000
+message:
+  Clamp rows before allocating the row_locations array, so space won't be wasted if the row limit is small
+------------------------------------------------------------
+revno: 198
+committer: John Millikin
+timestamp: Fri 2006-07-21 02:34:00 +0000
+message:
+  Added data extraction dialog header, forgot about it when it was first created
+------------------------------------------------------------
+revno: 197
+committer: John Millikin
+timestamp: Fri 2006-07-21 02:33:10 +0000
+message:
+  Added block allocator, which uses much less memory
+------------------------------------------------------------
+revno: 196
+committer: John Millikin
+timestamp: Wed 2006-07-19 03:19:53 +0000
+message:
+  Allow no tables and no enumeration cases
+------------------------------------------------------------
+revno: 195
+committer: John Millikin
+timestamp: Wed 2006-07-19 03:16:45 +0000
+message:
+  Added refresh_window_title() function
+------------------------------------------------------------
+revno: 194
+committer: John Millikin
+timestamp: Wed 2006-07-19 03:09:45 +0000
+message:
+  Added a secondary "show_error()" function, to simply display a string. Also added a slot to change the database name as soon as it is edited.
+------------------------------------------------------------
+revno: 193
+committer: John Millikin
+timestamp: Wed 2006-07-19 02:54:42 +0000
+message:
+  Removed incorrect resources link
+------------------------------------------------------------
+revno: 192
+committer: John Millikin
+timestamp: Wed 2006-07-19 02:38:41 +0000
+message:
+  Added Edit and Help menus
+------------------------------------------------------------
+revno: 191
+committer: John Millikin
+timestamp: Wed 2006-07-19 02:37:44 +0000
+message:
+  Cleared warning in MSVC
+------------------------------------------------------------
+revno: 190
+committer: John Millikin
+timestamp: Wed 2006-07-19 02:08:40 +0000
+message:
+  Use Windows-style line breaks, for greater portability
+------------------------------------------------------------
+revno: 189
+committer: John Millikin
+timestamp: Wed 2006-07-19 02:08:04 +0000
+message:
+  Renamed file containing the GPL
+------------------------------------------------------------
+revno: 188
+committer: John Millikin
+timestamp: Wed 2006-07-19 01:17:35 +0000
+message:
+  Updated to the new file layout
+------------------------------------------------------------
+revno: 187
+committer: John Millikin
+timestamp: Wed 2006-07-19 01:12:39 +0000
+message:
+  Fix compiling on Win32 in VS 2003
+------------------------------------------------------------
+revno: 186
+committer: John Millikin
+timestamp: Wed 2006-07-19 01:09:44 +0000
+message:
+  Corrected include paths (qmake does something wierd)
+------------------------------------------------------------
+revno: 185
+committer: John Millikin
+timestamp: Wed 2006-07-19 01:08:49 +0000
+message:
+  Quieted warning message in VS 2003
+------------------------------------------------------------
+revno: 184
+committer: John Millikin
+timestamp: Wed 2006-07-19 01:05:28 +0000
+message:
+  Some changes to compile properly on Windows under VS 2003
+------------------------------------------------------------
+revno: 183
+committer: John Millikin
+timestamp: Thu 2006-07-13 01:52:23 +0000
+message:
+  Use the global qApp pointer rather than QApplication::instance()
+------------------------------------------------------------
+revno: 182
+committer: John Millikin
+timestamp: Thu 2006-07-13 01:51:58 +0000
+message:
+  Correctly update the table name when it is edited
+------------------------------------------------------------
+revno: 181
+committer: John Millikin
+timestamp: Thu 2006-07-13 01:13:11 +0000
+message:
+  Added ability to add or remove columns
+------------------------------------------------------------
+revno: 180
+committer: John Millikin
+timestamp: Wed 2006-07-12 22:12:23 +0000
+message:
+  Use 0 and 1 to change the index state, until checkboxes work
+------------------------------------------------------------
+revno: 179
+committer: John Millikin
+timestamp: Wed 2006-07-12 22:07:11 +0000
+message:
+  Show a progress dialog while extracting
+------------------------------------------------------------
+revno: 178
+committer: John Millikin
+timestamp: Wed 2006-07-12 22:00:52 +0000
+message:
+  Enabled limiting the number of rows extracted
+------------------------------------------------------------
+revno: 177
+committer: John Millikin
+timestamp: Wed 2006-07-12 21:49:37 +0000
+message:
+  Clamp row count on both fixed and variable-width columns
+------------------------------------------------------------
+revno: 176
+committer: John Millikin
+timestamp: Wed 2006-07-12 21:48:28 +0000
+message:
+  Fixed date extraction
+------------------------------------------------------------
+revno: 175
+committer: John Millikin
+timestamp: Wed 2006-07-12 21:18:19 +0000
+message:
+  Added code to extract to an external window
+------------------------------------------------------------
+revno: 174
+committer: John Millikin
+timestamp: Wed 2006-07-12 20:11:42 +0000
+message:
+  Temporary editing of index columns with a spinbox
+------------------------------------------------------------
+revno: 173
+committer: John Millikin
+timestamp: Wed 2006-07-12 05:45:54 +0000
+message:
+  Clear existing tables before loading from a file
+------------------------------------------------------------
+revno: 172
+committer: John Millikin
+timestamp: Wed 2006-07-12 05:44:53 +0000
+message:
+  Start with a default, empty table
+------------------------------------------------------------
+revno: 171
+committer: John Millikin
+timestamp: Wed 2006-07-12 05:38:38 +0000
+message:
+  Immediately refresh the table's name in the left column when it is edited
+------------------------------------------------------------
+revno: 170
+committer: John Millikin
+timestamp: Wed 2006-07-12 05:35:48 +0000
+message:
+  Enabled editing of some data
+------------------------------------------------------------
+revno: 169
+committer: John Millikin
+timestamp: Wed 2006-07-12 05:03:13 +0000
+message:
+  Disallow editing the length of fixed-length columns
+------------------------------------------------------------
+revno: 168
+committer: John Millikin
+timestamp: Wed 2006-07-12 04:45:48 +0000
+message:
+  Added a special model for modifying tables
+------------------------------------------------------------
+revno: 167
+committer: John Millikin
+timestamp: Wed 2006-07-12 04:45:24 +0000
+message:
+  Changed lists to vectors, for easier random access
+------------------------------------------------------------
+revno: 166
+committer: John Millikin
+timestamp: Wed 2006-07-12 02:07:12 +0000
+message:
+  Fix column rendering on OS X
+------------------------------------------------------------
+revno: 165
+committer: John Millikin
+timestamp: Wed 2006-07-12 01:44:45 +0000
+message:
+  Use checkboxes for toggling indexability in the column list
+------------------------------------------------------------
+revno: 164
+committer: John Millikin
+timestamp: Tue 2006-07-11 22:54:47 +0000
+message:
+  Moved all Qt-related stuff into a subdirectory
+------------------------------------------------------------
+revno: 163
+committer: John Millikin
+timestamp: Tue 2006-07-11 22:53:53 +0000
+message:
+  Moved all Qt-related stuff into a subdirectory
+------------------------------------------------------------
+revno: 162
+committer: John Millikin
+timestamp: Tue 2006-07-11 22:53:02 +0000
+message:
+  Moved all Qt-related stuff into a subdirectory
+------------------------------------------------------------
+revno: 161
+committer: John Millikin
+timestamp: Tue 2006-07-11 22:51:41 +0000
+message:
+  Moved all Qt-related stuff into a subdirectory
+------------------------------------------------------------
+revno: 160
+committer: John Millikin
+timestamp: Tue 2006-07-11 22:37:42 +0000
+message:
+  Moved Qt-related code to a subdirectory
+------------------------------------------------------------
+revno: 159
+committer: John Millikin
+timestamp: Tue 2006-07-11 22:36:41 +0000
+message:
+  Added code for the data extraction dialog
+------------------------------------------------------------
+revno: 158
+committer: John Millikin
+timestamp: Tue 2006-07-11 22:36:13 +0000
+message:
+  Length defaults to 0
+------------------------------------------------------------
+revno: 157
+committer: John Millikin
+timestamp: Tue 2006-07-11 20:57:27 +0000
+message:
+  Changed columnList to a QTreeView
+------------------------------------------------------------
+revno: 156
+committer: John Millikin
+timestamp: Tue 2006-07-11 18:57:45 +0000
+message:
+  Added Data Extraction dialog
+------------------------------------------------------------
+revno: 155
+committer: John Millikin
+timestamp: Tue 2006-07-11 18:41:17 +0000
+message:
+  Cleared unneeded warning about the on_current_table_changed slot, and ensure that saved file names end in .xml
+------------------------------------------------------------
+revno: 154
+committer: John Millikin
+timestamp: Tue 2006-07-11 18:31:47 +0000
+message:
+  Fixed cancelation of save dialogs, and created code to quit from the menu
+------------------------------------------------------------
+revno: 153
+committer: John Millikin
+timestamp: Tue 2006-07-11 18:24:36 +0000
+message:
+  Added newline at EOF
+------------------------------------------------------------
+revno: 152
+committer: John Millikin
+timestamp: Tue 2006-07-11 18:23:34 +0000
+message:
+  Allow the window contents to resize
+------------------------------------------------------------
+revno: 151
+committer: John Millikin
+timestamp: Tue 2006-07-11 18:17:56 +0000
+message:
+  Added menu to quit Driller
+------------------------------------------------------------
+revno: 150
+committer: John Millikin
+timestamp: Tue 2006-07-11 17:32:45 +0000
+message:
+  Fix freeing of non-malloced memory
+------------------------------------------------------------
+revno: 149
+committer: John Millikin
+timestamp: Tue 2006-07-11 17:13:44 +0000
+message:
+  Add the table name to error reports where possible
+------------------------------------------------------------
+revno: 148
+committer: John Millikin
+timestamp: Tue 2006-07-11 17:13:26 +0000
+message:
+  Added missing row_length to the notes table
+------------------------------------------------------------
+revno: 147
+committer: John Millikin
+timestamp: Tue 2006-07-11 07:41:31 +0000
+message:
+  Better handling of invalid files
+------------------------------------------------------------
+revno: 146
+committer: John Millikin
+timestamp: Tue 2006-07-11 06:06:37 +0000
+message:
+  Unprotect error_message to display errors in GUIs easier
+------------------------------------------------------------
+revno: 145
+committer: John Millikin
+timestamp: Tue 2006-07-11 06:01:54 +0000
+message:
+  Disable the table editors if no table is available
+------------------------------------------------------------
+revno: 144
+committer: John Millikin
+timestamp: Tue 2006-07-11 05:48:30 +0000
+message:
+  No need to autoload the file any more
+------------------------------------------------------------
+revno: 143
+committer: John Millikin
+timestamp: Tue 2006-07-11 05:46:39 +0000
+message:
+  One step closer to a complete Qt GUI. New version includes Open, Save, and Save As support
+------------------------------------------------------------
+revno: 142
+committer: John Millikin
+timestamp: Tue 2006-07-11 05:44:52 +0000
+message:
+  Fixed small glitch with outputting a database description file
+------------------------------------------------------------
+revno: 141
+committer: John Millikin
+timestamp: Mon 2006-07-10 03:07:13 +0000
+message:
+  Added a load() function to Database
+------------------------------------------------------------
+revno: 140
+committer: John Millikin
+timestamp: Mon 2006-07-10 03:04:33 +0000
+message:
+  Unprotect enumeration cases
+------------------------------------------------------------
+revno: 139
+committer: John Millikin
+timestamp: Mon 2006-07-10 02:36:57 +0000
+message:
+  type is an enum
+------------------------------------------------------------
+revno: 138
+committer: John Millikin
+timestamp: Mon 2006-07-10 02:35:42 +0000
+message:
+  Doctor -> Dentist
+------------------------------------------------------------
+revno: 137
+committer: John Millikin
+timestamp: Mon 2006-07-10 02:35:11 +0000
+message:
+  Added Rsc_dat
+------------------------------------------------------------
+revno: 136
+committer: John Millikin
+timestamp: Mon 2006-07-10 02:28:37 +0000
+message:
+  Started re-working the Qt GUI
+------------------------------------------------------------
+revno: 135
+committer: John Millikin
+timestamp: Mon 2006-07-10 02:28:16 +0000
+message:
+  Stylistic
+------------------------------------------------------------
+revno: 134
+committer: John Millikin
+timestamp: Wed 2006-06-28 21:30:05 +0000
+message:
+  Removed unneeded blob from the Notes table, fixed the string offset, and added some documentation
+------------------------------------------------------------
+revno: 133
+committer: John Millikin
+timestamp: Wed 2006-06-28 20:33:54 +0000
+message:
+  Started work adding variable-length string extraction
+------------------------------------------------------------
+revno: 132
+committer: John Millikin
+timestamp: Fri 2006-06-23 23:10:32 +0000
+message:
+  Added easier path modification
+------------------------------------------------------------
+revno: 131
+committer: John Millikin
+timestamp: Fri 2006-06-23 23:10:06 +0000
+message:
+  Return values when needed
+------------------------------------------------------------
+revno: 130
+committer: John Millikin
+timestamp: Fri 2006-06-23 23:09:43 +0000
+message:
+  Added empty destructors
+------------------------------------------------------------
+revno: 129
+committer: John Millikin
+timestamp: Thu 2006-06-22 00:55:43 +0000
+message:
+  Fixed capitalization of the notes file
+------------------------------------------------------------
+revno: 128
+committer: John Millikin
+timestamp: Thu 2006-06-22 00:48:12 +0000
+message:
+  (no message)
+------------------------------------------------------------
+revno: 127
+committer: John Millikin
+timestamp: Thu 2006-06-22 00:46:35 +0000
+message:
+  (no message)
+------------------------------------------------------------
+revno: 126
+committer: John Millikin
+timestamp: Thu 2006-06-22 00:36:21 +0000
+message:
+  Changed around where the data path is saved
+------------------------------------------------------------
+revno: 125
+committer: John Millikin
+timestamp: Thu 2006-06-22 00:16:44 +0000
+message:
+  Added index attribute to Column's constructor, fixed a few memory leaks, and returned the data extraction result
+------------------------------------------------------------
+revno: 124
+committer: John Millikin
+timestamp: Thu 2006-06-22 00:15:44 +0000
+message:
+  Added index attribute to Column's constructor
+------------------------------------------------------------
+revno: 123
+committer: John Millikin
+timestamp: Thu 2006-06-22 00:15:17 +0000
+message:
+  (no message)
+------------------------------------------------------------
+revno: 122
+committer: John Millikin
+timestamp: Wed 2006-06-21 03:06:04 +0000
+message:
+  Fixed mmap use, and a few memory problems
+------------------------------------------------------------
+revno: 121
+committer: John Millikin
+timestamp: Wed 2006-06-21 03:05:31 +0000
+message:
+  Added newlines to the end of each file
+------------------------------------------------------------
+revno: 120
+committer: John Millikin
+timestamp: Wed 2006-06-21 02:34:48 +0000
+message:
+  Some code cleanups, and addition of a few macros to count Macs as UNIX-based systems
+------------------------------------------------------------
+revno: 119
+committer: John Millikin
+timestamp: Wed 2006-06-21 02:33:31 +0000
+message:
+  Added FileSink test
+------------------------------------------------------------
+revno: 118
+committer: John Millikin
+timestamp: Wed 2006-06-21 02:33:07 +0000
+message:
+  Got output of a single table working
+------------------------------------------------------------
+revno: 117
+committer: John Millikin
+timestamp: Wed 2006-06-21 02:32:02 +0000
+message:
+  Protected extraction of data from a single table
+------------------------------------------------------------
+revno: 116
+committer: John Millikin
+timestamp: Wed 2006-06-21 01:51:50 +0000
+message:
+  Changed operator() to operator[]
+------------------------------------------------------------
+revno: 115
+committer: John Millikin
+timestamp: Wed 2006-06-21 01:49:30 +0000
+message:
+  Allowed other classes to  read row and column counts from the resultset
+------------------------------------------------------------
+revno: 114
+committer: John Millikin
+timestamp: Sat 2006-06-17 07:28:15 +0000
+message:
+  Implemented variable-length string (probably Dentrix specific)
+------------------------------------------------------------
+revno: 113
+committer: John Millikin
+timestamp: Sat 2006-06-17 07:20:12 +0000
+message:
+  Correct NULL-termination of blobs when buffer_size > 2 * length
+------------------------------------------------------------
+revno: 112
+committer: John Millikin
+timestamp: Sat 2006-06-17 07:18:46 +0000
+message:
+  Fixed compiling when uint8 != char
+------------------------------------------------------------
+revno: 111
+committer: John Millikin
+timestamp: Sat 2006-06-17 07:17:47 +0000
+message:
+  Implemented the COLUMN_BLOB type
+------------------------------------------------------------
+revno: 110
+committer: John Millikin
+timestamp: Sat 2006-06-17 07:11:56 +0000
+message:
+  Fixed string extraction for cases where the buffer is large enough to contain the string already
+------------------------------------------------------------
+revno: 109
+committer: John Millikin
+timestamp: Sat 2006-06-17 07:09:31 +0000
+message:
+  Made buffer dynamically resizable, and implemented COLUMN_STRING
+------------------------------------------------------------
+revno: 108
+committer: John Millikin
+timestamp: Sat 2006-06-17 06:59:35 +0000
+message:
+  Implemented the currency type
+------------------------------------------------------------
+revno: 107
+committer: John Millikin
+timestamp: Sat 2006-06-17 06:45:47 +0000
+message:
+  Added date extraction
+------------------------------------------------------------
+revno: 106
+committer: John Millikin
+timestamp: Sat 2006-06-17 05:43:48 +0000
+message:
+  Using properly const functions for data extraction
+------------------------------------------------------------
+revno: 105
+committer: John Millikin
+timestamp: Fri 2006-06-16 09:49:55 +0000
+message:
+  Added FileSink class
+------------------------------------------------------------
+revno: 104
+committer: John Millikin
+timestamp: Fri 2006-06-16 09:49:32 +0000
+message:
+  Added typdef guards
+------------------------------------------------------------
+revno: 103
+committer: John Millikin
+timestamp: Fri 2006-06-16 09:26:06 +0000
+message:
+  (no message)
+------------------------------------------------------------
+revno: 102
+committer: John Millikin
+timestamp: Fri 2006-06-16 09:23:32 +0000
+message:
+  (no message)
+------------------------------------------------------------
+revno: 101
+committer: John Millikin
+timestamp: Fri 2006-06-16 09:06:14 +0000
+message:
+  Renamed datasink.{h,cpp} to data_sink.{h,cpp}
+------------------------------------------------------------
+revno: 100
+committer: John Millikin
+timestamp: Fri 2006-06-16 09:04:08 +0000
+message:
+  (no message)
+------------------------------------------------------------
+revno: 99
+committer: John Millikin
+timestamp: Fri 2006-06-16 00:55:20 +0000
+message:
+  (no message)
+------------------------------------------------------------
+revno: 98
+committer: John Millikin
+timestamp: Fri 2006-06-16 00:12:51 +0000
+message:
+  (no message)
+------------------------------------------------------------
+revno: 97
+committer: John Millikin
+timestamp: Thu 2006-06-15 23:13:04 +0000
+message:
+  (no message)
+------------------------------------------------------------
+revno: 96
+committer: John Millikin
+timestamp: Wed 2006-06-14 23:21:36 +0000
+message:
+  Added datasink.cpp
+------------------------------------------------------------
+revno: 95
+committer: John Millikin
+timestamp: Wed 2006-06-14 23:21:22 +0000
+message:
+  Cleaned up
+------------------------------------------------------------
+revno: 94
+committer: John Millikin
+timestamp: Wed 2006-06-14 23:20:15 +0000
+message:
+  Removed some files not needed for building
+------------------------------------------------------------
+revno: 93
+committer: John Millikin
+timestamp: Wed 2006-06-14 23:14:59 +0000
+message:
+  Added scaffolds for the DataSink class
+------------------------------------------------------------
+revno: 92
+committer: John Millikin
+timestamp: Wed 2006-06-14 23:10:19 +0000
+message:
+  Added outputting the database to an XML file
+------------------------------------------------------------
+revno: 91
+committer: John Millikin
+timestamp: Wed 2006-06-14 23:10:00 +0000
+message:
+  More descriptive name
+------------------------------------------------------------
+revno: 90
+committer: John Millikin
+timestamp: Mon 2006-06-12 04:52:34 +0000
+message:
+  Moved to libXML for XML parsing
+------------------------------------------------------------
+revno: 89
+committer: John Millikin
+timestamp: Mon 2006-06-12 04:52:19 +0000
+message:
+  Made some column names better
+------------------------------------------------------------
+revno: 88
+committer: John Millikin
+timestamp: Sun 2006-06-11 01:23:28 +0000
+message:
+  Moved columns to the same order as that used in databasr.h
+------------------------------------------------------------
+revno: 87
+committer: John Millikin
+timestamp: Sun 2006-06-11 01:13:45 +0000
+message:
+  Massive code re-writes
+------------------------------------------------------------
+revno: 86
+committer: John Millikin
+timestamp: Sun 2006-06-11 01:13:34 +0000
+message:
+  Changed from tabs to spaces
+------------------------------------------------------------
+revno: 85
+committer: John Millikin
+timestamp: Sat 2006-06-10 08:10:15 +0000
+message:
+  Changed to enum type
+------------------------------------------------------------
+revno: 84
+committer: John Millikin
+timestamp: Sat 2006-06-10 08:10:05 +0000
+message:
+  Added enum type
+------------------------------------------------------------
+revno: 83
+committer: John Millikin
+timestamp: Sat 2006-06-10 07:29:36 +0000
+message:
+  Moved everything into one file
+------------------------------------------------------------
+revno: 82
+committer: John Millikin
+timestamp: Tue 2006-06-06 06:34:26 +0000
+message:
+  Cleaned up the GUI construction code a bit
+------------------------------------------------------------
+revno: 81
+committer: John Millikin
+timestamp: Tue 2006-06-06 06:15:51 +0000
+message:
+  Fixed some warnings for Visual Studio
+------------------------------------------------------------
+revno: 80
+committer: John Millikin
+timestamp: Tue 2006-06-06 06:13:07 +0000
+message:
+  Added Visual Studio solution
+------------------------------------------------------------
+revno: 79
+committer: John Millikin
+timestamp: Tue 2006-06-06 06:12:39 +0000
+message:
+  Updated to build with Visual Studio
+------------------------------------------------------------
+revno: 78
+committer: John Millikin
+timestamp: Thu 2006-04-06 05:12:59 +0000
+message:
+  Added index to proc_log.PatientID
+------------------------------------------------------------
+revno: 77
+committer: John Millikin
+timestamp: Sat 2006-03-18 23:54:12 +0000
+message:
+  (no message)
+------------------------------------------------------------
+revno: 76
+committer: John Millikin
+timestamp: Sat 2006-03-18 23:15:54 +0000
+message:
+  (no message)
+------------------------------------------------------------
+revno: 75
+committer: John Millikin
+timestamp: Sat 2006-03-18 23:12:31 +0000
+message:
+  (no message)
+------------------------------------------------------------
+revno: 74
+committer: John Millikin
+timestamp: Sat 2006-03-18 22:07:29 +0000
+message:
+  Make driller easier to build on systems without autoconf
+------------------------------------------------------------
+revno: 73
+committer: John Millikin
+timestamp: Sat 2006-02-18 21:32:53 +0000
+message:
+  (no message)
+------------------------------------------------------------
+revno: 72
+committer: John Millikin
+timestamp: Tue 2006-02-07 21:38:35 +0000
+message:
+  Added ability to find default MySQL values
+------------------------------------------------------------
+revno: 71
+committer: John Millikin
+timestamp: Tue 2006-02-07 21:26:46 +0000
+message:
+  Fixed error output for the CLI
+------------------------------------------------------------
+revno: 70
+committer: John Millikin
+timestamp: Tue 2006-02-07 06:57:44 +0000
+message:
+  Fixed compilation error without an enabled GUI
+------------------------------------------------------------
+revno: 69
+committer: John Millikin
+timestamp: Tue 2006-02-07 06:55:57 +0000
+message:
+  (no message)
+------------------------------------------------------------
+revno: 68
+committer: John Millikin
+timestamp: Mon 2006-02-06 03:11:09 +0000
+message:
+  (no message)
+------------------------------------------------------------
+revno: 67
+committer: John Millikin
+timestamp: Mon 2006-02-06 01:13:46 +0000
+message:
+  Added better exception handling
+------------------------------------------------------------
+revno: 66
+committer: John Millikin
+timestamp: Sat 2006-01-28 19:29:14 +0000
+message:
+  Added more flags to control debugging and optimization
+------------------------------------------------------------
+revno: 65
+committer: John Millikin
+timestamp: Sat 2006-01-28 19:28:55 +0000
+message:
+  Inlined getInt32, un-inlined btos and ltos
+------------------------------------------------------------
+revno: 64
+committer: John Millikin
+timestamp: Sat 2006-01-21 05:47:48 +0000
+message:
+  (no message)
+------------------------------------------------------------
+revno: 63
+committer: John Millikin
+timestamp: Fri 2006-01-13 00:53:50 +0000
+message:
+  Removed invalid "padding" type from LCM_Case.xml
+------------------------------------------------------------
+revno: 62
+committer: John Millikin
+timestamp: Mon 2006-01-09 03:33:48 +0000
+message:
+  Added docs, moved to more C++-like code, stricter CFLAGS
+------------------------------------------------------------
+revno: 61
+committer: John Millikin
+timestamp: Sat 2006-01-07 06:47:06 +0000
+message:
+  Fixed gtk warnings about absolute paths, and compiler warnings about virtual destructors
+------------------------------------------------------------
+revno: 60
+committer: John Millikin
+timestamp: Sat 2005-12-24 04:12:45 +0000
+message:
+  (no message)
+------------------------------------------------------------
+revno: 59
+committer: John Millikin
+timestamp: Mon 2005-11-28 09:10:31 +0000
+message:
+  Added optimizations to non-debug build
+------------------------------------------------------------
+revno: 58
+committer: John Millikin
+timestamp: Mon 2005-11-28 09:03:42 +0000
+message:
+  Reverted changes, going to use environment variables for library paths (LD_RUN_PATH?)
+------------------------------------------------------------
+revno: 57
+committer: John Millikin
+timestamp: Mon 2005-11-28 08:49:03 +0000
+message:
+  (no message)
+------------------------------------------------------------
+revno: 56
+committer: John Millikin
+timestamp: Mon 2005-11-28 08:45:30 +0000
+message:
+  (no message)
+------------------------------------------------------------
+revno: 55
+committer: John Millikin
+timestamp: Mon 2005-11-28 08:28:58 +0000
+message:
+  (no message)
+------------------------------------------------------------
+revno: 54
+committer: John Millikin
+timestamp: Mon 2005-11-28 08:25:53 +0000
+message:
+  Compile error
+------------------------------------------------------------
+revno: 53
+committer: John Millikin
+timestamp: Mon 2005-11-28 08:23:54 +0000
+message:
+  Same as before
+------------------------------------------------------------
+revno: 52
+committer: John Millikin
+timestamp: Mon 2005-11-28 08:22:42 +0000
+message:
+  Enabled correct runtime lib paths (maybe?)
+------------------------------------------------------------
+revno: 51
+committer: John Millikin
+timestamp: Mon 2005-11-28 08:14:55 +0000
+message:
+  Fixed compilation for Mac OSX (gcc-4?) (PPC?)
+------------------------------------------------------------
+revno: 50
+committer: John Millikin
+timestamp: Mon 2005-11-21 07:17:17 +0000
+message:
+  Removed extra debugging printfs()
+------------------------------------------------------------
+revno: 49
+committer: John Millikin
+timestamp: Mon 2005-11-21 07:15:13 +0000
+message:
+  Fixed relocation support
+------------------------------------------------------------
+revno: 48
+committer: John Millikin
+timestamp: Mon 2005-11-21 07:03:15 +0000
+message:
+  Added relocation support
+------------------------------------------------------------
+revno: 47
+committer: John Millikin
+timestamp: Mon 2005-11-21 03:01:50 +0000
+message:
+  Added LCM tables
+------------------------------------------------------------
+revno: 46
+committer: John Millikin
+timestamp: Thu 2005-11-17 04:10:35 +0000
+message:
+  Misc bug fixes, debug flags in configure
+------------------------------------------------------------
+revno: 45
+committer: John Millikin
+timestamp: Sat 2005-11-12 04:49:46 +0000
+message:
+  Bumped to 0.6
+------------------------------------------------------------
+revno: 44
+committer: John Millikin
+timestamp: Sat 2005-11-12 04:48:10 +0000
+message:
+  Misc bugfixes, most memleaks fixed, QT GUI added
+------------------------------------------------------------
+revno: 43
+committer: John Millikin
+timestamp: Wed 2005-11-09 00:24:48 +0000
+message:
+  Moved GTK entry editing into the treeview
+------------------------------------------------------------
+revno: 42
+committer: John Millikin
+timestamp: Sun 2005-11-06 18:17:07 +0000
+message:
+  Allowed make install to work correctly
+------------------------------------------------------------
+revno: 41
+committer: John Millikin
+timestamp: Sat 2005-11-05 08:22:49 +0000
+message:
+  Fixed MySQL on Linux
+------------------------------------------------------------
+revno: 40
+committer: John Millikin
+timestamp: Sat 2005-11-05 08:10:21 +0000
+message:
+  Fixed MySQL on Windows
+------------------------------------------------------------
+revno: 39
+committer: John Millikin
+timestamp: Sat 2005-11-05 04:15:43 +0000
+message:
+  Added config.guess and config.sub for OS detection
+------------------------------------------------------------
+revno: 38
+committer: John Millikin
+timestamp: Sat 2005-11-05 04:12:54 +0000
+message:
+  GUI open data directory dialog starts at default data directory
+------------------------------------------------------------
+revno: 37
+committer: John Millikin
+timestamp: Sat 2005-11-05 04:08:05 +0000
+message:
+  Finished porting to Windows
+------------------------------------------------------------
+revno: 36
+committer: John Millikin
+timestamp: Sat 2005-11-05 03:14:36 +0000
+message:
+  Removed console from Windows compiling
+------------------------------------------------------------
+revno: 35
+committer: John Millikin
+timestamp: Sat 2005-11-05 01:55:55 +0000
+message:
+  Fixed a window-specific bug
+------------------------------------------------------------
+revno: 34
+committer: John Millikin
+timestamp: Sat 2005-11-05 00:02:19 +0000
+message:
+  Moved ifdef -> if in gtk-gui.cpp
+------------------------------------------------------------
+revno: 33
+committer: John Millikin
+timestamp: Fri 2005-11-04 23:55:41 +0000
+message:
+  Added some files for compatability
+------------------------------------------------------------
+revno: 32
+committer: John Millikin
+timestamp: Fri 2005-11-04 22:55:08 +0000
+message:
+  Added mkinstalldirs script
+------------------------------------------------------------
+revno: 31
+committer: John Millikin
+timestamp: Fri 2005-11-04 21:57:46 +0000
+message:
+  Added commandline parsing
+------------------------------------------------------------
+revno: 30
+committer: John Millikin
+timestamp: Fri 2005-11-04 00:00:53 +0000
+message:
+  Removed --enable-gui flag (again)
+------------------------------------------------------------
+revno: 29
+committer: John Millikin
+timestamp: Thu 2005-11-03 23:54:15 +0000
+message:
+  Removed --enable-gui configure switch
+------------------------------------------------------------
+revno: 28
+committer: John Millikin
+timestamp: Thu 2005-11-03 21:40:37 +0000
+message:
+  Fixed some memory leaks
+------------------------------------------------------------
+revno: 27
+committer: John Millikin
+timestamp: Tue 2005-11-01 23:03:28 +0000
+message:
+  Added autogen.sh
+------------------------------------------------------------
+revno: 26
+committer: John Millikin
+timestamp: Tue 2005-11-01 22:38:21 +0000
+message:
+  Converted to autotools
+------------------------------------------------------------
+revno: 25
+committer: John Millikin
+timestamp: Fri 2005-10-28 22:47:19 +0000
+message:
+  Moved to C++, got rid of Glade, split off DrillerGUI
+------------------------------------------------------------
+revno: 24
+committer: John Millikin
+timestamp: Sun 2005-10-16 23:39:30 +0000
+message:
+  Added ClaimID to proc_log, fixed password bug with Driller
+------------------------------------------------------------
+revno: 23
+committer: John Millikin
+timestamp: Sun 2005-10-16 22:30:00 +0000
+message:
+  Added IsNotInsurance field to proc_log.xml
+------------------------------------------------------------
+revno: 22
+committer: John Millikin
+timestamp: Wed 2005-10-12 00:20:23 +0000
+message:
+  Changed from fixed directory separators to G_DIR_SEPARATOR
+------------------------------------------------------------
+revno: 21
+committer: John Millikin
+timestamp: Fri 2005-10-07 02:40:05 +0000
+message:
+  Added makefile
+------------------------------------------------------------
+revno: 20
+committer: John Millikin
+timestamp: Tue 2005-10-04 05:48:00 +0000
+message:
+  Fixed compilation errors on Windows
+------------------------------------------------------------
+revno: 19
+committer: John Millikin
+timestamp: Tue 2005-09-13 20:33:34 +0000
+message:
+  Fixed bugs compiling without GUI
+------------------------------------------------------------
+revno: 18
+committer: John Millikin
+timestamp: Tue 2005-09-13 20:21:07 +0000
+message:
+  Release 0.2
+------------------------------------------------------------
+revno: 17
+committer: John Millikin
+timestamp: Tue 2005-09-13 01:01:12 +0000
+message:
+  Way faster
+------------------------------------------------------------
+revno: 16
+committer: John Millikin
+timestamp: Sat 2005-09-10 01:00:31 +0000
+message:
+  Using g_debug rather than printf
+------------------------------------------------------------
+revno: 15
+committer: John Millikin
+timestamp: Wed 2005-09-07 22:26:39 +0000
+message:
+  Added refacts and referral
+------------------------------------------------------------
+revno: 14
+committer: John Millikin
+timestamp: Wed 2005-09-07 01:16:22 +0000
+message:
+  Upgraded to CDT 3.0
+------------------------------------------------------------
+revno: 13
+committer: John Millikin
+timestamp: Mon 2005-09-05 19:37:52 +0000
+message:
+  Added Eclipse project files
+------------------------------------------------------------
+revno: 12
+committer: John Millikin
+timestamp: Wed 2005-08-24 13:37:39 +0000
+message:
+  Added license information
+------------------------------------------------------------
+revno: 11
+committer: John Millikin
+timestamp: Wed 2005-08-24 12:20:36 +0000
+message:
+  Done for now, release 0.1
+------------------------------------------------------------
+revno: 10
+committer: John Millikin
+timestamp: Mon 2005-08-22 17:41:50 +0000
+message:
+  Started work on threading
+------------------------------------------------------------
+revno: 9
+committer: John Millikin
+timestamp: Fri 2005-08-19 16:09:55 +0000
+message:
+  Got rid of dentrixconverter, more work on separating MySQL / the GUI / the core code
+------------------------------------------------------------
+revno: 8
+committer: John Millikin
+timestamp: Mon 2005-08-08 15:32:35 +0000
+message:
+  Finished for now
+------------------------------------------------------------
+revno: 7
+committer: John Millikin
+timestamp: Mon 2005-08-01 23:18:43 +0000
+message:
+  Starting work on seperating MySQL and GTK+ logic from extraction
+------------------------------------------------------------
+revno: 6
+committer: John Millikin
+timestamp: Fri 2005-07-22 23:14:15 +0000
+message:
+  More work on MySQL stuff
+------------------------------------------------------------
+revno: 5
+committer: John Millikin
+timestamp: Mon 2005-07-18 22:32:08 +0000
+message:
+  Adding a window to display values without a txtfile or MySQL
+------------------------------------------------------------
+revno: 4
+committer: John Millikin
+timestamp: Mon 2005-07-18 15:20:24 +0000
+message:
+  More work on MySQL extraction
+------------------------------------------------------------
+revno: 3
+committer: John Millikin
+timestamp: Fri 2005-07-15 15:36:25 +0000
+message:
+  Some more misc work
+------------------------------------------------------------
+revno: 2
+committer: John Millikin
+timestamp: Wed 2005-07-13 00:22:23 +0000
+message:
+  Initial import
+------------------------------------------------------------
+revno: 1
+committer: John Millikin
+timestamp: Wed 2005-07-13 00:19:32 +0000
+message:
+  (no message)

@@ -1,0 +1,15 @@
+Source: driller
+Maintainer: John Millikin <jmillikin@gmail.com>
+Section: utils
+Priority: optional
+Standards-Version: 3.6.2
+Build-Depends: autotools-dev, libmysqlclient-dev, pkg-config, libxml2-dev
+
+Package: driller
+Architecture: any
+Depends: ${shlibs:Depends}
+Description: Extracts data from binary files
+ Driller extracts data from binary files, and sends it to many outputs
+ (including a temporary window, flat files, or relational database).
+ The details of what data to extract are saved in XML-based configuration
+ files.

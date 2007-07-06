@@ -21,7 +21,7 @@
 #ifndef DRILLER_DATA_SINK_H
 #define DRILLER_DATA_SINK_H
 
-#include "database.h"
+#include "database/database.h"
 
 namespace Driller {
 
@@ -33,15 +33,27 @@ namespace Driller {
 */
 class DataSink {
 public:
-  /**
-    Default constructor
-  */
+  /** Default constructor, does nothing */
   DataSink();
 
-  /** Empty destructor */
-  virtual ~DataSink(){}
+  /** Default destructor, does nothing */
+  virtual ~DataSink();
 
-  virtual DataSink& operator<<(const Database& db) = 0;
+  /**
+    Extract data from a table to wherever this data sink is directed to
+
+    @param table The table to extract
+  */
+  virtual void output_table(
+    const Table& table,
+    const unsigned int row_limit = 0) = 0;
+
+  /**
+    Output an entire database to this sink
+
+    @param database The database to extract from
+  */
+  void output_database(const Database& db);
 };
 
 } // namespace

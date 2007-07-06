@@ -22,7 +22,16 @@
 
 namespace Driller {
 
-DataSink::DataSink(){
+DataSink::DataSink(){}
+
+DataSink::~DataSink(){}
+
+void DataSink::output_database(const Database& db) {
+  std::vector<Table> tables = db.get_tables();
+  std::vector<Table>::const_iterator table;
+  for (table = tables.begin(); table != tables.end(); table++){
+    output_table(*table);
+  }
 }
 
 } // namespace

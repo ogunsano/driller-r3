@@ -20,14 +20,12 @@
 
 #include "extracted_data_window.h"
 #include <QTreeView>
-#include <QProgressDialog>
 #include "result_model.h"
 
 namespace Driller {
 
-ExtractedDataWindow::ExtractedDataWindow(QWidget* parent,
-  const unsigned int _row_limit):
-  QMainWindow(parent), row_limit(_row_limit){
+ExtractedDataWindow::ExtractedDataWindow(QWidget* parent):
+  QMainWindow(parent) {
 
   ui.setupUi(this);
 
@@ -48,38 +46,9 @@ ExtractedDataWindow::~ExtractedDataWindow(){
   }
 }
 
-ExtractedDataWindow& ExtractedDataWindow::operator<<(const Database& db){
-  const unsigned int table_count = db.table_count();
+void ExtractedDataWindow::output_table(const Table& table,
+  const unsigned int row_limit) throw (Errors::FileReadError) {
 
-  if (table_count < 1){
-    return (*this);
-  }
-
-  QProgressDialog progress("Extracting data", "Cancel", 0, table_count, this);
-
-  unsigned int ii = 0;
-  std::vector<Table> tables = db.get_tables();
-  std::vector<Table>::const_iterator table;
-  for (table = tables.begin(); table != tables.end(); table++){
-
-    if (progress.wasCanceled())
-      break;
-
-    (*this) << (*table);
-    progress.setValue(++ii);
-    QCoreApplication::processEvents();
-  }
-
-  // Select the first table
-  ui.tableView->selectionModel()->select(table_list.index(0,0),
-    QItemSelectionModel::Rows | QItemSelectionModel::SelectCurrent);
-
-  ui.resultView->setModel(results.at(0));
-
-  return (*this);
-}
-
-ExtractedDataWindow& ExtractedDataWindow::operator<<(const Table& table){
   // Extract the data
   const ResultSet* result = table.extract_data(row_limit);
 
@@ -91,7 +60,15 @@ ExtractedDataWindow& ExtractedDataWindow::operator<<(const Table& table){
   table_list.setData(table_list.index(table_list.rowCount()-1, 0),
     table.get_name().c_str());
 
-  return (*this);
+  // If first table to be extracted to this window, select it
+  if (results.size() == 1) {
+    ui.tableView->selectionModel()->select(table_list.index(0,0),
+      QItemSelectionModel::Rows | QItemSelectionModel::SelectCurrent);
+    ui.resultView->setModel(results.at(0));
+  }
+
+  // Show the window
+  show();
 }
 
 void ExtractedDataWindow::on_closeButton_pressed(){

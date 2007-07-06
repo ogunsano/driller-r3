@@ -21,15 +21,17 @@
 #ifndef DRILLER_DATABASE_H
 #define DRILLER_DATABASE_H
 
+// Disable warnings about throw specifications in VS 2003
+#ifdef _MSC_VER
+#pragma warning(disable: 4290)
+#endif
+
 #include <vector>
 #include <string>
-#include "errors.h"
-#include "database/table.h"
+#include "../errors.h"
+#include "table.h"
 
 namespace Driller {
-
-/** Perform one-time libXML initialization */
-void init_libxml() throw ();
 
 /**
   Contains many tables

@@ -282,9 +282,11 @@ bool TableModel::setData(const QModelIndex& idx, const QVariant& value, int){
           code in QtGUI
         */
         catch (const Errors::BaseError& e){
-          QWidget* active_window = QApplication::activeWindow();
+          MainWindow* active_window = qobject_cast<MainWindow*>(
+            QApplication::activeWindow());
+
           if (active_window){
-            dynamic_cast<MainWindow*>(active_window)->show_error(e);
+            active_window->show_error(e);
           }
         }
         break;
@@ -308,7 +310,7 @@ QModelIndex TableModel::index (int row, int column,
     IndexData data;
     data.type = INDEX_COLUMN;
     data.parent_index = row;
-    return createIndex(row, column, data.to_qint64());
+    return createIndex(row, column, (void*)data.to_qint64());
   }
 
   // Possibly getting the index of an enumeration
@@ -319,7 +321,7 @@ QModelIndex TableModel::index (int row, int column,
       IndexData data;
       data.type = INDEX_ENUM_CASE;
       data.parent_index = parent.row();
-      return createIndex(row, column, data.to_qint64());
+      return createIndex(row, column, (void*)data.to_qint64());
     }
   }
 
@@ -337,7 +339,7 @@ QModelIndex TableModel::parent(const QModelIndex& child) const {
     IndexData parent_data;
     parent_data.type = INDEX_COLUMN;
 
-    return createIndex(data.parent_index, 0, parent_data.to_qint64());
+    return createIndex(data.parent_index, 0, (void*)parent_data.to_qint64());
   }
 
   return QModelIndex();

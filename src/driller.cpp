@@ -41,6 +41,7 @@ std::string mysql_host = "localhost",
   mysql_username,
   mysql_password,
   mysql_database;
+unsigned int mysql_port;
 
 // Database schema files to extract
 std::vector<std::string> files;
@@ -162,7 +163,7 @@ void parse_option(std::string option){
     // This is an option
     std::string key, value;
 
-    int split_index = option.find("=");
+    int split_index = static_cast<int>(option.find("="));
 
     if (split_index < 0){
       return;
@@ -185,6 +186,11 @@ void parse_option(std::string option){
 
     else if (key == "database"){
       mysql_database = value;
+    }
+
+    else if (key == "port"){
+      char* unused;
+      mysql_port = strtoul(value.c_str(), &unused, 10);
     }
 
     else {
@@ -210,10 +216,11 @@ int run_text_version(int argc, char** argv){
     MySQLSink sink(mysql_host,
       mysql_username,
       mysql_password,
-      mysql_database);
+      mysql_database,
+      mysql_port);
 
     for (unsigned int i = 0; i < files.size(); i++){
-      sink << Database::from_file(files.at(i));
+      sink.output_database(Database::from_file(files.at(i)));
     }
   }
 #endif
@@ -228,12 +235,15 @@ int main(int argc, char** argv){
   Database::set_data_path(find_dentrix_path());
 
   int return_code;
+  if (argc > 1) {
+    return_code = run_text_version(argc, argv);
+  }
+  else {
 #if ENABLE_GUI
-  GUI gui(argc, argv);
-  return_code = gui.run();
-#else
-  return_code = run_text_version(argc, argv);
+    GUI gui(argc, argv);
+    return_code = gui.run();
 #endif
+  }
 
   // Save the data path
   save_dentrix_path();
@@ -243,6 +253,6 @@ int main(int argc, char** argv){
 
 #ifdef _WINDOWS
 int APIENTRY WinMain(HINSTANCE,HINSTANCE,LPSTR,int){
-  return main(0, NULL);
+  return main(__argc, __argv);
 }
 #endif

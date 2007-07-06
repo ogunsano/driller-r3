@@ -42,8 +42,7 @@ HEADERS += src/binreloc.h \
            src/qt/settings_dialog.h \
            src/qt/table_model.h
 
-FORMS +=  src/qt/DataExtractionDialog.ui \
-          src/qt/ExtractedDataWindow.ui \
+FORMS +=  src/qt/ExtractedDataWindow.ui \
           src/qt/MainWindow.ui \
           src/qt/SettingsDialog.ui
 

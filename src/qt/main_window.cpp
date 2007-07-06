@@ -234,32 +234,14 @@ void MainWindow::on_actionQuit_activated(){
 }
 
 void MainWindow::on_actionOpen_activated(){
-  QFileDialog* dialog = new QFileDialog(this);
+  /* FIXME: find some way to select the current file name */
+  QString file = QFileDialog::getOpenFileName(this,
+    "Open a database",                // Caption
+    current_directory.absolutePath(), // Directory
+    "Database files (*.xml)"          // Filter
+  );
 
-  // Only open existing files
-  dialog->setFileMode(QFileDialog::ExistingFile);
-
-  // Open mode
-  dialog->setAcceptMode(QFileDialog::AcceptOpen);
-
-  // Set directory to the current directory
-  dialog->setDirectory(current_directory);
-
-  // Only open .xml files
-  dialog->setFilter("Database files (*.xml)");
-
-  // If the user has selected a name before, use it as a default
-  if (!current_filename.isEmpty()){
-    dialog->selectFile(current_filename);
-  }
-
-  // Actually execute the dialog, to get the file name
-  if (dialog->exec()){
-    // Save the current directory
-    current_directory = dialog->directory();
-
-    QString file = dialog->selectedFiles().at(0);
-
+  if (file.length() > 0) {
     try {
       current_filename = file;
       db.load(file.toUtf8().constData());
@@ -283,48 +265,14 @@ void MainWindow::on_actionSave_activated(){
 }
 
 void MainWindow::on_actionSaveAs_activated(){
-  QFileDialog* dialog = new QFileDialog(this);
+  /* FIXME: find some way to select the current file name */
+  QString file = QFileDialog::getSaveFileName(this,
+    "Save As",                        // Caption
+    current_directory.absolutePath(), // Directory
+    "Database files (*.xml)"          // Filter
+  );
 
-  // Accept any file
-  dialog->setFileMode(QFileDialog::AnyFile);
-
-  // Save mode
-  dialog->setAcceptMode(QFileDialog::AcceptSave);
-
-  // Confirm overwriting existing files
-  dialog->setConfirmOverwrite(true);
-
-  // Set directory to the current directory
-  dialog->setDirectory(current_directory);
-
-  // Only save .xml files
-  dialog->setFilter("Database files (*.xml)");
-
-  // If the user has not selected a name before, default to the name of the
-  // database
-  if (current_filename.isEmpty()){
-    // By default, select the current database name + ".xml"
-    // If the database name is empty, use "unnamed.xml"
-    if (db.get_name().empty()){
-      dialog->selectFile("unnamed.xml");
-    }
-
-    else {
-      dialog->selectFile(QString(db.get_name().c_str()) + ".xml");
-    }
-  }
-
-  else {
-    dialog->selectFile(current_filename);
-  }
-
-  // Actually execute the dialog, to get the file name
-  if (dialog->exec()){
-    // Save the current directory
-    current_directory = dialog->directory();
-
-    QString file = dialog->selectedFiles().at(0);
-
+  if (file.length() > 0) {
     try {
       current_filename = file;
       save_to_file(file);
@@ -342,10 +290,8 @@ void MainWindow::on_actionExtract_Data_activated(){
     extraction_dialog = new DataExtractionDialog(this);
   }
 
-  extraction_dialog->set_database(db);
-
   try {
-    extraction_dialog->exec();
+    extraction_dialog->exec(db);
   } catch (const Errors::BaseError& error) {
     show_error(error);
   }

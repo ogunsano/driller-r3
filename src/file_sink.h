@@ -42,11 +42,10 @@ public:
   /** Default destructor */
   virtual ~FileSink() throw ();
 
-  FileSink& operator<<(const Database& db);
+  void output_table(const Table& table, const unsigned int row_limit = 0)
+    throw (Errors::FileReadError, Errors::FileWriteError);
 
 protected:
-  FileSink& operator<<(const Table& table);
-
   const std::string directory;
 };
 

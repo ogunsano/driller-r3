@@ -1,121 +1,81 @@
-#include "test.h"
-#include "fixture.h"
-#include "database.h"
+#include <copper.hpp>
+#include "../src/database/database.h"
 
 using namespace Driller;
 
-TEST_SUITE(database_tests)
+TEST_SUITE(database_tests) {
 
-FIXTURE(db_fixture)
-
-void set_up(){
-  db = Database::from_file("tests/data/database.xml");
-}
-
-Database db;
-
-};
-
-TEST(empty_constructor)
+FIXTURE(db_fixture) {
   Database db;
-  assert(db.get_name()).equals("");
+
+  SET_UP {
+    db = Database::from_file("tests/data/database.xml");
+  }
 }
 
-TEST(constructor)
+TEST(empty_constructor) {
+  Database db;
+  ASSERT(equal("", db.get_name()));
+}
+
+TEST(constructor) {
   Database db("Test name");
-  assert(db.get_name()).equals("Test name");
+  ASSERT(equal("Test name", db.get_name()));
 }
 
-TEST(from_file)
-  Database db = Database::from_file("tests/data/database.xml");
-
-  assert(db.get_name()).equals("From a file < > \" & ");
-  assert(db.table_count()).equals(2);
+FIXTURE_TEST(table_count, db_fixture) {
+  ASSERT(equal(2u, db.table_count()));
 }
 
-TEST(load)
-  Database db;
-  db.load("tests/data/database.xml");
-
-  assert(db.get_name()).equals("From a file < > \" & ");
-  assert(db.table_count()).equals(2);
-}
-
-FIXTURE_TEST(table_count, db_fixture)
-  assert(db.table_count()).equals(2);
-}
-
-FIXTURE_TEST(clear, db_fixture)
+FIXTURE_TEST(clear, db_fixture) {
   db.clear();
 
-  assert(db.get_name()).equals("");
-  assert(db.table_count()).equals(0);
+  ASSERT(equal("", db.get_name()));
+  ASSERT(equal(0u, db.table_count()));
 }
 
-TEST(name)
+TEST(name) {
   Database db("Testing 1");
-  assert(db.get_name()).equals("Testing 1");
+  ASSERT(equal("Testing 1", db.get_name()));
 
   db.set_name("Testing 2");
 
-  assert(db.get_name()).equals("Testing 2");
+  ASSERT(equal("Testing 2", db.get_name()));
 }
 
-FIXTURE_TEST(table_at, db_fixture)
-  assert(db.table_at(0).get_name()).equals("Table 1");
-  assert(db.table_at(1).get_name()).equals("Table 2");
+FIXTURE_TEST(table_at, db_fixture) {
+  ASSERT(equal("Table 1", db.table_at(0).get_name()));
+  ASSERT(equal("Table 2", db.table_at(1).get_name()));
+
+  // Const versions
+  const Database& cdb = db;
+  ASSERT(equal("Table 1", cdb.table_at(0).get_name()));
+  ASSERT(equal("Table 2", cdb.table_at(1).get_name()));
 }
 
-FIXTURE_TEST(add_table, db_fixture)
+FIXTURE_TEST(add_table, db_fixture) {
   db.add_table(Table());
-  assert(db.table_count()).equals(3);
-  assert(db.table_at(2).get_name()).equals("");
+  ASSERT(equal(3u, db.table_count()));
+  ASSERT(equal("", db.table_at(0).get_name()));
 }
 
-FIXTURE_TEST(remove_table, db_fixture)
+FIXTURE_TEST(remove_table, db_fixture) {
   db.remove_table(0);
-  assert(db.table_count()).equals(1);
-  assert(db.table_at(0).get_name()).equals("Table 2");
+  ASSERT(equal(1u, db.table_count()));
+  ASSERT(equal("Table 2", db.table_at(0).get_name()));
 }
 
-TEST(data_path)
+TEST(data_path) {
   Database::set_data_path("test data path");
-  assert(Database::get_data_path()).equals("test data path");
+  ASSERT(equal("test data path", Database::get_data_path()));
 }
 
-FIXTURE_TEST(get_tables, db_fixture)
+FIXTURE_TEST(get_tables, db_fixture) {
   std::vector<Table> tables = db.get_tables();
 
-  assert(tables.size()).equals(2);
-  assert(tables.at(0).get_name()).equals("Table 1");
-  assert(tables.at(1).get_name()).equals("Table 2");
-}
-
-FIXTURE_TEST(output, db_fixture)
-  // Find the expected result of the output
-  FILE* in = fopen("tests/data/database.xml", "r");
-
-  if (!in){
-    throw Errors::FileReadError("tests/data/database.xml");
-  }
-
-  fseek(in, 0, SEEK_END);
-  unsigned int file_size = ftell(in);
-  fseek(in, 0, SEEK_SET);
-
-  // Read the file in to a buffer
-  char* buffer = new char[file_size + 1];
-  fread(buffer, 1, file_size, in);
-  buffer[file_size] = 0;
-
-  std::string expected = buffer;
-  delete[] buffer;
-
-  fclose(in);
-
-  std::stringstream ss;
-  ss << db;
-  assert(ss.str()).equals(expected);
+  ASSERT(equal(2u, tables.size()));
+  ASSERT(equal("Table 1", tables.at(0).get_name()));
+  ASSERT(equal("Table 2", tables.at(1).get_name()));
 }
 
 }
